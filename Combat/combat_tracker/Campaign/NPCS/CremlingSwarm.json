@@ -1,0 +1,61 @@
+{
+  "name": "Cremling Swarm",
+  "health": {
+    "current": 0,
+    "max": 0
+  },
+  "focus": {
+    "current": 3,
+    "max": 3
+  },
+  "investiture": {
+    "current": 0,
+    "max": 0
+  },
+  "strength": 1,
+  "speed": 3,
+  "physical defense": 14,
+  "intelligence": 1,
+  "willpower": 2,
+  "cognitive defense": 13,
+  "awareness": 2,
+  "presence": 1,
+  "spiritual defense": 13,
+  "movement": 30,
+  "immunities": "Immobilized, Prone, Restrained, Stunned",
+  "deflect": 0,
+  "features": {
+    "Swarm": "The Swarm is comprised of many tiny creatures and it can't regain health, it can move through spaces occupied by other creatures."
+  },
+  "Actions": {
+    "Strike Bite": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Attack": "+5",
+      "Range": "5ft.",
+      "AOE": "One target",
+      "Graze": "6 keen damage or 2 if at half hp",
+      "Hit": "10 keen damage or 4 if at half hp",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": ""
+    },
+    "Screech": {
+      "Action cost": "2",
+      "Focus cost": "2",
+      "Attack": "",
+      "Range": "10ft.",
+      "AOE": "All within range",
+      "Graze": "",
+      "Hit": "",
+      "Duration": "End of next turn",
+      "Saving Throw": "14 DC Discipline",
+      "Description": "Spend 2 focus on a failure or become disoriented."
+    }
+  },
+  "physical_skills": {
+    "Agility": 5
+  },
+  "cognitive_skills": {},
+  "spiritual_skills": {}
+}

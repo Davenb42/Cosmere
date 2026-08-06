@@ -1,0 +1,92 @@
+{
+  "name": "Archer",
+  "health": {
+    "current": 12,
+    "max": 12
+  },
+  "focus": {
+    "current": 3,
+    "max": 3
+  },
+  "investiture": {
+    "current": 0,
+    "max": 0
+  },
+  "strength": 2,
+  "speed": 1,
+  "physical defense": 13,
+  "intelligence": 2,
+  "willpower": 1,
+  "cognitive defense": 13,
+  "awareness": 2,
+  "presence": 1,
+  "spiritual defense": 13,
+  "movement": 25,
+  "immunities": "",
+  "deflect": 1,
+  "features": {
+    "Minion": "Attacks can't crit, and they're defeated once they suffer an injury."
+  },
+  "Actions": {
+    "Strike Knife": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Attack": "+3",
+      "Range": "5ft.",
+      "AOE": "One target",
+      "Graze": "2 keen damage",
+      "Hit": "5 keen damage",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": ""
+    },
+    "Strike Longbow": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Attack": "+4",
+      "Range": "150/600ft.",
+      "AOE": "One Prone target",
+      "Graze": "3 keen damage",
+      "Hit": "7 keen damage",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": ""
+    },
+    "Take Aim": {
+      "Action cost": "Free",
+      "Focus cost": "",
+      "Attack": "",
+      "Range": "",
+      "AOE": "",
+      "Graze": "",
+      "Hit": "",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": "On their first turn of a scene, if they aren't surprised, use free action to Gain Advantage."
+    },
+    "Immobilizing Shot": {
+      "Action cost": "Reaction",
+      "Focus cost": "1",
+      "Attack": "",
+      "Range": "150ft.",
+      "AOE": "",
+      "Graze": "",
+      "Hit": "",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": "If attacked, make a longbow strike, target is immobilized until the end of their next turn."
+    }
+  },
+  "physical_skills": {
+    "Agility": 3,
+    "Heavy Weaponry": 4,
+    "Light Weaponry": 3
+  },
+  "cognitive_skills": {
+    "Discipline": 3
+  },
+  "spiritual_skills": {
+    "Perception": 4,
+    "Survival": 3
+  }
+}

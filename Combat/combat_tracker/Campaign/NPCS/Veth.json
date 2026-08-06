@@ -1,0 +1,93 @@
+{
+  "name": "Veth",
+  "health": {
+    "current": 40,
+    "max": 40
+  },
+  "focus": {
+    "current": 3,
+    "max": 3
+  },
+  "investiture": {
+    "current": 0,
+    "max": 0
+  },
+  "strength": 2,
+  "speed": 2,
+  "physical defense": 14,
+  "intelligence": 1,
+  "willpower": 1,
+  "cognitive defense": 12,
+  "awareness": 3,
+  "presence": 2,
+  "spiritual defense": 15,
+  "movement": 25,
+  "immunities": "",
+  "deflect": 0,
+  "features": {
+    "Boss": "Can take a fast and slow turn, after an enemy's turn spend 1 focus to immediately use an action or free action or remove a condition.",
+    "Targeted Strikes": "While having advantage on an attack, ignores deflect."
+  },
+  "Actions": {
+    "Strike Sidesword": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Attack": "+3",
+      "Range": "5ft.",
+      "AOE": "One target",
+      "Graze": "3 keen damage",
+      "Hit": "6 keen damage",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": ""
+    },
+    "Exploit Advantage": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Attack": "",
+      "Range": "",
+      "AOE": "One target",
+      "Graze": "",
+      "Hit": "",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": "Move up to movement, if ending within 5ft. of enemy do not trigger Reactive Strike, make a Perception test against Spiritual Defense, gain advantage"
+    },
+    "Insightful Defense": {
+      "Action cost": "Free",
+      "Focus cost": "0",
+      "Attack": "",
+      "Range": "60ft.",
+      "AOE": "One target",
+      "Graze": "",
+      "Hit": "",
+      "Duration": "",
+      "Saving Throw": "Insight Vs Spiritual Defense",
+      "Description": "Target can't gain advantage for 1 minute or until action is used again."
+    },
+    "Intuitive Redirect": {
+      "Action cost": "Reaction",
+      "Focus cost": "1",
+      "Attack": "",
+      "Range": "5ft.",
+      "AOE": "One target",
+      "Graze": "",
+      "Hit": "",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": "Before an attack misses, make attack hit a target other than the enemy who attacked."
+    }
+  },
+  "physical_skills": {
+    "Athletics": 3,
+    "Light Weaponry": 3,
+    "Stealth": 4
+  },
+  "cognitive_skills": {
+    "Discipline": 3
+  },
+  "spiritual_skills": {
+    "Insight": 5,
+    "Perception": 5
+  }
+}

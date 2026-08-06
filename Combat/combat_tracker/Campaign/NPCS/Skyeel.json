@@ -1,0 +1,67 @@
+{
+  "name": "Skyeel",
+  "health": {
+    "current": 12,
+    "max": 12
+  },
+  "focus": {
+    "current": 3,
+    "max": 3
+  },
+  "investiture": {
+    "current": 0,
+    "max": 0
+  },
+  "strength": 2,
+  "speed": 3,
+  "physical defense": 15,
+  "intelligence": 0,
+  "willpower": 1,
+  "cognitive defense": 11,
+  "awareness": 3,
+  "presence": 0,
+  "spiritual defense": 13,
+  "movement": 30,
+  "immunities": "",
+  "deflect": 0,
+  "features": {
+    "Enhanced Senses": "Advantage on non-attack tests that rely on sight.",
+    "Minion": "Attacks can't crit, and they're defeated once they suffer an injury.",
+    "Slippery": "Doesn't trigger reactive strikes while swimming."
+  },
+  "Actions": {
+    "Bite": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Attack": "+4",
+      "Range": "5ft.",
+      "AOE": "One target",
+      "Graze": "2 keen damage",
+      "Hit": "6 keen damage",
+      "Duration": "",
+      "Saving Throw": "DC 12 Athletics to release the skyeel",
+      "Description": "Spend 1 focus to restrain target, can only bite this target."
+    },
+    "Dive Bomb": {
+      "Action cost": "2",
+      "Focus cost": "0",
+      "Attack": "",
+      "Range": "60ft.",
+      "AOE": "",
+      "Graze": "",
+      "Hit": "",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": "Use bite on target, gain advantage, can't fly again until end of scene."
+    }
+  },
+  "physical_skills": {
+    "Agility": 4,
+    "Stealth": 4
+  },
+  "cognitive_skills": {},
+  "spiritual_skills": {
+    "Perception": 5,
+    "Survival": 4
+  }
+}

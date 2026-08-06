@@ -1,0 +1,130 @@
+{
+  "name": "Liss",
+  "health": {
+    "current": 40,
+    "max": 40
+  },
+  "focus": {
+    "current": 5,
+    "max": 5
+  },
+  "investiture": {
+    "current": 0,
+    "max": 0
+  },
+  "strength": 3,
+  "speed": 4,
+  "physical defense": 17,
+  "intelligence": 2,
+  "willpower": 3,
+  "cognitive defense": 15,
+  "awareness": 2,
+  "presence": 4,
+  "spiritual defense": 16,
+  "movement": 30,
+  "immunities": "",
+  "deflect": 0,
+  "features": {
+    "Inspiring Leadership": "When using Gain Advantage, choose an ally to influence, the ally also gains advantage against the same target."
+  },
+  "Actions": {
+    "Strike Shardblade": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Attack": "+6",
+      "Range": "5ft.",
+      "AOE": "One target",
+      "Graze": "9 spirit damage",
+      "Hit": "22 spirit damage",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": ""
+    },
+    "Change Stance": {
+      "Action cost": "1",
+      "Focus cost": "1",
+      "Attack": "",
+      "Range": "",
+      "AOE": "",
+      "Graze": "",
+      "Hit": "",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": "Shift into Flamestance or Windstance."
+    },
+    "Flamestance": {
+      "Action cost": "Free",
+      "Focus cost": "0",
+      "Attack": "",
+      "Range": "5ft.",
+      "AOE": "",
+      "Graze": "",
+      "Hit": "",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": "If enemy withing 5ft. and no allies within 5ft., gain an action to use Gain Advantage or a Strike."
+    },
+    "Windstance": {
+      "Action cost": "Free",
+      "Focus cost": "0",
+      "Attack": "",
+      "Range": "5ft.",
+      "AOE": "",
+      "Graze": "",
+      "Hit": "",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": "If enemy withing 5ft. and no allies within 5ft., gain an action to use Disengage or a Strike."
+    },
+    "Feint": {
+      "Action cost": "1",
+      "Focus cost": "1",
+      "Attack": "",
+      "Range": "5ft.",
+      "AOE": "",
+      "Graze": "",
+      "Hit": "",
+      "Duration": "",
+      "Saving Throw": "Heavy Weaponry Vs Cognitive Defense",
+      "Description": "Lose 1 focus, use Opportunity to use Change Stance as a Free Action."
+    },
+    "Jarring Insight": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Attack": "",
+      "Range": "",
+      "AOE": "",
+      "Graze": "",
+      "Hit": "",
+      "Duration": "",
+      "Saving Throw": "Insight Vs Discipline",
+      "Description": "Lose 1 action the next turn and gain disadvantage on their next contribution."
+    },
+    "Reposition": {
+      "Action cost": "Reaction",
+      "Focus cost": "1",
+      "Attack": "",
+      "Range": "",
+      "AOE": "",
+      "Graze": "",
+      "Hit": "",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": "Before being unwillingly moved, ignore effect and use Disengage."
+    }
+  },
+  "physical_skills": {
+    "Agility": 6,
+    "Heavy Weaponry": 6,
+    "Light Weaponry": 7
+  },
+  "cognitive_skills": {
+    "Discipline": 4,
+    "Intimidation": 5
+  },
+  "spiritual_skills": {
+    "Insight": 4,
+    "Leadership": 6,
+    "Persuasion": 6
+  }
+}

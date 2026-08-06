@@ -1,0 +1,84 @@
+{
+  "name": "Laurin",
+  "health": {
+    "current": 16,
+    "max": 16
+  },
+  "focus": {
+    "current": 7,
+    "max": 7
+  },
+  "investiture": {
+    "current": 5,
+    "max": 5
+  },
+  "strength": 1,
+  "speed": 4,
+  "physical defense": 15,
+  "intelligence": 1,
+  "willpower": 3,
+  "cognitive defense": 14,
+  "awareness": 1,
+  "presence": 3,
+  "spiritual defense": 14,
+  "movement": 30,
+  "recovery die": "1d8",
+  "deflect": 1,
+  "Talents": {
+    "Change Form": {
+      "Action Cost": "3",
+      "Description": "Bond a spren during a Highstorm and change form."
+    },
+    "Opportunist": {
+      "Action Cost": "Special",
+      "Description": "Once per round when rolling a plot die, you can reroll, use the new result."
+    },
+    "Watchful Eye": {
+      "Action Cost": "Reaction",
+      "Description": "Use Opportunist on willing allie's plot die within 20ft."
+    },
+    "Forms of Finesse": {
+      "Action Cost": "Always",
+      "Description": "Gain Artform (awareness +1, expertise in Painting and Music, advantage on crafting and entertainment tests) and nimbleform"
+    },
+    "Nimbleform": {
+      "Action Cost": "Special",
+      "Description": "Speed +1, Focus +2."
+    },
+    "Artform": {
+      "Action Cost": "Special",
+      "Description": "Awareness +1, expertise in Painting and Music, advantage on crafting and entertainment tests."
+    }
+  },
+  "Actions": {
+    "Strike Sidesword": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Attack": "+5",
+      "Range": "5ft.",
+      "Damage": "1d6(+5) keen damage",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": ""
+    },
+    "Strike Knife": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Attack": "+5",
+      "Range": "5ft.",
+      "Damage": "1d4(+5) keen damage",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": ""
+    }
+  },
+  "physical_skills": {
+    "Light Weaponry": 5,
+    "Stealth": 6
+  },
+  "cognitive_skills": {},
+  "spiritual_skills": {
+    "Insight": 2,
+    "Persuasion": 4
+  }
+}

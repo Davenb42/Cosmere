@@ -1,0 +1,79 @@
+{
+  "name": "Wal'tr",
+  "health": {
+    "current": 12,
+    "max": 12
+  },
+  "focus": {
+    "current": 2,
+    "max": 2
+  },
+  "investiture": {
+    "current": 0,
+    "max": 0
+  },
+  "strength": 2,
+  "speed": 2,
+  "physical defense": 14,
+  "intelligence": 0,
+  "willpower": 0,
+  "cognitive defense": 10,
+  "awareness": 3,
+  "presence": 0,
+  "spiritual defense": 13,
+  "movement": 40,
+  "immunities": "",
+  "deflect": 0,
+  "features": {
+    "Enhanced Senses": "Advantage on non-attack tests that rely on smell.",
+    "Minion": "Attacks can't crit, and they're defeated once they suffer an injury."
+  },
+  "Actions": {
+    "Strike Bite": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Attack": "+4",
+      "Range": "5ft.",
+      "AOE": "One target",
+      "Graze": "2 keen damage",
+      "Hit": "6 keen damage",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": "If target is medium or smaller, spend 1 focus to knock the target prone and move 10ft. while dragging them."
+    },
+    "Pack Instincts": {
+      "Action cost": "Free",
+      "Focus cost": "",
+      "Attack": "",
+      "Range": "5ft.",
+      "AOE": "",
+      "Graze": "",
+      "Hit": "",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": "While close to an ally, use the gain advantage action for free."
+    },
+    "On the Hunt": {
+      "Action cost": "Reaction",
+      "Focus cost": "",
+      "Attack": "",
+      "Range": "30ft.",
+      "AOE": "",
+      "Graze": "",
+      "Hit": "",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": "If an enemy falls prone, move 15ft. toward them."
+    }
+  },
+  "physical_skills": {
+    "Agility": 4,
+    "Athletics": 4,
+    "Stealth": 3
+  },
+  "cognitive_skills": {},
+  "spiritual_skills": {
+    "Perception": 5,
+    "Survival": 4
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "name": "Nen",
+  "health": {
+    "current": 10,
+    "max": 10
+  },
+  "focus": {
+    "current": 2,
+    "max": 2
+  },
+  "investiture": {
+    "current": 0,
+    "max": 0
+  },
+  "strength": 0,
+  "speed": 1,
+  "physical defense": 11,
+  "intelligence": 1,
+  "willpower": 0,
+  "cognitive defense": 11,
+  "awareness": 1,
+  "presence": 0,
+  "spiritual defense": 11,
+  "movement": 25,
+  "immunities": "",
+  "deflect": 2,
+  "features": {
+    "Minion": "Attacks can't crit, and they're defeated once they suffer an injury.",
+    "Capable": "Expertise on one profession."
+  },
+  "Actions": {
+    "Strike Improvised Weapon": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Attack": "+1",
+      "Range": "5ft.",
+      "AOE": "One target",
+      "Graze": "2 impact damage",
+      "Hit": "3 impact damage",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": "On a complication, it's destroyed"
+    },
+    "Distract": {
+      "Action cost": "Reaction",
+      "Focus cost": "1",
+      "Attack": "",
+      "Range": "",
+      "AOE": "",
+      "Graze": "",
+      "Hit": "",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": "Grant ally advantage on test against an enemy in reach of commoner."
+    }
+  },
+  "physical_skills": {
+    "Athletics": 1
+  },
+  "cognitive_skills": {
+    "Crafting": 2
+  },
+  "spiritual_skills": {
+    "Insight": 2,
+    "Perception": 2
+  }
+}

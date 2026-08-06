@@ -1,0 +1,81 @@
+{
+  "name": "Juvenile Whitespine",
+  "health": {
+    "current": 23,
+    "max": 23
+  },
+  "focus": {
+    "current": 4,
+    "max": 4
+  },
+  "investiture": {
+    "current": 0,
+    "max": 0
+  },
+  "strength": 2,
+  "speed": 3,
+  "physical defense": 15,
+  "intelligence": 0,
+  "willpower": 2,
+  "cognitive defense": 12,
+  "awareness": 3,
+  "presence": 0,
+  "spiritual defense": 13,
+  "movement": 40,
+  "immunities": "",
+  "deflect": 1,
+  "features": {
+    "Enhanced Senses": "Advantage on non-attack tests that rely on smell.",
+    "Spined Carapace": "If grazed, enemy takes 3 keen damage"
+  },
+  "Actions": {
+    "Strike Claws": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Attack": "+5",
+      "Range": "5ft.",
+      "AOE": "One target",
+      "Graze": "3 keen damage",
+      "Hit": "8 keen damage",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": "Spend 1 focus to make target Afflicted 1d4"
+    },
+    "Gory Tusks": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Attack": "+5",
+      "Range": "5ft.",
+      "AOE": "One target",
+      "Graze": "4 impact damage",
+      "Hit": "9 impact damage",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": "If used after 15ft. of movement, extra 4 damage, DC 12 Athletics test or knocked prone."
+    },
+    "Pheromone Release": {
+      "Action cost": "2",
+      "Focus cost": "1",
+      "Attack": "",
+      "Range": "10ft.",
+      "AOE": "",
+      "Graze": "",
+      "Hit": "",
+      "Duration": "",
+      "Saving Throw": "DC 13 Discipline",
+      "Description": "Become Stunned until Whitespine's next turn"
+    }
+  },
+  "physical_skills": {
+    "Agility": 6,
+    "Athletics": 5,
+    "Stealth": 6
+  },
+  "cognitive_skills": {
+    "Intimidation": 4
+  },
+  "spiritual_skills": {
+    "Perception": 5,
+    "Survival": 5
+  }
+}

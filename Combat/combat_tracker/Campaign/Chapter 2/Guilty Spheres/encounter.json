@@ -1,0 +1,9 @@
+{
+    "name": "Guilty Spheres",
+
+    "npcs": {
+        "Nel": 1,
+        "Lirdan": 1,
+        "Guard": 2
+    }
+}

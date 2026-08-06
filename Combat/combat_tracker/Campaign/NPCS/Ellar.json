@@ -1,0 +1,80 @@
+{
+  "name": "Ellar",
+  "health": {
+    "current": 24,
+    "max": 24
+  },
+  "focus": {
+    "current": 4,
+    "max": 4
+  },
+  "investiture": {
+    "current": 0,
+    "max": 0
+  },
+  "strength": 3,
+  "speed": 1,
+  "physical defense": 14,
+  "intelligence": 1,
+  "willpower": 2,
+  "cognitive defense": 13,
+  "awareness": 3,
+  "presence": 1,
+  "spiritual defense": 14,
+  "movement": 25,
+  "immunities": "",
+  "deflect": 2,
+  "features": {
+    "Raise the Alert": "Guard and allies gain Focused condition until the end of the scene if enemy is detected or sensed."
+  },
+  "Actions": {
+    "Strike Longspear": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Attack": "+5",
+      "Range": "5ft.",
+      "AOE": "One target",
+      "Graze": "4 keen damage",
+      "Hit": "9 keen damage",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": "Spend 1 focus to knock target prone."
+    },
+    "Debilitate": {
+      "Action cost": "2",
+      "Focus cost": "2",
+      "Attack": "+5",
+      "Range": "5ft.",
+      "AOE": "One Prone target",
+      "Graze": "9 impact damage",
+      "Hit": "14 impact damage",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": "Grant ally advantage on test against an enemy in reach of commoner."
+    },
+    "Work as One": {
+      "Action cost": "Free",
+      "Focus cost": "1",
+      "Attack": "",
+      "Range": "",
+      "AOE": "",
+      "Graze": "",
+      "Hit": "",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": "After a succesful hit, urge ally to advance, who can use the Disengage action for free."
+    }
+  },
+  "physical_skills": {
+    "Athletics": 5,
+    "Heavy Weaponry": 5
+  },
+  "cognitive_skills": {
+    "Discipline": 4,
+    "Intimidation": 4
+  },
+  "spiritual_skills": {
+    "Insight": 4,
+    "Perception": 5
+  }
+}

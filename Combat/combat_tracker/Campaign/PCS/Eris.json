@@ -1,0 +1,73 @@
+{
+  "name": "Eris Falem",
+  "health": {
+    "current": 17,
+    "max": 17
+  },
+  "focus": {
+    "current": 5,
+    "max": 5
+  },
+  "investiture": {
+    "current": 4,
+    "max": 4
+  },
+  "strength": 2,
+  "speed": 2,
+  "physical defense": 14,
+  "intelligence": 2,
+  "willpower": 3,
+  "cognitive defense": 15,
+  "awareness": 2,
+  "presence": 1,
+  "spiritual defense": 13,
+  "movement": 25,
+  "recovery die": "1d8",
+  "deflect": 1,
+  "Talents": {
+    "Erudición": {
+      "Action Cost": "Special",
+      "Description": ""
+    },
+    "Medicina de campo": {
+      "Action Cost": "1",
+      "Description": "Gasta 1 punto de focus para realizar una prueba de Medicina DC 15 para tratar a un personaje consciente y dispuesto a tu alcance, y tira el dado de recuperación del objetivo como parte de esta prueba. Obtienes una desventaja si te tratas a ti mismo. Con un éxito, tu objetivo recupera salud igual al resultado de su dado de recuperación + tus rangos en Medicina. Con un fallo, tu objetivo solo recupera salud igual al resultado de su dado de recuperación."
+    },
+    "Vinculo Animal": {
+      "Action Cost": "Special",
+      "Description": "Al adquirir este talento, tu talento Erudición te otorga una habilidad adicional, y puedes usarla para elegir skills físicas que no sean surges. Además, obtienes una expertise con armas a tu elección."
+    }
+  },
+  "Actions": {
+    "Strike Hammer": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Attack": "+2",
+      "Range": "5ft.",
+      "Damage": "1d10(+2) impact damage",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": "Two Handed, Momentum"
+    },
+    "Strike Shield": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Attack": "+2",
+      "Range": "5ft.",
+      "Damage": "1d4(+2) impact damage",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": "Defensive"
+    }
+  },
+  "physical_skills": {
+    "Light Weaponry": 3
+  },
+  "cognitive_skills": {
+    "Lore": 3,
+    "Medicine": 4
+  },
+  "spiritual_skills": {
+    "Leadership": 2
+  }
+}

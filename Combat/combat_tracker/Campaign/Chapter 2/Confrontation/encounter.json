@@ -1,0 +1,9 @@
+{
+    "name": "Confrontation",
+
+    "npcs": {
+        "ThrillSeeker": 1,
+        "Archer": 3,
+        "Guard": 1
+    }
+}

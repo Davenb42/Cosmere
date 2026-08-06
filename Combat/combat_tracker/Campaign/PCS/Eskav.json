@@ -1,0 +1,73 @@
+{
+  "name": "Eskav Prshav",
+  "health": {
+    "current": 18,
+    "max": 18
+  },
+  "focus": {
+    "current": 3,
+    "max": 3
+  },
+  "investiture": {
+    "current": 4,
+    "max": 4
+  },
+  "strength": 3,
+  "speed": 2,
+  "physical defense": 15,
+  "intelligence": 2,
+  "willpower": 1,
+  "cognitive defense": 13,
+  "awareness": 2,
+  "presence": 2,
+  "spiritual defense": 14,
+  "movement": 25,
+  "recovery die": "1d6",
+  "deflect": 1,
+  "Talents": {
+    "Buscar Presa": {
+      "Action Cost": "Special",
+      "Description": "Tras 1 minuto, elije a un personaje para que se convierta en tu presa. Obtienes ventaja en pruebas para encontrar, atacar o estudiar a tu presa."
+    },
+    "Disparo de Marca": {
+      "Action Cost": "3",
+      "Description": "Muevete hasta 5ft. y realiza un ataque con arma de distancia, al impactar se convierte en tu presa."
+    },
+    "Vinculo Animal": {
+      "Action Cost": "Special",
+      "Description": "Aumenta tus defensas por 1 punto si esta a 5ft. de ti. Varios otros efectos"
+    }
+  },
+  "Actions": {
+    "Strike Rapier": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Attack": "+3",
+      "Range": "5ft.",
+      "Damage": "1d6(+3) keen damage",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": ""
+    },
+    "Strike Shortbow": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Attack": "+3",
+      "Range": "80/320ft.",
+      "Damage": "1d6(+3) keen damage",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": ""
+    }
+  },
+  "physical_skills": {
+    "Agility": 3,
+    "Athletics": 4,
+    "Light Weaponry": 3
+  },
+  "cognitive_skills": {},
+  "spiritual_skills": {
+    "Perception": 2,
+    "Survival": 3
+  }
+}

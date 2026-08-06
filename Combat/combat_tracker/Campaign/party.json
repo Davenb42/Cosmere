@@ -1,0 +1,11 @@
+{
+    "active_party": "Main Party",
+    "parties": {
+        "Main Party": [
+            "Eris",
+            "Laurin",
+            "Eskav",
+            "Wal'tr"
+        ]
+    }
+}

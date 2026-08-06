@@ -1,0 +1,81 @@
+{
+  "name": "Spear Infantry",
+  "health": {
+    "current": 14,
+    "max": 14
+  },
+  "focus": {
+    "current": 3,
+    "max": 3
+  },
+  "investiture": {
+    "current": 0,
+    "max": 0
+  },
+  "strength": 2,
+  "speed": 2,
+  "physical defense": 14,
+  "intelligence": 1,
+  "willpower": 1,
+  "cognitive defense": 12,
+  "awareness": 2,
+  "presence": 1,
+  "spiritual defense": 13,
+  "movement": 25,
+  "immunities": "",
+  "deflect": 2,
+  "features": {
+    "Minion": "Attacks can't crit, and they're defeated once they suffer an injury.",
+    "Martial Drill": "At the start of each scene, if they have their shield, gain the benefits of the brace action until their turn.",
+    "Military Tactics": "Once per round, spend 1 focus to use Aid or Reactive Strike without using their Reaction."
+  },
+  "Actions": {
+    "Strike Shortspear": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Attack": "+4",
+      "Range": "5ft.",
+      "AOE": "One target",
+      "Graze": "4 keen damage",
+      "Hit": "7 keen damage",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": "If target is prone, extra 2 damage."
+    },
+    "Strike Shortbow": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Attack": "+3",
+      "Range": "80/320ft.",
+      "AOE": "One target",
+      "Graze": "3 keen damage",
+      "Hit": "6 keen damage",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": ""
+    },
+    "Shield Bash": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Attack": "",
+      "Range": "",
+      "AOE": "One target",
+      "Graze": "",
+      "Hit": "",
+      "Duration": "",
+      "Saving Throw": "Athletics Vs Physical Defense",
+      "Description": "Knock them prone."
+    }
+  },
+  "physical_skills": {
+    "Athletics": 4,
+    "Heavy Weaponry": 4,
+    "Light Weaponry": 3
+  },
+  "cognitive_skills": {
+    "Discipline": 2
+  },
+  "spiritual_skills": {
+    "Perception": 4
+  }
+}
