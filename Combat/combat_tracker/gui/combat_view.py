@@ -24,6 +24,11 @@ from combat_tracker.engine.encounter_loader import EncounterLoader
 from combat_tracker.engine.combat_tracker import CombatTracker
 
 
+class NoWheelSpinBox(QSpinBox):
+    def wheelEvent(self, event):
+        event.ignore()
+
+
 class TurnSelectionDialog(QDialog):
     def __init__(self, state, parent=None):
         super().__init__(parent)
@@ -310,7 +315,7 @@ class CombatView(QWidget):
 
             for key in ("health", "focus", "investiture"):
                 resource = getattr(character, key)
-                spin = QSpinBox()
+                spin = NoWheelSpinBox()
                 spin.setRange(0, resource.maximum if hasattr(resource, "maximum") else 99)
                 spin.setValue(resource.current)
                 spin.valueChanged.connect(lambda value, res=resource: res.set(value))
@@ -338,7 +343,7 @@ class CombatView(QWidget):
 
             for key in ("health", "focus", "investiture"):
                 resource = getattr(character, key)
-                spin = QSpinBox()
+                spin = NoWheelSpinBox()
                 spin.setRange(0, resource.maximum if hasattr(resource, "maximum") else 99)
                 spin.setValue(resource.current)
                 spin.valueChanged.connect(lambda value, res=resource: res.set(value))
