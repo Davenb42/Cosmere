@@ -118,14 +118,14 @@ class CombatView(QWidget):
 
         self.turn_top = QWidget()
         self.turn_top_layout = QVBoxLayout(self.turn_top)
-        self.turn_top_layout.setContentsMargins(0, 0, 0, 0)
-        self.turn_top_layout.setSpacing(8)
+        self.turn_top_layout.setContentsMargins(10, 10, 10, 10)
+        self.turn_top_layout.setSpacing(10)
         self.turn_top_layout.setAlignment(Qt.AlignTop)
 
         self.turn_bottom = QWidget()
         self.turn_bottom_layout = QVBoxLayout(self.turn_bottom)
-        self.turn_bottom_layout.setContentsMargins(0, 0, 0, 0)
-        self.turn_bottom_layout.setSpacing(8)
+        self.turn_bottom_layout.setContentsMargins(10, 0, 10, 10)
+        self.turn_bottom_layout.setSpacing(10)
         self.turn_bottom_layout.setAlignment(Qt.AlignTop)
 
         self.turn_layout.addWidget(self.turn_top)
@@ -141,12 +141,19 @@ class CombatView(QWidget):
         self.actions_container = QWidget()
         self.actions_container.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Expanding)
         self.actions_layout = QVBoxLayout(self.actions_container)
-        self.actions_layout.setContentsMargins(0, 0, 0, 0)
-        self.actions_layout.setSpacing(8)
+        self.actions_layout.setContentsMargins(10, 10, 10, 10)
+        self.actions_layout.setSpacing(10)
         self.actions_layout.setAlignment(Qt.AlignTop)
         self.turn_split_layout.addWidget(self.actions_container, 0)
 
-        self.turn_panel.content_layout.addWidget(self.turn_split)
+        self.turn_scroll = QScrollArea()
+        self.turn_scroll.setWidgetResizable(True)
+        self.turn_scroll.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        self.turn_scroll.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
+        self.turn_scroll.setFrameShape(QFrame.NoFrame)
+        self.turn_scroll.setWidget(self.turn_split)
+
+        self.turn_panel.content_layout.addWidget(self.turn_scroll)
 
         self.party_scroll = QScrollArea()
         self.party_scroll.setWidgetResizable(True)
@@ -241,7 +248,7 @@ class CombatView(QWidget):
             h.setContentsMargins(10, 8, 10, 8)
             h.setSpacing(10)
 
-            label = QLabel(f"{character.display_name}\n{character.character_type.value}")
+            label = QLabel(f"{character.display_name}")
             label.setStyleSheet("font-weight: 600;")
             h.addWidget(label)
 
@@ -269,7 +276,7 @@ class CombatView(QWidget):
             h.setContentsMargins(10, 8, 10, 8)
             h.setSpacing(10)
 
-            label = QLabel(f"{character.display_name}\n{character.character_type.value}")
+            label = QLabel(f"{character.display_name}")
             label.setStyleSheet("font-weight: 600;")
             h.addWidget(label)
 
