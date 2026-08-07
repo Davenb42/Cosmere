@@ -227,6 +227,182 @@ class CombatView(QWidget):
         # Dead code retained for future restoration of the combat log view.
         return
 
+    @staticmethod
+    def _is_blank(value):
+        if value is None:
+            return True
+        if isinstance(value, str):
+            return not value.strip()
+        if isinstance(value, (list, tuple, dict, set)):
+            return len(value) == 0
+        return False
+
+    @staticmethod
+    def _normalize_action_name(name):
+        text = str(name).strip()
+        if text.lower().startswith("strike "):
+            return text[7:]
+        return text
+
+    @staticmethod
+    def _get_action_value(action, *keys):
+        if not isinstance(action, dict):
+            return None
+
+        lowered = {
+            str(key).strip().lower(): value
+            for key, value in action.items()
+        }
+        for key in keys:
+            value = lowered.get(str(key).strip().lower())
+            if value is not None:
+                return value
+        return None
+
+    def _action_symbol(self, action):
+        cost = self._get_action_value(action, "action cost", "action_cost", "cost")
+        if self._is_blank(cost):
+            return "►"
+
+        value = str(cost).strip().lower()
+        if value in {"1", "1 action"}:
+            return "►"
+        if value in {"2", "2 actions"}:
+            return "►►"
+        if value in {"3", "3 actions"}:
+            return "►►►"
+        if "free" in value:
+            return "▷"
+        if "reaction" in value:
+            return "↩"
+        if "special" in value:
+            return "★"
+        if "always" in value:
+            return "∞"
+
+        return "►"
+
+    def _format_action_lines(self, action_name, action_data):
+        lines = [f"{self._action_symbol(action_data)} {self._normalize_action_name(action_name)}"]
+
+        aoe = self._get_action_value(action_data, "aoe", "target")
+        attack = self._get_action_value(action_data, "attack")
+        action_range = self._get_action_value(action_data, "range")
+        saving_throw = self._get_action_value(action_data, "saving throw")
+        damage = self._get_action_value(action_data, "damage")
+        graze = self._get_action_value(action_data, "graze")
+        hit = self._get_action_value(action_data, "hit")
+        duration = self._get_action_value(action_data, "duration")
+        description = self._get_action_value(action_data, "description")
+        focus_cost = self._get_action_value(action_data, "focus cost")
+
+        summary = []
+        if not self._is_blank(aoe):
+            summary.append(str(aoe).strip())
+
+        if not self._is_blank(attack):
+            attack_text = str(attack).strip()
+            if "d20" not in attack_text.lower() and (
+                attack_text.startswith("+")
+                or attack_text.startswith("-")
+                or attack_text.isdigit()
+            ):
+                attack_text = f"1d20{attack_text}"
+            attack_text = f"{attack_text} vs Physical Def."
+            summary.append(attack_text)
+
+        if not self._is_blank(action_range):
+            summary.append(f"({str(action_range).strip()})")
+
+        if summary:
+            lines.append(" ".join(summary))
+
+        if not self._is_blank(saving_throw):
+            lines.append(str(saving_throw).strip())
+
+        if not self._is_blank(graze):
+            lines.append(f"Graze: {str(graze).strip()}")
+
+        if not self._is_blank(hit):
+            lines.append(f"Hit: {str(hit).strip()}")
+
+        if not self._is_blank(damage):
+            lines.append(f"Damage: {str(damage).strip()}")
+
+        if not self._is_blank(duration):
+            lines.append(f"Duration: {str(duration).strip()}")
+
+        if not self._is_blank(focus_cost):
+            focus_text = str(focus_cost).strip()
+            if focus_text not in {"0", "0.0"}:
+                lines.append(f"Focus Cost: {focus_text}")
+
+        if not self._is_blank(description):
+            lines.append(str(description).strip())
+
+        return lines
+
+    def _format_talent_lines(self, talent_name, talent_data):
+        lines = [f"{self._action_symbol(talent_data)} {str(talent_name).strip()}"]
+
+        description = self._get_action_value(talent_data, "description")
+        if not self._is_blank(description):
+            lines.append(str(description).strip())
+            return lines
+
+        if isinstance(talent_data, dict):
+            ignored_keys = {"action cost", "action_cost", "cost"}
+            for key, value in talent_data.items():
+                key_text = str(key).strip()
+                if key_text.lower() in ignored_keys or self._is_blank(value):
+                    continue
+                lines.append(str(value).strip())
+
+        return lines
+
+    def _format_feature_lines(self, feature_name, feature_data):
+        lines = [str(feature_name).strip()]
+
+        if isinstance(feature_data, dict):
+            description = self._get_action_value(feature_data, "description")
+            if not self._is_blank(description):
+                lines.append(str(description).strip())
+            else:
+                for value in feature_data.values():
+                    if self._is_blank(value):
+                        continue
+                    lines.append(str(value).strip())
+        elif not self._is_blank(feature_data):
+            lines.append(str(feature_data).strip())
+
+        return lines
+
+    @staticmethod
+    def _make_subtitle_label(text):
+        label = QLabel(text)
+        label.setStyleSheet("font-size: 18px; font-weight: 700; color: #e6eff8;")
+        return label
+
+    @staticmethod
+    def _make_detail_label(text):
+        label = QLabel(text)
+        label.setWordWrap(True)
+        label.setAlignment(Qt.AlignTop)
+        label.setStyleSheet("font-size: 14px; color: #edf3f8;")
+        return label
+
+    @staticmethod
+    def _format_remaining_actions(actions_remaining):
+        try:
+            value = int(actions_remaining)
+        except (TypeError, ValueError):
+            return "None"
+
+        if value <= 0:
+            return "None"
+
+        return "►" * value
+
     def refresh(self):
         state = self.combat_window.tracker.state
         active = self.combat_window.current_character
@@ -297,11 +473,13 @@ class CombatView(QWidget):
 
         if active is not None:
             name = QLabel(f"{active.display_name}")
-            name.setStyleSheet("font-size: 17px; font-weight: 700; color: #f7fbff;")
+            name.setStyleSheet("font-size: 24px; font-weight: 700; color: #f7fbff;")
             self.turn_top_layout.addWidget(name)
 
             group_label = f"{'Fast' if active.turn_type == 'fast' else 'Slow'} {active.character_type.value}s"
-            self.turn_top_layout.addWidget(QLabel(f"Turn Group: {group_label}"))
+            group = QLabel(f"Turn Group: {group_label}")
+            group.setStyleSheet("font-size: 14px; color: #dbe5f0;")
+            self.turn_top_layout.addWidget(group)
 
             details = QLabel(
                 f"HP {active.health.current}/{active.health.maximum}   "
@@ -309,63 +487,57 @@ class CombatView(QWidget):
                 f"Investiture {active.investiture.current}/{active.investiture.maximum}   "
                 f"Deflect {active.defenses.deflect}"
             )
+            details.setStyleSheet("font-size: 16px; font-weight: 600; color: #edf3f8;")
             self.turn_top_layout.addWidget(details)
 
-            actions = QLabel(f"Actions Remaining: {active.actions_remaining}")
+            actions = QLabel(f"Actions Remaining: {self._format_remaining_actions(active.actions_remaining)}")
+            actions.setStyleSheet("font-size: 15px; font-weight: 600; color: #e6eff8;")
             self.turn_top_layout.addWidget(actions)
 
             if active.conditions:
                 conds = ", ".join(condition.name for condition in active.conditions)
             else:
                 conds = "None"
-            self.turn_top_layout.addWidget(QLabel(f"Conditions: {conds}"))
+            conditions_label = QLabel(f"Conditions: {conds}")
+            conditions_label.setStyleSheet("font-size: 14px; color: #dbe5f0;")
+            self.turn_top_layout.addWidget(conditions_label)
 
             if active.character_type.value == "PC":
-                sections = ["Talents"]
+                self.turn_bottom_layout.addWidget(self._make_subtitle_label("Talents"))
                 if active.talents:
                     for key, value in active.talents.items():
-                        if isinstance(value, dict):
-                            text = ", ".join(f"{sub_key}: {sub_value}" for sub_key, sub_value in value.items())
-                        else:
-                            text = str(value)
-                        sections.append(f"- {key}: {text}")
+                        self.turn_bottom_layout.addWidget(
+                            self._make_detail_label("\n".join(self._format_talent_lines(key, value)))
+                        )
                 else:
-                    sections.append("- None")
-                sections.append("\nActions")
-                for key, value in (active.actions or {}).items():
-                    if isinstance(value, dict):
-                        text = ", ".join(f"{sub_key}: {sub_value}" for sub_key, sub_value in value.items())
-                    else:
-                        text = str(value)
-                    sections.append(f"- {key}: {text}")
-                if not active.actions:
-                    sections.append("- None")
-            else:
-                sections = ["Features"]
-                if active.talents:
-                    for key, value in active.talents.items():
-                        if isinstance(value, dict):
-                            text = ", ".join(f"{sub_key}: {sub_value}" for sub_key, sub_value in value.items())
-                        else:
-                            text = str(value)
-                        sections.append(f"- {key}: {text}")
-                else:
-                    sections.append("- None")
-                sections.append("\nActions")
-                for key, value in (active.actions or {}).items():
-                    if isinstance(value, dict):
-                        text = ", ".join(f"{sub_key}: {sub_value}" for sub_key, sub_value in value.items())
-                    else:
-                        text = str(value)
-                    sections.append(f"- {key}: {text}")
-                if not active.actions:
-                    sections.append("- None")
+                    self.turn_bottom_layout.addWidget(self._make_detail_label("None"))
 
-            detail_text = "\n".join(sections)
-            detail_label = QLabel(detail_text)
-            detail_label.setWordWrap(True)
-            detail_label.setAlignment(Qt.AlignTop)
-            self.turn_bottom_layout.addWidget(detail_label)
+                self.turn_bottom_layout.addWidget(self._make_subtitle_label("Actions"))
+                if active.actions:
+                    for key, value in active.actions.items():
+                        self.turn_bottom_layout.addWidget(
+                            self._make_detail_label("\n".join(self._format_action_lines(key, value)))
+                        )
+                else:
+                    self.turn_bottom_layout.addWidget(self._make_detail_label("None"))
+            else:
+                self.turn_bottom_layout.addWidget(self._make_subtitle_label("Features"))
+                if active.talents:
+                    for key, value in active.talents.items():
+                        self.turn_bottom_layout.addWidget(
+                            self._make_detail_label("\n".join(self._format_feature_lines(key, value)))
+                        )
+                else:
+                    self.turn_bottom_layout.addWidget(self._make_detail_label("None"))
+
+                self.turn_bottom_layout.addWidget(self._make_subtitle_label("Actions"))
+                if active.actions:
+                    for key, value in active.actions.items():
+                        self.turn_bottom_layout.addWidget(
+                            self._make_detail_label("\n".join(self._format_action_lines(key, value)))
+                        )
+                else:
+                    self.turn_bottom_layout.addWidget(self._make_detail_label("None"))
 
         self.log_view.setPlainText("\n".join(self.combat_window.log_entries))
         self.log_view.verticalScrollBar().setValue(self.log_view.verticalScrollBar().maximum())

@@ -98,7 +98,7 @@ class EncounterLoader:
             "spiritual": data.get("spiritual_skills", {}),
         }
 
-        talents = data.get("Talents", data.get("talents", {}))
+        talents = data.get("Talents", data.get("talents", data.get("features", {})))
         actions = data.get("Actions", data.get("actions", {}))
 
         return Character(
