@@ -1,0 +1,142 @@
+from pathlib import Path
+
+from PySide6.QtCore import Qt, Signal
+from PySide6.QtWidgets import (
+    QCheckBox,
+    QDialog,
+    QDialogButtonBox,
+    QHBoxLayout,
+    QLabel,
+    QMainWindow,
+    QMessageBox,
+    QVBoxLayout,
+)
+
+from combat_tracker.engine.combat_tracker import CombatTracker
+from combat_tracker.engine.encounter_loader import EncounterLoader
+from combat_tracker.gui.combat_view import CombatView
+
+
+class TurnSelectionDialog(QDialog):
+    def __init__(self, state, parent=None):
+        super().__init__(parent)
+        self.setWindowTitle("Round Turn Selection")
+        self.resize(500, 420)
+        self.checkboxes = []
+
+        layout = QVBoxLayout(self)
+        layout.addWidget(QLabel("Select who is taking a fast turn this round."))
+
+        for character in state.combatants:
+            checkbox = QCheckBox(f"{character.display_name} ({character.character_type.value})")
+            self.checkboxes.append((character, checkbox))
+            layout.addWidget(checkbox)
+
+        buttons = QDialogButtonBox(QDialogButtonBox.Ok | QDialogButtonBox.Cancel)
+        buttons.accepted.connect(self.accept)
+        buttons.rejected.connect(self.reject)
+        layout.addWidget(buttons)
+
+    def selected_fast(self, character_type):
+        fast = []
+        for character, checkbox in self.checkboxes:
+            if checkbox.isChecked() and character.character_type.value == character_type:
+                fast.append(character)
+        return fast
+
+
+class CombatWindow(QMainWindow):
+    closed = Signal()
+
+    def __init__(self, campaign_root, encounter_dir):
+        super().__init__()
+        self.setWindowTitle("Combat Tracker")
+        self.resize(1200, 720)
+        self.setWindowState(Qt.WindowMaximized)
+
+        self.campaign_root = Path(campaign_root)
+        self.encounter_dir = Path(encounter_dir)
+        self.loader = EncounterLoader(str(self.campaign_root))
+        self.tracker = CombatTracker(self.loader.load(self.encounter_dir))
+        self.turn_order = []
+        self.current_character = None
+        self.turn_index = 0
+        self.log_entries = ["Encounter ready."]
+
+        self.view = CombatView(self)
+        self.setCentralWidget(self.view)
+
+        self.begin_round()
+
+    def begin_round(self):
+        if self.tracker.state.combat_over:
+            return
+
+        dialog = TurnSelectionDialog(self.tracker.state, self)
+        if dialog.exec() != QDialog.Accepted:
+            self.close()
+            return
+
+        fast_pcs = [character for character in dialog.selected_fast("PC")]
+        fast_npcs = [character for character in dialog.selected_fast("NPC")]
+
+        self.tracker.turn_manager.choose_turn_types(
+            self.tracker.state,
+            fast_pcs=[character.id for character in fast_pcs],
+            fast_npcs=[character.id for character in fast_npcs],
+        )
+        self.turn_order = list(self.tracker.state.turn_order)
+        self.turn_index = 0
+        self.advance_turn()
+
+    def advance_turn(self):
+        if not self.turn_order:
+            self.current_character = None
+            self.view.refresh()
+            return
+
+        if self.turn_index >= len(self.turn_order):
+            self.tracker.state.round_number += 1
+            self.begin_round()
+            return
+
+        self.current_character = self.turn_order[self.turn_index]
+        self.tracker.state.active_character = self.current_character
+        self.current_character.start_turn()
+        self.view.refresh()
+
+    def spend_action(self, amount):
+        if self.current_character is None:
+            return
+
+        if self.current_character.spend_actions(amount):
+            self.log_entries.append(f"{self.current_character.display_name} spent {amount} action(s).")
+        else:
+            self.log_entries.append(f"{self.current_character.display_name} cannot spend {amount} action(s).")
+        self.view.refresh()
+
+    def recover_current(self):
+        if self.current_character is None:
+            return
+        self.current_character.focus.gain(1)
+        self.log_entries.append(f"{self.current_character.display_name} recovered 1 focus.")
+        self.view.refresh()
+
+    def end_turn(self):
+        if self.current_character is None:
+            return
+
+        self.current_character.end_turn()
+        self.log_entries.append(f"{self.current_character.display_name} ended their turn.")
+        self.turn_index += 1
+        self.advance_turn()
+
+    def end_combat(self):
+        self.tracker.state.combat_over = True
+        self.log_entries.append("Combat ended by the party.")
+        self.view.refresh()
+        self.close()
+
+    def closeEvent(self, event):
+        self.closed.emit()
+        super().closeEvent(event)
