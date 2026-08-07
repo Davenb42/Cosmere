@@ -114,16 +114,19 @@ class CombatView(QWidget):
         self.turn_layout = QVBoxLayout(self.turn_content)
         self.turn_layout.setContentsMargins(0, 0, 0, 0)
         self.turn_layout.setSpacing(10)
+        self.turn_layout.setAlignment(Qt.AlignTop)
 
         self.turn_top = QWidget()
         self.turn_top_layout = QVBoxLayout(self.turn_top)
         self.turn_top_layout.setContentsMargins(0, 0, 0, 0)
         self.turn_top_layout.setSpacing(8)
+        self.turn_top_layout.setAlignment(Qt.AlignTop)
 
         self.turn_bottom = QWidget()
         self.turn_bottom_layout = QVBoxLayout(self.turn_bottom)
         self.turn_bottom_layout.setContentsMargins(0, 0, 0, 0)
         self.turn_bottom_layout.setSpacing(8)
+        self.turn_bottom_layout.setAlignment(Qt.AlignTop)
 
         self.turn_layout.addWidget(self.turn_top)
         self.turn_layout.addWidget(self.turn_bottom)
@@ -132,12 +135,15 @@ class CombatView(QWidget):
         self.turn_split_layout = QHBoxLayout(self.turn_split)
         self.turn_split_layout.setContentsMargins(0, 0, 0, 0)
         self.turn_split_layout.setSpacing(12)
+        self.turn_split_layout.setAlignment(Qt.AlignTop)
         self.turn_split_layout.addWidget(self.turn_content, 1)
 
         self.actions_container = QWidget()
         self.actions_container.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Expanding)
         self.actions_layout = QVBoxLayout(self.actions_container)
+        self.actions_layout.setContentsMargins(0, 0, 0, 0)
         self.actions_layout.setSpacing(8)
+        self.actions_layout.setAlignment(Qt.AlignTop)
         self.turn_split_layout.addWidget(self.actions_container, 0)
 
         self.turn_panel.content_layout.addWidget(self.turn_split)
@@ -197,6 +203,7 @@ class CombatView(QWidget):
         self.end_combat = QPushButton("End Combat")
         for button in (self.spend1, self.spend2, self.spend3, self.end_turn, self.end_combat):
             self.actions_layout.addWidget(button)
+        self.actions_layout.addStretch()
         self.spend1.clicked.connect(lambda: self.combat_window.spend_action(1))
         self.spend2.clicked.connect(lambda: self.combat_window.spend_action(2))
         self.spend3.clicked.connect(lambda: self.combat_window.spend_action(3))
