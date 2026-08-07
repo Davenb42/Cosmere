@@ -105,7 +105,15 @@ class EncounterLoader:
             name=data["name"],
             character_type=character_type,
 
+            strength=data.get("strength", 0),
             speed=data["speed"],
+
+            intelligence=data.get("intelligence", 0),
+            willpower=data.get("willpower", 0),
+
+            awareness=data.get("awareness", 0),
+            presence=data.get("presence", 0),
+
             movement=data["movement"],
 
             health=Resource(**data["health"]),

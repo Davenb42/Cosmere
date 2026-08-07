@@ -1,5 +1,5 @@
 {
-  "name": "Eris Falem",
+  "name": "Eris",
   "health": {
     "current": 17,
     "max": 17
@@ -33,9 +33,29 @@
       "Action Cost": "1",
       "Description": "Gasta 1 punto de focus para realizar una prueba de Medicina DC 15 para tratar a un personaje consciente y dispuesto a tu alcance, y tira el dado de recuperación del objetivo como parte de esta prueba. Obtienes una desventaja si te tratas a ti mismo. Con un éxito, tu objetivo recupera salud igual al resultado de su dado de recuperación + tus rangos en Medicina. Con un fallo, tu objetivo solo recupera salud igual al resultado de su dado de recuperación."
     },
-    "Vinculo Animal": {
+    "Mente y cuerpo": {
       "Action Cost": "Special",
       "Description": "Al adquirir este talento, tu talento Erudición te otorga una habilidad adicional, y puedes usarla para elegir skills físicas que no sean surges. Además, obtienes una expertise con armas a tu elección."
+    },
+    "Respirar Stormlight": {
+      "Action Cost": "2",
+      "Description": "Respira Investidura hasta tu valor máximo. Debes tener un recuento de esferas de hasta 3 veces tu Investidura máxima."
+    },
+    "Enhance": {
+      "Action Cost": "1",
+      "Description": "Gasta 1 punto de focus para ganar Fuerza +1 y Velocidad +1, gasta un ▷ y 1 Investidura al final de cada turno para mantener esta condición."
+    },
+    "Regenerar": {
+      "Action Cost": "Free",
+      "Description": "Recupera salud equivalente a 1d6 + tu tier; puedes usar esta acción gratuita incluso si estás inconsciente."
+    },
+    "Primer Ideal": {
+      "Action Cost": "Special",
+      "Description": "Adquiere los talentos: Respirar Stormlight, Enhance, Regenerar. Completa el objetivo «Habla el Primer Ideal» para desbloquear más habilidades."
+    },
+    "Visión de futuro": {
+      "Action Cost": "Special",
+      "Description": "Pídele al GM que te dé una visión del futuro. Si la visión requiere interpretación, pon a prueba tu habilidad de Deducción; si hay una complicación, la visión podría no ser fiable."
     }
   },
   "Actions": {

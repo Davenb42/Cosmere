@@ -403,6 +403,14 @@ class CombatView(QWidget):
 
         return "►" * value
 
+    @staticmethod
+    def _format_attribute_with_defense(attribute_name, attribute_value, defense_name, defense_value, paired_name, paired_value):
+        return (
+            f"{attribute_name} {attribute_value}   "
+            f"{defense_name} {defense_value}   "
+            f"{paired_name} {paired_value}"
+        )
+
     def refresh(self):
         state = self.combat_window.tracker.state
         active = self.combat_window.current_character
@@ -480,6 +488,39 @@ class CombatView(QWidget):
             group = QLabel(f"Turn Group: {group_label}")
             group.setStyleSheet("font-size: 14px; color: #dbe5f0;")
             self.turn_top_layout.addWidget(group)
+
+            attributes = QLabel(
+                "\n".join(
+                    [
+                        self._format_attribute_with_defense(
+                            "Strength",
+                            active.strength,
+                            "Physical Def",
+                            active.defenses.physical,
+                            "Speed",
+                            active.speed,
+                        ),
+                        self._format_attribute_with_defense(
+                            "Intelligence",
+                            active.intelligence,
+                            "Cognitive Def",
+                            active.defenses.cognitive,
+                            "Willpower",
+                            active.willpower,
+                        ),
+                        self._format_attribute_with_defense(
+                            "Awareness",
+                            active.awareness,
+                            "Spiritual Def",
+                            active.defenses.spiritual,
+                            "Presence",
+                            active.presence,
+                        ),
+                    ]
+                )
+            )
+            attributes.setStyleSheet("font-size: 15px; font-weight: 600; color: #e6eff8;")
+            self.turn_top_layout.addWidget(attributes)
 
             details = QLabel(
                 f"HP {active.health.current}/{active.health.maximum}   "

@@ -20,7 +20,15 @@ class Character:
     name: str
     character_type: CharacterType
 
+    strength: int
     speed: int
+
+    intelligence: int
+    willpower: int
+
+    awareness: int
+    presence: int
+
     movement: int
 
     health: Resource
