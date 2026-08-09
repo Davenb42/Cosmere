@@ -115,6 +115,17 @@ class CombatWindow(QMainWindow):
             self.log_entries.append(f"{self.current_character.display_name} cannot spend {amount} action(s).")
         self.view.refresh()
 
+    def spend_reaction(self):
+        if self.current_character is None:
+            return
+
+        if self.current_character.reaction_available:
+            self.current_character.reaction_available = False
+            self.log_entries.append(f"{self.current_character.display_name} spent their reaction.")
+        else:
+            self.log_entries.append(f"{self.current_character.display_name} has no reaction available.")
+        self.view.refresh()
+
     def recover_current(self):
         if self.current_character is None:
             return

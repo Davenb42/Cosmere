@@ -20,9 +20,21 @@ class TurnManager:
         else:
             selected = {int(x) for x in selected}
 
-        for i, character in enumerate(characters, start=1):
-            if i in selected:
-                character.turn_type = "fast"
+        # GUI selection passes global character IDs. Older callers may pass
+        # 1-based positions within the provided character list.
+        id_matches = {
+            character.id for character in characters
+            if character.id in selected
+        }
+
+        if id_matches:
+            for character in characters:
+                if character.id in selected:
+                    character.turn_type = "fast"
+        else:
+            for i, character in enumerate(characters, start=1):
+                if i in selected:
+                    character.turn_type = "fast"
 
         return [character for character in characters if character.turn_type == "fast"]
 

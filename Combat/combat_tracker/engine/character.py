@@ -83,4 +83,5 @@ class Character:
 
         self.turn_type = None
         self.actions_remaining = 0
+        self.reaction_available = False
         self.acted_this_round = False

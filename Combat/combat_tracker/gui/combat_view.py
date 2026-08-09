@@ -206,14 +206,23 @@ class CombatView(QWidget):
         self.spend1 = QPushButton("Spend 1")
         self.spend2 = QPushButton("Spend 2")
         self.spend3 = QPushButton("Spend 3")
+        self.spend_reaction = QPushButton("Spend Reaction")
         self.end_turn = QPushButton("End Turn")
         self.end_combat = QPushButton("End Combat")
-        for button in (self.spend1, self.spend2, self.spend3, self.end_turn, self.end_combat):
+        for button in (
+            self.spend1,
+            self.spend2,
+            self.spend3,
+            self.spend_reaction,
+            self.end_turn,
+            self.end_combat,
+        ):
             self.actions_layout.addWidget(button)
         self.actions_layout.addStretch()
         self.spend1.clicked.connect(lambda: self.combat_window.spend_action(1))
         self.spend2.clicked.connect(lambda: self.combat_window.spend_action(2))
         self.spend3.clicked.connect(lambda: self.combat_window.spend_action(3))
+        self.spend_reaction.clicked.connect(self.combat_window.spend_reaction)
         self.end_turn.clicked.connect(self.combat_window.end_turn)
         self.end_combat.clicked.connect(self.combat_window.end_combat)
 
@@ -404,6 +413,10 @@ class CombatView(QWidget):
         return "►" * value
 
     @staticmethod
+    def _format_remaining_reaction(reaction_available):
+        return "↩" if reaction_available else "None"
+
+    @staticmethod
     def _format_attribute_with_defense(attribute_name, attribute_value, defense_name, defense_value, paired_name, paired_value):
         return (
             f"{attribute_name} {attribute_value}   "
@@ -440,6 +453,13 @@ class CombatView(QWidget):
             deflect_label.setStyleSheet("color: #d5effd; font-weight: 600;")
             h.addWidget(deflect_label)
 
+            turn_resources = QLabel(
+                f"Act {self._format_remaining_actions(character.actions_remaining)}   "
+                f"React {self._format_remaining_reaction(character.reaction_available)}"
+            )
+            turn_resources.setStyleSheet("color: #dbe5f0;")
+            h.addWidget(turn_resources)
+
             for key in ("health", "focus", "investiture"):
                 resource = getattr(character, key)
                 spin = NoWheelSpinBox()
@@ -467,6 +487,13 @@ class CombatView(QWidget):
             deflect_label = QLabel(f"Deflect {character.defenses.deflect}")
             deflect_label.setStyleSheet("color: #d5effd; font-weight: 600;")
             h.addWidget(deflect_label)
+
+            turn_resources = QLabel(
+                f"Act {self._format_remaining_actions(character.actions_remaining)}   "
+                f"React {self._format_remaining_reaction(character.reaction_available)}"
+            )
+            turn_resources.setStyleSheet("color: #dbe5f0;")
+            h.addWidget(turn_resources)
 
             for key in ("health", "focus", "investiture"):
                 resource = getattr(character, key)
@@ -531,7 +558,12 @@ class CombatView(QWidget):
             details.setStyleSheet("font-size: 16px; font-weight: 600; color: #edf3f8;")
             self.turn_top_layout.addWidget(details)
 
-            actions = QLabel(f"Actions Remaining: {self._format_remaining_actions(active.actions_remaining)}")
+            actions = QLabel(
+                "Actions Remaining: "
+                f"{self._format_remaining_actions(active.actions_remaining)}   "
+                "Reactions Remaining: "
+                f"{self._format_remaining_reaction(active.reaction_available)}"
+            )
             actions.setStyleSheet("font-size: 15px; font-weight: 600; color: #e6eff8;")
             self.turn_top_layout.addWidget(actions)
 
