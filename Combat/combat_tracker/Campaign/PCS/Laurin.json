@@ -41,22 +41,30 @@
       "Action Cost": "Always",
       "Description": "Gain Artform (awareness +1, expertise in Painting and Music, advantage on crafting and entertainment tests) and nimbleform"
     },
-    "Nimbleform": {
-      "Action Cost": "Special",
-      "Description": "Speed +1, Focus +2."
+    "Breathe Stormlight": {
+      "Action Cost": "2",
+      "Description": "Breathe Investiture up to your maximum value. You must have a sphere count of up to 3 times your maximum Investiture."
     },
-    "Artform": {
+    "Enhance": {
+      "Action Cost": "1",
+      "Description": "Spend 1 focus point to gain Strength +1 and Speed +1, spend a ▷ and 1 Investiture at the end of each turn to maintain this condition."
+    },
+    "Regenerate": {
+      "Action Cost": "Free",
+      "Description": "Recover health equal to 1d6 + your tier; you can use this free action even if you are unconscious."
+    },
+    "First Ideal": {
       "Action Cost": "Special",
-      "Description": "Awareness +1, expertise in Painting and Music, advantage on crafting and entertainment tests."
+      "Description": "Acquire the talents: Breathe Stormlight, Enhance, Regenerate. Complete the objective «Speak the First Ideal» to unlock more abilities."
     }
   },
   "Actions": {
     "Strike Sidesword": {
       "Action cost": "1",
       "Focus cost": "0",
-      "Attack": "+5",
+      "Attack": "+6",
       "Range": "5ft.",
-      "Damage": "1d6(+5) keen damage",
+      "Damage": "1d6(+6) keen damage",
       "Duration": "",
       "Saving Throw": "",
       "Description": ""
@@ -64,9 +72,19 @@
     "Strike Knife": {
       "Action cost": "1",
       "Focus cost": "0",
-      "Attack": "+5",
+      "Attack": "+6",
       "Range": "5ft.",
-      "Damage": "1d4(+5) keen damage",
+      "Damage": "1d4(+6) keen damage",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": ""
+    },
+    "Sling": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Attack": "+6",
+      "Range": "30/120ft.",
+      "Damage": "1d4(+6) impact damage",
       "Duration": "",
       "Saving Throw": "",
       "Description": ""

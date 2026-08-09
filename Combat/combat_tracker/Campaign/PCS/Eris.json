@@ -62,9 +62,9 @@
     "Strike Hammer": {
       "Action cost": "1",
       "Focus cost": "0",
-      "Attack": "+2",
+      "Attack": "+3",
       "Range": "5ft.",
-      "Damage": "1d10(+2) impact damage",
+      "Damage": "1d10(+3) impact damage",
       "Duration": "",
       "Saving Throw": "",
       "Description": "Two Handed, Momentum"
@@ -72,12 +72,22 @@
     "Strike Shield": {
       "Action cost": "1",
       "Focus cost": "0",
-      "Attack": "+2",
+      "Attack": "+3",
       "Range": "5ft.",
-      "Damage": "1d4(+2) impact damage",
+      "Damage": "1d4(+3) impact damage",
       "Duration": "",
       "Saving Throw": "",
       "Description": "Defensive"
+    },
+    "Strike Knife": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Attack": "+3",
+      "Range": "5ft.",
+      "Damage": "1d4(+3) keen damage",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": "Discreet"
     }
   },
   "physical_skills": {

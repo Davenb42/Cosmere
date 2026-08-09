@@ -16,6 +16,9 @@ from PySide6.QtWidgets import (
 from combat_tracker.gui.panel_base import CombatPanel
 
 
+__all__ = ["CombatView", "NoWheelSpinBox"]
+
+
 class NoWheelSpinBox(QSpinBox):
     def wheelEvent(self, event):
         event.ignore()
@@ -206,14 +209,12 @@ class CombatView(QWidget):
         self.spend1 = QPushButton("Spend 1")
         self.spend2 = QPushButton("Spend 2")
         self.spend3 = QPushButton("Spend 3")
-        self.spend_reaction = QPushButton("Spend Reaction")
         self.end_turn = QPushButton("End Turn")
         self.end_combat = QPushButton("End Combat")
         for button in (
             self.spend1,
             self.spend2,
             self.spend3,
-            self.spend_reaction,
             self.end_turn,
             self.end_combat,
         ):
@@ -222,7 +223,6 @@ class CombatView(QWidget):
         self.spend1.clicked.connect(lambda: self.combat_window.spend_action(1))
         self.spend2.clicked.connect(lambda: self.combat_window.spend_action(2))
         self.spend3.clicked.connect(lambda: self.combat_window.spend_action(3))
-        self.spend_reaction.clicked.connect(self.combat_window.spend_reaction)
         self.end_turn.clicked.connect(self.combat_window.end_turn)
         self.end_combat.clicked.connect(self.combat_window.end_combat)
 
@@ -413,10 +413,6 @@ class CombatView(QWidget):
         return "►" * value
 
     @staticmethod
-    def _format_remaining_reaction(reaction_available):
-        return "↩" if reaction_available else "None"
-
-    @staticmethod
     def _format_attribute_with_defense(attribute_name, attribute_value, defense_name, defense_value, paired_name, paired_value):
         return (
             f"{attribute_name} {attribute_value}   "
@@ -453,12 +449,14 @@ class CombatView(QWidget):
             deflect_label.setStyleSheet("color: #d5effd; font-weight: 600;")
             h.addWidget(deflect_label)
 
-            turn_resources = QLabel(
-                f"Act {self._format_remaining_actions(character.actions_remaining)}   "
-                f"React {self._format_remaining_reaction(character.reaction_available)}"
+            spend_reaction = QPushButton("Spend Reaction")
+            spend_reaction.setEnabled(character.reaction_available)
+            if not character.reaction_available:
+                spend_reaction.setText("Reaction Spent")
+            spend_reaction.clicked.connect(
+                lambda _, target=character: self.combat_window.spend_reaction(target)
             )
-            turn_resources.setStyleSheet("color: #dbe5f0;")
-            h.addWidget(turn_resources)
+            h.addWidget(spend_reaction)
 
             for key in ("health", "focus", "investiture"):
                 resource = getattr(character, key)
@@ -488,12 +486,14 @@ class CombatView(QWidget):
             deflect_label.setStyleSheet("color: #d5effd; font-weight: 600;")
             h.addWidget(deflect_label)
 
-            turn_resources = QLabel(
-                f"Act {self._format_remaining_actions(character.actions_remaining)}   "
-                f"React {self._format_remaining_reaction(character.reaction_available)}"
+            spend_reaction = QPushButton("Spend Reaction")
+            spend_reaction.setEnabled(character.reaction_available)
+            if not character.reaction_available:
+                spend_reaction.setText("Reaction Spent")
+            spend_reaction.clicked.connect(
+                lambda _, target=character: self.combat_window.spend_reaction(target)
             )
-            turn_resources.setStyleSheet("color: #dbe5f0;")
-            h.addWidget(turn_resources)
+            h.addWidget(spend_reaction)
 
             for key in ("health", "focus", "investiture"):
                 resource = getattr(character, key)
@@ -560,9 +560,7 @@ class CombatView(QWidget):
 
             actions = QLabel(
                 "Actions Remaining: "
-                f"{self._format_remaining_actions(active.actions_remaining)}   "
-                "Reactions Remaining: "
-                f"{self._format_remaining_reaction(active.reaction_available)}"
+                f"{self._format_remaining_actions(active.actions_remaining)}"
             )
             actions.setStyleSheet("font-size: 15px; font-weight: 600; color: #e6eff8;")
             self.turn_top_layout.addWidget(actions)

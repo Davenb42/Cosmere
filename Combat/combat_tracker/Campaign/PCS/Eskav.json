@@ -14,13 +14,13 @@
   },
   "strength": 3,
   "speed": 2,
-  "physical defense": 15,
+  "physical defense": 16,
   "intelligence": 2,
   "willpower": 1,
-  "cognitive defense": 13,
+  "cognitive defense": 14,
   "awareness": 2,
   "presence": 2,
-  "spiritual defense": 14,
+  "spiritual defense": 15,
   "movement": 25,
   "recovery die": "1d6",
   "deflect": 1,
@@ -36,6 +36,22 @@
     "Vinculo Animal": {
       "Action Cost": "Special",
       "Description": "Aumenta tus defensas por 1 punto si esta a 5ft. de ti. Varios otros efectos"
+    },
+    "Respirar Stormlight": {
+      "Action Cost": "2",
+      "Description": "Respira Investidura hasta tu valor máximo. Debes tener un recuento de esferas de hasta 3 veces tu Investidura máxima."
+    },
+    "Enhance": {
+      "Action Cost": "1",
+      "Description": "Gasta 1 punto de focus para ganar Fuerza +1 y Velocidad +1, gasta un ▷ y 1 Investidura al final de cada turno para mantener esta condición."
+    },
+    "Regenerar": {
+      "Action Cost": "Free",
+      "Description": "Recupera salud equivalente a 1d6 + tu tier; puedes usar esta acción gratuita incluso si estás inconsciente."
+    },
+    "Primer Ideal": {
+      "Action Cost": "Special",
+      "Description": "Adquiere los talentos: Respirar Stormlight, Enhance, Regenerar. Completa el objetivo «Habla el Primer Ideal» para desbloquear más habilidades."
     }
   },
   "Actions": {
@@ -47,7 +63,7 @@
       "Damage": "1d6(+3) keen damage",
       "Duration": "",
       "Saving Throw": "",
-      "Description": ""
+      "Description": "Desenfunde rápido"
     },
     "Strike Shortbow": {
       "Action cost": "1",
@@ -57,7 +73,17 @@
       "Damage": "1d6(+3) keen damage",
       "Duration": "",
       "Saving Throw": "",
-      "Description": ""
+      "Description": "Con Dos Manos"
+    },
+    "Strike Knife": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Attack": "+3",
+      "Range": "5ft.",
+      "Damage": "1d4(+3) keen damage",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": "Discreet"
     }
   },
   "physical_skills": {

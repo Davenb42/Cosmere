@@ -65,7 +65,6 @@ class Character:
     def start_turn(self):
 
         self.actions_remaining = 2 if self.turn_type == "fast" else 3
-        self.reaction_available = True
 
     def spend_actions(self, amount):
 
@@ -83,5 +82,5 @@ class Character:
 
         self.turn_type = None
         self.actions_remaining = 0
-        self.reaction_available = False
+        self.reaction_available = True
         self.acted_this_round = False

@@ -72,6 +72,9 @@ class CombatWindow(QMainWindow):
         if self.tracker.state.combat_over:
             return
 
+        for character in self.tracker.state.combatants:
+            character.new_round()
+
         dialog = TurnSelectionDialog(self.tracker.state, self)
         if dialog.exec() != QDialog.Accepted:
             self.close()
@@ -115,15 +118,15 @@ class CombatWindow(QMainWindow):
             self.log_entries.append(f"{self.current_character.display_name} cannot spend {amount} action(s).")
         self.view.refresh()
 
-    def spend_reaction(self):
-        if self.current_character is None:
+    def spend_reaction(self, character):
+        if character is None:
             return
 
-        if self.current_character.reaction_available:
-            self.current_character.reaction_available = False
-            self.log_entries.append(f"{self.current_character.display_name} spent their reaction.")
+        if character.reaction_available:
+            character.reaction_available = False
+            self.log_entries.append(f"{character.display_name} spent their reaction.")
         else:
-            self.log_entries.append(f"{self.current_character.display_name} has no reaction available.")
+            self.log_entries.append(f"{character.display_name} has no reaction available.")
         self.view.refresh()
 
     def recover_current(self):
