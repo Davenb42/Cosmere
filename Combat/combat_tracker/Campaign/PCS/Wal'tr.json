@@ -24,9 +24,15 @@
   "movement": 40,
   "immunities": "",
   "deflect": 0,
-  "features": {
-    "Enhanced Senses": "Advantage on non-attack tests that rely on smell.",
-    "Minion": "Attacks can't crit, and they're defeated once they suffer an injury."
+  "Talents": {
+    "Enhanced Senses": {
+      "Action Cost": "Always",
+      "Description": "Advantage on non-attack tests that rely on smell."
+    },
+    "Minion": {
+      "Action Cost": "Always",
+      "Description": "Attacks can't crit, and they're defeated once they suffer an injury."
+    }
   },
   "Actions": {
     "Strike Bite": {
