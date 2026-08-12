@@ -4,7 +4,6 @@ from PySide6.QtWidgets import (
     QGridLayout,
     QHBoxLayout,
     QLabel,
-    QPlainTextEdit,
     QPushButton,
     QScrollArea,
     QSizePolicy,
@@ -13,6 +12,8 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 
+from combat_tracker.engine.character import CharacterType
+from combat_tracker.gui import action_text
 from combat_tracker.gui.panel_base import CombatPanel
 
 
@@ -28,7 +29,6 @@ class CombatView(QWidget):
     def __init__(self, combat_window):
         super().__init__()
         self.combat_window = combat_window
-        self.resource_controls = {}
         self.setStyleSheet(
             """
             QWidget {
@@ -106,7 +106,6 @@ class CombatView(QWidget):
         self.party_panel = CombatPanel("Party")
         self.turn_panel = CombatPanel("CURRENT TURN")
         self.enemies_panel = CombatPanel("Enemies")
-        self.log_panel = CombatPanel("Combat Log")
 
         for panel in (self.party_panel, self.enemies_panel):
             panel.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
@@ -182,21 +181,6 @@ class CombatView(QWidget):
         self.enemies_scroll.setWidget(self.enemies_content)
         self.enemies_panel.content_layout.addWidget(self.enemies_scroll)
 
-        self.log_view = QPlainTextEdit()
-        self.log_view.setReadOnly(True)
-        self.log_view.setStyleSheet(
-            """
-            QPlainTextEdit {
-                background: #1b232b;
-                color: #edf3f8;
-                border: 1px solid #4d5865;
-                border-radius: 8px;
-                padding: 8px;
-            }
-            """
-        )
-        # Kept as dead code for future log reintroduction.
-
         self.body.addWidget(self.party_panel, 0, 0)
         self.body.addWidget(self.turn_panel, 0, 1, 2, 1)
         self.body.addWidget(self.enemies_panel, 1, 0)
@@ -232,160 +216,6 @@ class CombatView(QWidget):
             if item.widget():
                 item.widget().deleteLater()
 
-    def toggle_log(self):
-        # Dead code retained for future restoration of the combat log view.
-        return
-
-    @staticmethod
-    def _is_blank(value):
-        if value is None:
-            return True
-        if isinstance(value, str):
-            return not value.strip()
-        if isinstance(value, (list, tuple, dict, set)):
-            return len(value) == 0
-        return False
-
-    @staticmethod
-    def _normalize_action_name(name):
-        text = str(name).strip()
-        if text.lower().startswith("strike "):
-            return text[7:]
-        return text
-
-    @staticmethod
-    def _get_action_value(action, *keys):
-        if not isinstance(action, dict):
-            return None
-
-        lowered = {
-            str(key).strip().lower(): value
-            for key, value in action.items()
-        }
-        for key in keys:
-            value = lowered.get(str(key).strip().lower())
-            if value is not None:
-                return value
-        return None
-
-    def _action_symbol(self, action):
-        cost = self._get_action_value(action, "action cost", "action_cost", "cost")
-        if self._is_blank(cost):
-            return "►"
-
-        value = str(cost).strip().lower()
-        if value in {"1", "1 action"}:
-            return "►"
-        if value in {"2", "2 actions"}:
-            return "►►"
-        if value in {"3", "3 actions"}:
-            return "►►►"
-        if "free" in value:
-            return "▷"
-        if "reaction" in value:
-            return "↩"
-        if "special" in value:
-            return "★"
-        if "always" in value:
-            return "∞"
-
-        return "►"
-
-    def _format_action_lines(self, action_name, action_data):
-        lines = [f"{self._action_symbol(action_data)} {self._normalize_action_name(action_name)}"]
-
-        aoe = self._get_action_value(action_data, "aoe", "target")
-        attack = self._get_action_value(action_data, "attack")
-        action_range = self._get_action_value(action_data, "range")
-        saving_throw = self._get_action_value(action_data, "saving throw")
-        damage = self._get_action_value(action_data, "damage")
-        graze = self._get_action_value(action_data, "graze")
-        hit = self._get_action_value(action_data, "hit")
-        duration = self._get_action_value(action_data, "duration")
-        description = self._get_action_value(action_data, "description")
-        focus_cost = self._get_action_value(action_data, "focus cost")
-
-        summary = []
-        if not self._is_blank(aoe):
-            summary.append(str(aoe).strip())
-
-        if not self._is_blank(attack):
-            attack_text = str(attack).strip()
-            if "d20" not in attack_text.lower() and (
-                attack_text.startswith("+")
-                or attack_text.startswith("-")
-                or attack_text.isdigit()
-            ):
-                attack_text = f"1d20{attack_text}"
-            attack_text = f"{attack_text} vs Physical Def."
-            summary.append(attack_text)
-
-        if not self._is_blank(action_range):
-            summary.append(f"({str(action_range).strip()})")
-
-        if summary:
-            lines.append(" ".join(summary))
-
-        if not self._is_blank(saving_throw):
-            lines.append(str(saving_throw).strip())
-
-        if not self._is_blank(graze):
-            lines.append(f"Graze: {str(graze).strip()}")
-
-        if not self._is_blank(hit):
-            lines.append(f"Hit: {str(hit).strip()}")
-
-        if not self._is_blank(damage):
-            lines.append(f"Damage: {str(damage).strip()}")
-
-        if not self._is_blank(duration):
-            lines.append(f"Duration: {str(duration).strip()}")
-
-        if not self._is_blank(focus_cost):
-            focus_text = str(focus_cost).strip()
-            if focus_text not in {"0", "0.0"}:
-                lines.append(f"Focus Cost: {focus_text}")
-
-        if not self._is_blank(description):
-            lines.append(str(description).strip())
-
-        return lines
-
-    def _format_talent_lines(self, talent_name, talent_data):
-        lines = [f"{self._action_symbol(talent_data)} {str(talent_name).strip()}"]
-
-        description = self._get_action_value(talent_data, "description")
-        if not self._is_blank(description):
-            lines.append(str(description).strip())
-            return lines
-
-        if isinstance(talent_data, dict):
-            ignored_keys = {"action cost", "action_cost", "cost"}
-            for key, value in talent_data.items():
-                key_text = str(key).strip()
-                if key_text.lower() in ignored_keys or self._is_blank(value):
-                    continue
-                lines.append(str(value).strip())
-
-        return lines
-
-    def _format_feature_lines(self, feature_name, feature_data):
-        lines = [str(feature_name).strip()]
-
-        if isinstance(feature_data, dict):
-            description = self._get_action_value(feature_data, "description")
-            if not self._is_blank(description):
-                lines.append(str(description).strip())
-            else:
-                for value in feature_data.values():
-                    if self._is_blank(value):
-                        continue
-                    lines.append(str(value).strip())
-        elif not self._is_blank(feature_data):
-            lines.append(str(feature_data).strip())
-
-        return lines
-
     @staticmethod
     def _make_subtitle_label(text):
         label = QLabel(text)
@@ -400,25 +230,52 @@ class CombatView(QWidget):
         label.setStyleSheet("font-size: 14px; color: #edf3f8;")
         return label
 
-    @staticmethod
-    def _format_remaining_actions(actions_remaining):
-        try:
-            value = int(actions_remaining)
-        except (TypeError, ValueError):
-            return "None"
-
-        if value <= 0:
-            return "None"
-
-        return "►" * value
-
-    @staticmethod
-    def _format_attribute_with_defense(attribute_name, attribute_value, defense_name, defense_value, paired_name, paired_value):
-        return (
-            f"{attribute_name} {attribute_value}   "
-            f"{defense_name} {defense_value}   "
-            f"{paired_name} {paired_value}"
+    def _build_combatant_row(self, character):
+        row = QFrame()
+        row.setStyleSheet(
+            "QFrame { background: #1f2a35; border: 1px solid #46586a; border-radius: 8px; }"
         )
+        h = QHBoxLayout(row)
+        h.setContentsMargins(10, 8, 10, 8)
+        h.setSpacing(10)
+
+        label = QLabel(f"{character.display_name}")
+        label.setStyleSheet("font-weight: 600;")
+        h.addWidget(label)
+
+        deflect_label = QLabel(f"Deflect {character.defenses.deflect}")
+        deflect_label.setStyleSheet("color: #d5effd; font-weight: 600;")
+        h.addWidget(deflect_label)
+
+        spend_reaction = QPushButton("Spend Reaction")
+        spend_reaction.setEnabled(character.reaction_available)
+        if not character.reaction_available:
+            spend_reaction.setText("Reaction Spent")
+        spend_reaction.clicked.connect(
+            lambda _, target=character: self.combat_window.spend_reaction(target)
+        )
+        h.addWidget(spend_reaction)
+
+        for key in ("health", "focus", "investiture"):
+            resource = getattr(character, key)
+            spin = NoWheelSpinBox()
+            spin.setRange(0, resource.maximum if hasattr(resource, "maximum") else 99)
+            spin.setValue(resource.current)
+            spin.valueChanged.connect(lambda value, res=resource: res.set(value))
+            spin.setToolTip(key.title())
+            h.addWidget(spin)
+
+        return row
+
+    def _build_ability_section(self, title, items, formatter):
+        self.turn_bottom_layout.addWidget(self._make_subtitle_label(title))
+        if items:
+            for key, value in items.items():
+                self.turn_bottom_layout.addWidget(
+                    self._make_detail_label("\n".join(formatter(key, value)))
+                )
+        else:
+            self.turn_bottom_layout.addWidget(self._make_detail_label("None"))
 
     def refresh(self):
         state = self.combat_window.tracker.state
@@ -433,78 +290,10 @@ class CombatView(QWidget):
         self.clear_layout(self.enemies_layout)
 
         for character in state.pcs:
-            row = QFrame()
-            row.setStyleSheet(
-                "QFrame { background: #1f2a35; border: 1px solid #46586a; border-radius: 8px; }"
-            )
-            h = QHBoxLayout(row)
-            h.setContentsMargins(10, 8, 10, 8)
-            h.setSpacing(10)
-
-            label = QLabel(f"{character.display_name}")
-            label.setStyleSheet("font-weight: 600;")
-            h.addWidget(label)
-
-            deflect_label = QLabel(f"Deflect {character.defenses.deflect}")
-            deflect_label.setStyleSheet("color: #d5effd; font-weight: 600;")
-            h.addWidget(deflect_label)
-
-            spend_reaction = QPushButton("Spend Reaction")
-            spend_reaction.setEnabled(character.reaction_available)
-            if not character.reaction_available:
-                spend_reaction.setText("Reaction Spent")
-            spend_reaction.clicked.connect(
-                lambda _, target=character: self.combat_window.spend_reaction(target)
-            )
-            h.addWidget(spend_reaction)
-
-            for key in ("health", "focus", "investiture"):
-                resource = getattr(character, key)
-                spin = NoWheelSpinBox()
-                spin.setRange(0, resource.maximum if hasattr(resource, "maximum") else 99)
-                spin.setValue(resource.current)
-                spin.valueChanged.connect(lambda value, res=resource: res.set(value))
-                spin.setToolTip(key.title())
-                h.addWidget(spin)
-
-            self.party_layout.addWidget(row)
+            self.party_layout.addWidget(self._build_combatant_row(character))
 
         for character in state.npcs:
-            row = QFrame()
-            row.setStyleSheet(
-                "QFrame { background: #1f2a35; border: 1px solid #46586a; border-radius: 8px; }"
-            )
-            h = QHBoxLayout(row)
-            h.setContentsMargins(10, 8, 10, 8)
-            h.setSpacing(10)
-
-            label = QLabel(f"{character.display_name}")
-            label.setStyleSheet("font-weight: 600;")
-            h.addWidget(label)
-
-            deflect_label = QLabel(f"Deflect {character.defenses.deflect}")
-            deflect_label.setStyleSheet("color: #d5effd; font-weight: 600;")
-            h.addWidget(deflect_label)
-
-            spend_reaction = QPushButton("Spend Reaction")
-            spend_reaction.setEnabled(character.reaction_available)
-            if not character.reaction_available:
-                spend_reaction.setText("Reaction Spent")
-            spend_reaction.clicked.connect(
-                lambda _, target=character: self.combat_window.spend_reaction(target)
-            )
-            h.addWidget(spend_reaction)
-
-            for key in ("health", "focus", "investiture"):
-                resource = getattr(character, key)
-                spin = NoWheelSpinBox()
-                spin.setRange(0, resource.maximum if hasattr(resource, "maximum") else 99)
-                spin.setValue(resource.current)
-                spin.valueChanged.connect(lambda value, res=resource: res.set(value))
-                spin.setToolTip(key.title())
-                h.addWidget(spin)
-
-            self.enemies_layout.addWidget(row)
+            self.enemies_layout.addWidget(self._build_combatant_row(character))
 
         if active is not None:
             name = QLabel(f"{active.display_name}")
@@ -519,7 +308,7 @@ class CombatView(QWidget):
             attributes = QLabel(
                 "\n".join(
                     [
-                        self._format_attribute_with_defense(
+                        action_text.format_attribute_with_defense(
                             "Strength",
                             active.strength,
                             "Physical Def",
@@ -527,7 +316,7 @@ class CombatView(QWidget):
                             "Speed",
                             active.speed,
                         ),
-                        self._format_attribute_with_defense(
+                        action_text.format_attribute_with_defense(
                             "Intelligence",
                             active.intelligence,
                             "Cognitive Def",
@@ -535,7 +324,7 @@ class CombatView(QWidget):
                             "Willpower",
                             active.willpower,
                         ),
-                        self._format_attribute_with_defense(
+                        action_text.format_attribute_with_defense(
                             "Awareness",
                             active.awareness,
                             "Spiritual Def",
@@ -560,7 +349,7 @@ class CombatView(QWidget):
 
             actions = QLabel(
                 "Actions Remaining: "
-                f"{self._format_remaining_actions(active.actions_remaining)}"
+                f"{action_text.format_remaining_actions(active.actions_remaining)}"
             )
             actions.setStyleSheet("font-size: 15px; font-weight: 600; color: #e6eff8;")
             self.turn_top_layout.addWidget(actions)
@@ -573,46 +362,11 @@ class CombatView(QWidget):
             conditions_label.setStyleSheet("font-size: 14px; color: #dbe5f0;")
             self.turn_top_layout.addWidget(conditions_label)
 
-            if active.character_type.value == "PC":
-                self.turn_bottom_layout.addWidget(self._make_subtitle_label("Talents"))
-                if active.talents:
-                    for key, value in active.talents.items():
-                        self.turn_bottom_layout.addWidget(
-                            self._make_detail_label("\n".join(self._format_talent_lines(key, value)))
-                        )
-                else:
-                    self.turn_bottom_layout.addWidget(self._make_detail_label("None"))
-
-                self.turn_bottom_layout.addWidget(self._make_subtitle_label("Actions"))
-                if active.actions:
-                    for key, value in active.actions.items():
-                        self.turn_bottom_layout.addWidget(
-                            self._make_detail_label("\n".join(self._format_action_lines(key, value)))
-                        )
-                else:
-                    self.turn_bottom_layout.addWidget(self._make_detail_label("None"))
+            if active.character_type == CharacterType.PC:
+                self._build_ability_section("Talents", active.talents, action_text.format_talent_lines)
             else:
-                self.turn_bottom_layout.addWidget(self._make_subtitle_label("Features"))
-                if active.talents:
-                    for key, value in active.talents.items():
-                        self.turn_bottom_layout.addWidget(
-                            self._make_detail_label("\n".join(self._format_feature_lines(key, value)))
-                        )
-                else:
-                    self.turn_bottom_layout.addWidget(self._make_detail_label("None"))
+                self._build_ability_section("Features", active.talents, action_text.format_feature_lines)
 
-                self.turn_bottom_layout.addWidget(self._make_subtitle_label("Actions"))
-                if active.actions:
-                    for key, value in active.actions.items():
-                        self.turn_bottom_layout.addWidget(
-                            self._make_detail_label("\n".join(self._format_action_lines(key, value)))
-                        )
-                else:
-                    self.turn_bottom_layout.addWidget(self._make_detail_label("None"))
+            self._build_ability_section("Actions", active.actions, action_text.format_action_lines)
 
-        self.log_view.setPlainText("\n".join(self.combat_window.log_entries))
-        self.log_view.verticalScrollBar().setValue(self.log_view.verticalScrollBar().maximum())
         self.enemies_panel.layout.addStretch()
-
-    def set_round_selection(self):
-        self.encounter_label.setText(self.combat_window.tracker.state.encounter.name)

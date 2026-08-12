@@ -5,13 +5,12 @@ from PySide6.QtWidgets import (
     QCheckBox,
     QDialog,
     QDialogButtonBox,
-    QHBoxLayout,
     QLabel,
     QMainWindow,
-    QMessageBox,
     QVBoxLayout,
 )
 
+from combat_tracker.engine.character import CharacterType
 from combat_tracker.engine.combat_tracker import CombatTracker
 from combat_tracker.engine.encounter_loader import EncounterLoader
 from combat_tracker.gui.combat_view import CombatView
@@ -40,7 +39,7 @@ class TurnSelectionDialog(QDialog):
     def selected_fast(self, character_type):
         fast = []
         for character, checkbox in self.checkboxes:
-            if checkbox.isChecked() and character.character_type.value == character_type:
+            if checkbox.isChecked() and character.character_type == character_type:
                 fast.append(character)
         return fast
 
@@ -61,7 +60,6 @@ class CombatWindow(QMainWindow):
         self.turn_order = []
         self.current_character = None
         self.turn_index = 0
-        self.log_entries = ["Encounter ready."]
 
         self.view = CombatView(self)
         self.setCentralWidget(self.view)
@@ -80,8 +78,8 @@ class CombatWindow(QMainWindow):
             self.close()
             return
 
-        fast_pcs = [character for character in dialog.selected_fast("PC")]
-        fast_npcs = [character for character in dialog.selected_fast("NPC")]
+        fast_pcs = dialog.selected_fast(CharacterType.PC)
+        fast_npcs = dialog.selected_fast(CharacterType.NPC)
 
         self.tracker.turn_manager.choose_turn_types(
             self.tracker.state,
@@ -112,28 +110,14 @@ class CombatWindow(QMainWindow):
         if self.current_character is None:
             return
 
-        if self.current_character.spend_actions(amount):
-            self.log_entries.append(f"{self.current_character.display_name} spent {amount} action(s).")
-        else:
-            self.log_entries.append(f"{self.current_character.display_name} cannot spend {amount} action(s).")
+        self.current_character.spend_actions(amount)
         self.view.refresh()
 
     def spend_reaction(self, character):
         if character is None:
             return
 
-        if character.reaction_available:
-            character.reaction_available = False
-            self.log_entries.append(f"{character.display_name} spent their reaction.")
-        else:
-            self.log_entries.append(f"{character.display_name} has no reaction available.")
-        self.view.refresh()
-
-    def recover_current(self):
-        if self.current_character is None:
-            return
-        self.current_character.focus.gain(1)
-        self.log_entries.append(f"{self.current_character.display_name} recovered 1 focus.")
+        character.reaction_available = False
         self.view.refresh()
 
     def end_turn(self):
@@ -141,13 +125,11 @@ class CombatWindow(QMainWindow):
             return
 
         self.current_character.end_turn()
-        self.log_entries.append(f"{self.current_character.display_name} ended their turn.")
         self.turn_index += 1
         self.advance_turn()
 
     def end_combat(self):
         self.tracker.state.combat_over = True
-        self.log_entries.append("Combat ended by the party.")
         self.view.refresh()
         self.close()
 

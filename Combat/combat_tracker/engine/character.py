@@ -38,8 +38,8 @@ class Character:
     defenses: Defenses
     skills: dict
 
-    talents: list
-    actions: list
+    talents: dict
+    actions: dict
 
     # ---------- Runtime ----------
 

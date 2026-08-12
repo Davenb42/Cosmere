@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
 from typing import Optional
 
-from combat_tracker.engine.character import Character
+from combat_tracker.engine.character import Character, CharacterType
 from combat_tracker.engine.encounter import Encounter
 
 
@@ -28,12 +28,12 @@ class CombatState:
     def pcs(self):
         return [
             c for c in self.combatants
-            if c.character_type.value == "PC"
+            if c.character_type == CharacterType.PC
         ]
 
     @property
     def npcs(self):
         return [
             c for c in self.combatants
-            if c.character_type.value == "NPC"
+            if c.character_type == CharacterType.NPC
         ]

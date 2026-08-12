@@ -19,8 +19,8 @@ class EncounterLoader:
         while True:
             if (
                 (current / "party.json").exists()
-                and (current / "PCs").exists()
-                and (current / "NPCs").exists()
+                and (current / "PCS").exists()
+                and (current / "NPCS").exists()
             ):
                 return current
 
@@ -77,9 +77,9 @@ class EncounterLoader:
     def load_character(self, name, character_type):
 
         folder = (
-            "PCs"
+            "PCS"
             if character_type == CharacterType.PC
-            else "NPCs"
+            else "NPCS"
         )
 
         data = self._load_json(
