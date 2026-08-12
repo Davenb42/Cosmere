@@ -111,7 +111,7 @@ class CombatWindow(QMainWindow):
             return
 
         self.current_character.spend_actions(amount)
-        self.view.refresh()
+        self.view.refresh_turn_only()
 
     def spend_reaction(self, character):
         if character is None:

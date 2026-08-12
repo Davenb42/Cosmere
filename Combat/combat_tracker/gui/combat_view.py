@@ -166,6 +166,7 @@ class CombatView(QWidget):
         self.party_content = QWidget()
         self.party_layout = QVBoxLayout(self.party_content)
         self.party_layout.setSpacing(8)
+        self.party_layout.setAlignment(Qt.AlignTop)
         self.party_scroll.setWidget(self.party_content)
         self.party_panel.content_layout.addWidget(self.party_scroll)
 
@@ -178,6 +179,7 @@ class CombatView(QWidget):
         self.enemies_content = QWidget()
         self.enemies_layout = QVBoxLayout(self.enemies_content)
         self.enemies_layout.setSpacing(8)
+        self.enemies_layout.setAlignment(Qt.AlignTop)
         self.enemies_scroll.setWidget(self.enemies_content)
         self.enemies_panel.content_layout.addWidget(self.enemies_scroll)
 
@@ -232,6 +234,8 @@ class CombatView(QWidget):
 
     def _build_combatant_row(self, character):
         row = QFrame()
+        row.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        row.setMinimumHeight(52)
         row.setStyleSheet(
             "QFrame { background: #1f2a35; border: 1px solid #46586a; border-radius: 8px; }"
         )
@@ -277,16 +281,12 @@ class CombatView(QWidget):
         else:
             self.turn_bottom_layout.addWidget(self._make_detail_label("None"))
 
-    def refresh(self):
-        state = self.combat_window.tracker.state
-        active = self.combat_window.current_character
-
+    def _refresh_header(self, state):
         self.encounter_label.setText(state.encounter.name)
         self.round_label.setText(f"Round {state.round_number}")
 
+    def _refresh_rosters(self, state):
         self.clear_layout(self.party_layout)
-        self.clear_layout(self.turn_top_layout)
-        self.clear_layout(self.turn_bottom_layout)
         self.clear_layout(self.enemies_layout)
 
         for character in state.pcs:
@@ -294,6 +294,18 @@ class CombatView(QWidget):
 
         for character in state.npcs:
             self.enemies_layout.addWidget(self._build_combatant_row(character))
+
+        self.party_layout.addStretch()
+        self.enemies_layout.addStretch()
+
+    def refresh_turn_only(self):
+        state = self.combat_window.tracker.state
+        active = self.combat_window.current_character
+
+        self._refresh_header(state)
+
+        self.clear_layout(self.turn_top_layout)
+        self.clear_layout(self.turn_bottom_layout)
 
         if active is not None:
             name = QLabel(f"{active.display_name}")
@@ -369,4 +381,8 @@ class CombatView(QWidget):
 
             self._build_ability_section("Actions", active.actions, action_text.format_action_lines)
 
-        self.enemies_panel.layout.addStretch()
+    def refresh(self):
+        state = self.combat_window.tracker.state
+        self._refresh_header(state)
+        self._refresh_rosters(state)
+        self.refresh_turn_only()
