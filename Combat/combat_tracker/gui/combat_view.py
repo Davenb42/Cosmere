@@ -14,6 +14,7 @@ from PySide6.QtWidgets import (
 
 from combat_tracker.engine.character import CharacterType
 from combat_tracker.gui import action_text
+from combat_tracker.gui.character_sheet_window import CharacterSheetWindow
 from combat_tracker.gui.panel_base import CombatPanel
 
 
@@ -29,6 +30,7 @@ class CombatView(QWidget):
     def __init__(self, combat_window):
         super().__init__()
         self.combat_window = combat_window
+        self.sheet_windows = {}
         self.setStyleSheet(
             """
             QWidget {
@@ -260,6 +262,10 @@ class CombatView(QWidget):
         )
         h.addWidget(spend_reaction)
 
+        view_sheet = QPushButton("View Sheet")
+        view_sheet.clicked.connect(lambda _, target=character: self.open_character_sheet(target))
+        h.addWidget(view_sheet)
+
         for key in ("health", "focus", "investiture"):
             resource = getattr(character, key)
             spin = NoWheelSpinBox()
@@ -280,6 +286,114 @@ class CombatView(QWidget):
                 )
         else:
             self.turn_bottom_layout.addWidget(self._make_detail_label("None"))
+
+    def _populate_character_details(self, character, top_layout, bottom_layout):
+        name = QLabel(f"{character.display_name}")
+        name.setStyleSheet("font-size: 24px; font-weight: 700; color: #f7fbff;")
+        top_layout.addWidget(name)
+
+        if character.turn_type:
+            speed = "Fast" if character.turn_type == "fast" else "Slow"
+            group_label = f"{speed} {character.character_type.value}s"
+        else:
+            group_label = "Unassigned"
+        group = QLabel(f"Turn Group: {group_label}")
+        group.setStyleSheet("font-size: 14px; color: #dbe5f0;")
+        top_layout.addWidget(group)
+
+        attributes = QLabel(
+            "\n".join(
+                [
+                    action_text.format_attribute_with_defense(
+                        "Strength",
+                        character.strength,
+                        "Physical Def",
+                        character.defenses.physical,
+                        "Speed",
+                        character.speed,
+                    ),
+                    action_text.format_attribute_with_defense(
+                        "Intelligence",
+                        character.intelligence,
+                        "Cognitive Def",
+                        character.defenses.cognitive,
+                        "Willpower",
+                        character.willpower,
+                    ),
+                    action_text.format_attribute_with_defense(
+                        "Awareness",
+                        character.awareness,
+                        "Spiritual Def",
+                        character.defenses.spiritual,
+                        "Presence",
+                        character.presence,
+                    ),
+                ]
+            )
+        )
+        attributes.setStyleSheet("font-size: 15px; font-weight: 600; color: #e6eff8;")
+        top_layout.addWidget(attributes)
+
+        details = QLabel(
+            f"HP {character.health.current}/{character.health.maximum}   "
+            f"Focus {character.focus.current}/{character.focus.maximum}   "
+            f"Investiture {character.investiture.current}/{character.investiture.maximum}   "
+            f"Deflect {character.defenses.deflect}"
+        )
+        details.setStyleSheet("font-size: 16px; font-weight: 600; color: #edf3f8;")
+        top_layout.addWidget(details)
+
+        actions = QLabel(
+            "Actions Remaining: "
+            f"{action_text.format_remaining_actions(character.actions_remaining)}"
+        )
+        actions.setStyleSheet("font-size: 15px; font-weight: 600; color: #e6eff8;")
+        top_layout.addWidget(actions)
+
+        if character.conditions:
+            conds = ", ".join(condition.name for condition in character.conditions)
+        else:
+            conds = "None"
+        conditions_label = QLabel(f"Conditions: {conds}")
+        conditions_label.setStyleSheet("font-size: 14px; color: #dbe5f0;")
+        top_layout.addWidget(conditions_label)
+
+        bottom_layout.addWidget(self._make_subtitle_label("Talents" if character.character_type == CharacterType.PC else "Features"))
+        if character.talents:
+            formatter = action_text.format_talent_lines if character.character_type == CharacterType.PC else action_text.format_feature_lines
+            for key, value in character.talents.items():
+                bottom_layout.addWidget(self._make_detail_label("\n".join(formatter(key, value))))
+        else:
+            bottom_layout.addWidget(self._make_detail_label("None"))
+
+        bottom_layout.addWidget(self._make_subtitle_label("Actions"))
+        if character.actions:
+            for key, value in character.actions.items():
+                bottom_layout.addWidget(
+                    self._make_detail_label("\n".join(action_text.format_action_lines(key, value)))
+                )
+        else:
+            bottom_layout.addWidget(self._make_detail_label("None"))
+
+    def open_character_sheet(self, character):
+        if character is None:
+            return
+
+        sheet = self.sheet_windows.get(character.id)
+        if sheet is None:
+            sheet = CharacterSheetWindow(character, self._populate_character_details, self)
+            sheet.destroyed.connect(lambda _=None, char_id=character.id: self.sheet_windows.pop(char_id, None))
+            self.sheet_windows[character.id] = sheet
+
+        sheet.refresh_sheet()
+        sheet.show()
+        sheet.raise_()
+        sheet.activateWindow()
+
+    def _refresh_open_sheets(self):
+        for sheet in list(self.sheet_windows.values()):
+            if sheet is not None:
+                sheet.refresh_sheet()
 
     def _refresh_header(self, state):
         self.encounter_label.setText(state.encounter.name)
@@ -308,78 +422,9 @@ class CombatView(QWidget):
         self.clear_layout(self.turn_bottom_layout)
 
         if active is not None:
-            name = QLabel(f"{active.display_name}")
-            name.setStyleSheet("font-size: 24px; font-weight: 700; color: #f7fbff;")
-            self.turn_top_layout.addWidget(name)
+            self._populate_character_details(active, self.turn_top_layout, self.turn_bottom_layout)
 
-            group_label = f"{'Fast' if active.turn_type == 'fast' else 'Slow'} {active.character_type.value}s"
-            group = QLabel(f"Turn Group: {group_label}")
-            group.setStyleSheet("font-size: 14px; color: #dbe5f0;")
-            self.turn_top_layout.addWidget(group)
-
-            attributes = QLabel(
-                "\n".join(
-                    [
-                        action_text.format_attribute_with_defense(
-                            "Strength",
-                            active.strength,
-                            "Physical Def",
-                            active.defenses.physical,
-                            "Speed",
-                            active.speed,
-                        ),
-                        action_text.format_attribute_with_defense(
-                            "Intelligence",
-                            active.intelligence,
-                            "Cognitive Def",
-                            active.defenses.cognitive,
-                            "Willpower",
-                            active.willpower,
-                        ),
-                        action_text.format_attribute_with_defense(
-                            "Awareness",
-                            active.awareness,
-                            "Spiritual Def",
-                            active.defenses.spiritual,
-                            "Presence",
-                            active.presence,
-                        ),
-                    ]
-                )
-            )
-            attributes.setStyleSheet("font-size: 15px; font-weight: 600; color: #e6eff8;")
-            self.turn_top_layout.addWidget(attributes)
-
-            details = QLabel(
-                f"HP {active.health.current}/{active.health.maximum}   "
-                f"Focus {active.focus.current}/{active.focus.maximum}   "
-                f"Investiture {active.investiture.current}/{active.investiture.maximum}   "
-                f"Deflect {active.defenses.deflect}"
-            )
-            details.setStyleSheet("font-size: 16px; font-weight: 600; color: #edf3f8;")
-            self.turn_top_layout.addWidget(details)
-
-            actions = QLabel(
-                "Actions Remaining: "
-                f"{action_text.format_remaining_actions(active.actions_remaining)}"
-            )
-            actions.setStyleSheet("font-size: 15px; font-weight: 600; color: #e6eff8;")
-            self.turn_top_layout.addWidget(actions)
-
-            if active.conditions:
-                conds = ", ".join(condition.name for condition in active.conditions)
-            else:
-                conds = "None"
-            conditions_label = QLabel(f"Conditions: {conds}")
-            conditions_label.setStyleSheet("font-size: 14px; color: #dbe5f0;")
-            self.turn_top_layout.addWidget(conditions_label)
-
-            if active.character_type == CharacterType.PC:
-                self._build_ability_section("Talents", active.talents, action_text.format_talent_lines)
-            else:
-                self._build_ability_section("Features", active.talents, action_text.format_feature_lines)
-
-            self._build_ability_section("Actions", active.actions, action_text.format_action_lines)
+        self._refresh_open_sheets()
 
     def refresh(self):
         state = self.combat_window.tracker.state
