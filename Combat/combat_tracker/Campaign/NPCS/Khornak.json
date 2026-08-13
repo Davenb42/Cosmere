@@ -1,0 +1,78 @@
+{
+  "name": "Khornak",
+  "health": {
+    "current": 26,
+    "max": 26
+  },
+  "focus": {
+    "current": 4,
+    "max": 4
+  },
+  "investiture": {
+    "current": 0,
+    "max": 0
+  },
+  "strength": 3,
+  "speed": 2,
+  "physical defense": 15,
+  "intelligence": 0,
+  "willpower": 2,
+  "cognitive defense": 12,
+  "awareness": 2,
+  "presence": 0,
+  "spiritual defense": 12,
+  "movement": 25,
+  "immunities": "",
+  "deflect": 2,
+  "features": {
+    "Terrifying Ambush": "At the start of each scene, enemies must pass a DC 14 Discipline test or lose their fast turn unless they spend 2 focus.",
+    "Ruthless Predator": "Deal 1d8 additional damage to enemies who haven't taken a turn yet in the current round."
+  },
+  "Actions": {
+    "Strike Crushing Jaw": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Attack": "+5",
+      "Range": "5ft.",
+      "AOE": "One target",
+      "Graze": "4 impact damage",
+      "Hit": "9 impact damage",
+      "Duration": "",
+      "Saving Throw": "Use 2 actions to make a DC 16 Agility or Athletics test, ending the Restrained condition",
+      "Description": "On hit the target is Restrained, spend 1 focus to also make the target Afflicted [1d4 vital] until the target regains at least 1 health"
+    },
+    "Tail Sweep": {
+      "Action cost": "1",
+      "Focus cost": "",
+      "Attack": "+5",
+      "Range": "5ft.",
+      "AOE": "One target or more",
+      "Graze": "3 impact damage",
+      "Hit": "8 impact damage",
+      "Duration": "",
+      "Saving Throw": "DC 15 Athletics test or be knocked Prone",
+      "Description": "The khornak can spend up to 2 focus to target that many additional targets with the same attack."
+    },
+    "Drag": {
+      "Action cost": "1",
+      "Focus cost": "",
+      "Attack": "",
+      "Range": "",
+      "AOE": "",
+      "Graze": "",
+      "Hit": "",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": "The khornak moves up to 15 feet in any direction while dragging an enemy they have Restrained behind them."
+    }
+  },
+  "physical_skills": {
+    "Athletics": 5,
+    "Stealth": 4
+  },
+  "cognitive_skills": {},
+  "spiritual_skills": {
+    "Perception": 3,
+    "Survival": 4
+  }
+}

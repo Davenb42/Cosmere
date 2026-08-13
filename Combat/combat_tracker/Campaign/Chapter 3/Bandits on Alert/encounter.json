@@ -1,0 +1,8 @@
+{
+    "name": "Bandits on Alert",
+
+    "npcs": {
+        "Bandit": 3,
+        "Archer": 2
+    }
+}

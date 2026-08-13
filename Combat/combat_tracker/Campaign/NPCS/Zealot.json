@@ -1,0 +1,81 @@
+{
+  "name": "Zealot",
+  "health": {
+    "current": 12,
+    "max": 12
+  },
+  "focus": {
+    "current": 4,
+    "max": 4
+  },
+  "investiture": {
+    "current": 0,
+    "max": 0
+  },
+  "strength": 3,
+  "speed": 1,
+  "physical defense": 14,
+  "intelligence": 1,
+  "willpower": 2,
+  "cognitive defense": 13,
+  "awareness": 1,
+  "presence": 2,
+  "spiritual defense": 13,
+  "movement": 25,
+  "immunities": "",
+  "deflect": 0,
+  "features": {
+    "Minion": "Attacks can't crit, and they're defeated once they suffer an injury.",
+    "Fanatical": " Intimidation and Persuasion tests against the zealot gain a disadvantage.",
+    "Frenzied": "While the zealot is at half health or less, they can’t use the Brace action, but their movement rate increases by 10 feet and their damage rolls gain an advantage."
+  },
+  "Actions": {
+    "Strike Longsword": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Attack": "+4",
+      "Range": "5ft.",
+      "AOE": "One target",
+      "Graze": "4 keen damage",
+      "Hit": "8 keen damage",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": ""
+    },
+    "Brace": {
+      "Action cost": "1",
+      "Focus cost": "",
+      "Attack": "",
+      "Range": "",
+      "AOE": "",
+      "Graze": "",
+      "Hit": "",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": "The zealot raises their shield, and attacks against them gain a disadvantage until the start of the zealot’s next turn."
+    },
+    "Inspire Zeal": {
+      "Action cost": "1",
+      "Focus cost": "1",
+      "Attack": "",
+      "Range": "20ft.",
+      "AOE": "One ally",
+      "Graze": "",
+      "Hit": "",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": "The zealot inspires an ally they can influence within 20 feet of them. That ally can immediately use the Strike action as a reaction."
+    }
+  },
+  "physical_skills": {
+    "Agility": 3,
+    "Heavy Weaponry": 4
+  },
+  "cognitive_skills": {
+    "Intimidation": 3
+  },
+  "spiritual_skills": {
+    "Perception": 3,
+    "Survival": 3
+  }
+}

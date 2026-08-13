@@ -1,0 +1,9 @@
+{
+    "name": "Inspiring the Quartermaster",
+
+    "npcs": {
+        "Nadari": 1,
+        "Bandit": 4,
+        "Archer": 2
+    }
+}
