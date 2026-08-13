@@ -14,6 +14,10 @@ from combat_tracker.engine.character import CharacterType
 from combat_tracker.engine.combat_tracker import CombatTracker
 from combat_tracker.engine.encounter_loader import EncounterLoader
 from combat_tracker.gui.combat_view import CombatView
+from combat_tracker.gui.condition_dialogs import (
+    ConditionReminderDialog,
+    ConditionSelectionDialog,
+)
 
 
 class TurnSelectionDialog(QDialog):
@@ -57,6 +61,7 @@ class CombatWindow(QMainWindow):
         self.encounter_dir = Path(encounter_dir)
         self.loader = EncounterLoader(str(self.campaign_root))
         self.tracker = CombatTracker(self.loader.load(self.encounter_dir))
+        self.all_conditions = self.loader.load_conditions()
         self.turn_order = []
         self.current_character = None
         self.turn_index = 0
@@ -105,6 +110,23 @@ class CombatWindow(QMainWindow):
         self.tracker.state.active_character = self.current_character
         self.current_character.start_turn()
         self.view.refresh()
+        self.show_condition_reminder(self.current_character)
+
+    def show_condition_reminder(self, character):
+        if not character.conditions:
+            return
+
+        dialog = ConditionReminderDialog(character, self.all_conditions, self)
+        dialog.exec()
+
+    def open_condition_editor(self, character):
+        if character is None:
+            return
+
+        dialog = ConditionSelectionDialog(character, self.all_conditions, self)
+        if dialog.exec() == QDialog.Accepted:
+            character.conditions = dialog.selected_conditions()
+            self.view.refresh()
 
     def spend_action(self, amount):
         if self.current_character is None:

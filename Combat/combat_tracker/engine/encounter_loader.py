@@ -74,6 +74,12 @@ class EncounterLoader:
 
         return data["parties"][data["active_party"]]
 
+    def load_conditions(self):
+
+        return self._load_json(
+            self.campaign_folder / "Conditions" / "conditions.json"
+        )
+
     def load_character(self, name, character_type):
 
         folder = (

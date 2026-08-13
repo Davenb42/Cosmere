@@ -266,6 +266,12 @@ class CombatView(QWidget):
         view_sheet.clicked.connect(lambda _, target=character: self.open_character_sheet(target))
         h.addWidget(view_sheet)
 
+        add_condition = QPushButton("Add Condition")
+        add_condition.clicked.connect(
+            lambda _, target=character: self.combat_window.open_condition_editor(target)
+        )
+        h.addWidget(add_condition)
+
         for key in ("health", "focus", "investiture"):
             resource = getattr(character, key)
             spin = NoWheelSpinBox()
