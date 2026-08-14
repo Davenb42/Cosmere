@@ -80,6 +80,14 @@ class EncounterLoader:
             self.campaign_folder / "Conditions" / "conditions.json"
         )
 
+    def load_surges(self):
+
+        data = self._load_json(
+            self.campaign_folder / "Surges" / "surges.json"
+        )
+
+        return data.get("Surges", [])
+
     def load_character(self, name, character_type):
 
         folder = (

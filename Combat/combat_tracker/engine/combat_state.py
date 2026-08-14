@@ -3,6 +3,7 @@ from typing import Optional
 
 from combat_tracker.engine.character import Character, CharacterType
 from combat_tracker.engine.encounter import Encounter
+from combat_tracker.engine.infused_object import InfusedObject
 
 
 @dataclass
@@ -19,6 +20,8 @@ class CombatState:
     combat_over: bool = False
 
     turn_order: list[Character] = field(default_factory=list)
+
+    infused_objects: list[InfusedObject] = field(default_factory=list)
 
     @property
     def combatants(self):

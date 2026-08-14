@@ -15,6 +15,7 @@ from PySide6.QtWidgets import (
 from combat_tracker.engine.character import CharacterType
 from combat_tracker.gui import action_text
 from combat_tracker.gui.character_sheet_window import CharacterSheetWindow
+from combat_tracker.gui.infused_objects_panel import InfusedObjectsPanel
 from combat_tracker.gui.panel_base import CombatPanel
 
 
@@ -101,15 +102,16 @@ class CombatView(QWidget):
         self.body.setColumnStretch(1, 2)
         self.body.setRowStretch(0, 1)
         self.body.setRowStretch(1, 1)
-        self.body.setRowStretch(2, 0)
+        self.body.setRowStretch(2, 1)
         self.body.setHorizontalSpacing(14)
         self.body.setVerticalSpacing(14)
 
         self.party_panel = CombatPanel("Party")
         self.turn_panel = CombatPanel("CURRENT TURN")
         self.enemies_panel = CombatPanel("Enemies")
+        self.infused_objects_panel = InfusedObjectsPanel(self.combat_window)
 
-        for panel in (self.party_panel, self.enemies_panel):
+        for panel in (self.party_panel, self.enemies_panel, self.infused_objects_panel):
             panel.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
 
         self.turn_panel.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
@@ -186,8 +188,9 @@ class CombatView(QWidget):
         self.enemies_panel.content_layout.addWidget(self.enemies_scroll)
 
         self.body.addWidget(self.party_panel, 0, 0)
-        self.body.addWidget(self.turn_panel, 0, 1, 2, 1)
+        self.body.addWidget(self.turn_panel, 0, 1, 3, 1)
         self.body.addWidget(self.enemies_panel, 1, 0)
+        self.body.addWidget(self.infused_objects_panel, 2, 0)
 
         self.root.addLayout(self.body, 1)
 
@@ -437,6 +440,8 @@ class CombatView(QWidget):
 
         self.party_layout.addStretch()
         self.enemies_layout.addStretch()
+
+        self.infused_objects_panel.refresh(state.infused_objects)
 
     def refresh_turn_only(self):
         state = self.combat_window.tracker.state

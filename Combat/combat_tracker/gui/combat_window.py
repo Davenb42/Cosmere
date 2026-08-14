@@ -13,10 +13,16 @@ from PySide6.QtWidgets import (
 from combat_tracker.engine.character import CharacterType
 from combat_tracker.engine.combat_tracker import CombatTracker
 from combat_tracker.engine.encounter_loader import EncounterLoader
+from combat_tracker.engine.infused_object import InfusedObject
 from combat_tracker.gui.combat_view import CombatView
 from combat_tracker.gui.condition_dialogs import (
     ConditionReminderDialog,
     ConditionSelectionDialog,
+)
+from combat_tracker.gui.infused_object_dialogs import (
+    AddInfusedObjectDialog,
+    InfuseInvestitureDialog,
+    InfusedObjectsReminderDialog,
 )
 
 
@@ -62,6 +68,7 @@ class CombatWindow(QMainWindow):
         self.loader = EncounterLoader(str(self.campaign_root))
         self.tracker = CombatTracker(self.loader.load(self.encounter_dir))
         self.all_conditions = self.loader.load_conditions()
+        self.surges = self.loader.load_surges()
         self.turn_order = []
         self.current_character = None
         self.turn_index = 0
@@ -108,6 +115,7 @@ class CombatWindow(QMainWindow):
             self.turn_index += 1
 
         if self.turn_index >= len(self.turn_order):
+            self.process_infused_objects_round_end()
             self.tracker.state.round_number += 1
             self.begin_round()
             return
@@ -124,6 +132,68 @@ class CombatWindow(QMainWindow):
 
         character.excluded_from_combat = not character.excluded_from_combat
         self.view.refresh()
+
+    def open_add_infused_object(self):
+        dialog = AddInfusedObjectDialog(self.surges, self)
+        if dialog.exec() != QDialog.Accepted:
+            return
+
+        name = dialog.object_name()
+        if not name:
+            return
+
+        self.tracker.state.infused_objects.append(
+            InfusedObject(
+                name=name,
+                surge=dialog.object_surge(),
+                investiture=dialog.object_investiture(),
+                created_round=self.tracker.state.round_number,
+            )
+        )
+        self.view.refresh()
+
+    def open_infuse_object(self, infused_object):
+        dialog = InfuseInvestitureDialog(infused_object, self)
+        if dialog.exec() != QDialog.Accepted:
+            return
+
+        infused_object.investiture += dialog.amount()
+        if infused_object.investiture > 0:
+            infused_object.zero_at_round = None
+        self.view.refresh()
+
+    def recall_infused_object(self, infused_object):
+        if infused_object in self.tracker.state.infused_objects:
+            self.tracker.state.infused_objects.remove(infused_object)
+        self.view.refresh()
+
+    def process_infused_objects_round_end(self):
+        state = self.tracker.state
+        ending_round = state.round_number
+
+        state.infused_objects = [
+            infused_object
+            for infused_object in state.infused_objects
+            if infused_object.zero_at_round is None
+            or ending_round <= infused_object.zero_at_round
+        ]
+
+        for infused_object in state.infused_objects:
+            if (
+                ending_round >= infused_object.created_round + 1
+                and infused_object.investiture > 0
+            ):
+                infused_object.investiture -= 1
+                if infused_object.investiture == 0:
+                    infused_object.zero_at_round = ending_round
+
+        depleted = [
+            infused_object
+            for infused_object in state.infused_objects
+            if infused_object.investiture <= 0
+        ]
+        if depleted:
+            InfusedObjectsReminderDialog(depleted, self).exec()
 
     def show_condition_reminder(self, character):
         if not character.conditions:
