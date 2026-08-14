@@ -1,0 +1,7 @@
+{
+    "name": "Hallway",
+
+    "npcs": {
+        "Bandit": 4
+    }
+}

@@ -1,0 +1,82 @@
+{
+  "name": "Loyalist Bandit",
+  "health": {
+    "current": 6,
+    "max": 11
+  },
+  "focus": {
+    "current": 2,
+    "max": 2
+  },
+  "investiture": {
+    "current": 0,
+    "max": 0
+  },
+  "strength": 1,
+  "speed": 1,
+  "physical defense": 12,
+  "intelligence": 1,
+  "willpower": 0,
+  "cognitive defense": 11,
+  "awareness": 2,
+  "presence": 1,
+  "spiritual defense": 13,
+  "movement": 25,
+  "immunities": "",
+  "deflect": 1,
+  "features": {
+    "Minion": "Attacks can't crit, and they're defeated once they suffer an injury.",
+    "Momentum": "If moving 10ft. in a straight line toward target and uses the mace, gain advantage."
+  },
+  "Actions": {
+    "Strike Mace": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Attack": "+2",
+      "Range": "5ft.",
+      "AOE": "One target",
+      "Graze": "3 impact damage",
+      "Hit": "5 impact damage",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": ""
+    },
+    "Strike Shortbow": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Attack": "+2",
+      "Range": "80/320ft.",
+      "AOE": "One target",
+      "Graze": "3 keen damage",
+      "Hit": "5 keen damage",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": ""
+    },
+    "Trip": {
+      "Action cost": "1",
+      "Focus cost": "1",
+      "Attack": "",
+      "Range": "5ft.",
+      "AOE": "",
+      "Graze": "",
+      "Hit": "",
+      "Duration": "",
+      "Saving Throw": "Athletics Vs Athletics/Agility",
+      "Description": "Knock prone."
+    }
+  },
+  "physical_skills": {
+    "Agility": 3,
+    "Athletics": 3,
+    "Light Weaponry": 2
+  },
+  "cognitive_skills": {
+    "Discipline": 1,
+    "Intimidation": 3
+  },
+  "spiritual_skills": {
+    "Perception": 3,
+    "Survival": 3
+  }
+}

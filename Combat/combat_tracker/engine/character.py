@@ -62,6 +62,8 @@ class Character:
 
     defeated: bool = False
 
+    excluded_from_combat: bool = False
+
     def start_turn(self):
 
         self.actions_remaining = 2 if self.turn_type == "fast" else 3

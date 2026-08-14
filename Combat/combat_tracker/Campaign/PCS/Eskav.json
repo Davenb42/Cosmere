@@ -43,7 +43,7 @@
     },
     "Enhance": {
       "Action Cost": "1",
-      "Description": "Gasta 1 punto de focus para ganar Fuerza +1 y Velocidad +1, gasta un ▷ y 1 Investidura al final de cada turno para mantener esta condición."
+      "Description": "Gasta 1 punto de Investidura para ganar Fuerza +1 y Velocidad +1, gasta un ▷ y 1 Investidura al final de cada turno para mantener esta condición."
     },
     "Regenerar": {
       "Action Cost": "Free",

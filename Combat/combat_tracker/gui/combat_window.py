@@ -101,6 +101,12 @@ class CombatWindow(QMainWindow):
             self.view.refresh()
             return
 
+        while (
+            self.turn_index < len(self.turn_order)
+            and self.turn_order[self.turn_index].excluded_from_combat
+        ):
+            self.turn_index += 1
+
         if self.turn_index >= len(self.turn_order):
             self.tracker.state.round_number += 1
             self.begin_round()
@@ -111,6 +117,13 @@ class CombatWindow(QMainWindow):
         self.current_character.start_turn()
         self.view.refresh()
         self.show_condition_reminder(self.current_character)
+
+    def toggle_active(self, character):
+        if character is None:
+            return
+
+        character.excluded_from_combat = not character.excluded_from_combat
+        self.view.refresh()
 
     def show_condition_reminder(self, character):
         if not character.conditions:

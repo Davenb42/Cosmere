@@ -47,7 +47,7 @@
     },
     "Enhance": {
       "Action Cost": "1",
-      "Description": "Spend 1 focus point to gain Strength +1 and Speed +1, spend a ▷ and 1 Investiture at the end of each turn to maintain this condition."
+      "Description": "Spend 1 Investiture point to gain Strength +1 and Speed +1, spend a ▷ and 1 Investiture at the end of each turn to maintain this condition."
     },
     "Regenerate": {
       "Action Cost": "Free",

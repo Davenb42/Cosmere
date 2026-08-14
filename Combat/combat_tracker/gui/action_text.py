@@ -70,6 +70,7 @@ def format_action_lines(action_name, action_data):
     duration = get_action_value(action_data, "duration")
     description = get_action_value(action_data, "description")
     focus_cost = get_action_value(action_data, "focus cost")
+    investiture_cost = get_action_value(action_data, "investiture cost")
 
     summary = []
     if not is_blank(aoe):
@@ -111,6 +112,11 @@ def format_action_lines(action_name, action_data):
         focus_text = str(focus_cost).strip()
         if focus_text not in {"0", "0.0"}:
             lines.append(f"Focus Cost: {focus_text}")
+
+    if not is_blank(investiture_cost):
+        investiture_text = str(investiture_cost).strip()
+        if investiture_text not in {"0", "0.0"}:
+            lines.append(f"Investiture Cost: {investiture_text}")
 
     if not is_blank(description):
         lines.append(str(description).strip())

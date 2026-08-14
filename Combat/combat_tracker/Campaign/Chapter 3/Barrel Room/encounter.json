@@ -1,0 +1,10 @@
+{
+    "name": "Bandits on Alert",
+
+    "npcs": {
+        "LoyalistBandit": 4,
+        "Axies": 1,
+        "Tuxli": 1,
+        "Commoner": 5
+    }
+}

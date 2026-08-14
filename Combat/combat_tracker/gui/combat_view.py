@@ -238,21 +238,28 @@ class CombatView(QWidget):
         row = QFrame()
         row.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
         row.setMinimumHeight(52)
+        excluded = character.excluded_from_combat
         row.setStyleSheet(
-            "QFrame { background: #1f2a35; border: 1px solid #46586a; border-radius: 8px; }"
+            "QFrame { background: #14181d; border: 1px solid #333a42; border-radius: 8px; }"
+            if excluded
+            else "QFrame { background: #1f2a35; border: 1px solid #46586a; border-radius: 8px; }"
         )
         h = QHBoxLayout(row)
         h.setContentsMargins(10, 8, 10, 8)
         h.setSpacing(10)
 
+        toggle_active = QPushButton("+" if excluded else "x")
+        toggle_active.setFixedWidth(28)
+        toggle_active.setToolTip("Add back to combat" if excluded else "Remove from combat")
+        toggle_active.clicked.connect(
+            lambda _, target=character: self.combat_window.toggle_active(target)
+        )
+        h.addWidget(toggle_active)
+
         label = QLabel(f"{character.display_name}")
         label.setStyleSheet("font-weight: 600;")
         h.addWidget(label)
-
-        deflect_label = QLabel(f"Deflect {character.defenses.deflect}")
-        deflect_label.setStyleSheet("color: #d5effd; font-weight: 600;")
-        h.addWidget(deflect_label)
-
+        
         spend_reaction = QPushButton("Spend Reaction")
         spend_reaction.setEnabled(character.reaction_available)
         if not character.reaction_available:
@@ -272,6 +279,12 @@ class CombatView(QWidget):
         )
         h.addWidget(add_condition)
 
+        deflect_label = QLabel(f"Deflect {character.defenses.deflect}")
+        deflect_label.setStyleSheet("color: #d5effd; font-weight: 600;")
+        h.addWidget(deflect_label)
+
+        other_widgets = [label, spend_reaction, view_sheet, add_condition, deflect_label]
+
         for key in ("health", "focus", "investiture"):
             resource = getattr(character, key)
             spin = NoWheelSpinBox()
@@ -280,6 +293,13 @@ class CombatView(QWidget):
             spin.valueChanged.connect(lambda value, res=resource: res.set(value))
             spin.setToolTip(key.title())
             h.addWidget(spin)
+            other_widgets.append(spin)
+
+        if excluded:
+            for widget in other_widgets:
+                widget.setEnabled(False)
+            if not character.reaction_available:
+                spend_reaction.setText("Reaction Spent")
 
         return row
 
