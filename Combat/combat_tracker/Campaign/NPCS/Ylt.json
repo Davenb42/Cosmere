@@ -1,0 +1,154 @@
+{
+  "name": "Ylt",
+  "health": {
+    "current": 80,
+    "max": 80
+  },
+  "focus": {
+    "current": 5,
+    "max": 5
+  },
+  "investiture": {
+    "current": 6,
+    "max": 6
+  },
+  "strength": 2,
+  "speed": 3,
+  "physical defense": 15,
+  "intelligence": 3,
+  "willpower": 3,
+  "cognitive defense": 16,
+  "awareness": 3,
+  "presence": 4,
+  "spiritual defense": 17,
+  "movement": 30,
+  "immunities": "",
+  "deflect": 0,
+  "features": {
+    "Boss": "Ylt can take both a fast turn and a slow turn each round. After an enemy finishes a turn, Ylt can spend 1 focus to immediately use an extra action or free action. Additionally, he can spend 1 focus on his turn to remove a condition from himself",
+    "Flowing Earth": "After Ylt uses the Cohesion surge, he can immediately use Vaulting Stone on himself (no action or Investiture required), but it doesn’t grant an advantage on his next attack.",
+    "Taln’s Honorblade": "Ylt is bonded to the Honorblade of the Herald Taln. If he loses the weapon, he can summon it as an action, and it reappears in his hand at the start of his next fast turn. While not wielding it, he can’t use the Cohesion and Tension surges (including Vaulting Stone, Stone Spear, and Tension Parry)."
+  },
+  "Actions": {
+    "Strike: Honorblade": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Investiture cost": "",
+      "Attack": "+5",
+      "Range": "5ft.",
+      "AOE": "One target",
+      "Graze": "11 spiritual damage",
+      "Hit": "16 spiritual damage",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": ""
+    },
+    "Stone Spear": {
+      "Action cost": "2",
+      "Focus cost": "0",
+      "Investiture cost": "1",
+      "Attack": "+6",
+      "Range": "60ft.",
+      "AOE": "One target",
+      "Graze": "9 impact damage",
+      "Hit": "15 impact damage",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": "Ylt can spend an Opportunity to knock the target Prone"
+    },
+    "Illusory Flourish": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Investiture cost": "1",
+      "Attack": "",
+      "Range": "",
+      "AOE": "One target he has hit with a melee attack on his last turn",
+      "Graze": "",
+      "Hit": "",
+      "Duration": "",
+      "Saving Throw": " Illumination test against their Spiritual defense. On a success, the target is Disoriented.",
+      "Description": ""
+    },
+    "Odious Vision": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Investiture cost": "1",
+      "Attack": "",
+      "Range": "",
+      "AOE": "",
+      "Graze": "",
+      "Hit": "",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": "Ylt surrounds himself with a vision in which he glows with golden Illumination. Regain 1d4 focus."
+    },
+    "Vaulting Stone": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Investiture cost": "1",
+      "Attack": "",
+      "Range": "15ft.",
+      "AOE": "Self or willing character",
+      "Graze": "",
+      "Hit": "",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": "Ylt uses Cohesion to create a pillar of stone that propels him or a willing character within 15 feet of him into the air. That character lands in a space up to 15 feet away without triggering Reactive Strikes, and if their next action on this turn is a melee attack, that attack gains an advantage."
+    },
+    "Regrowth": {
+      "Action cost": "2",
+      "Focus cost": "0",
+      "Investiture cost": "1",
+      "Attack": "",
+      "Range": "Touch",
+      "AOE": "Self or willing character",
+      "Graze": "",
+      "Hit": "",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": "Ylt restores 1d6 + 5 health."
+    },
+    "Regenerate": {
+      "Action cost": "Free",
+      "Focus cost": "0",
+      "Investiture cost": "1",
+      "Attack": "",
+      "Range": "",
+      "AOE": "Self",
+      "Graze": "",
+      "Hit": "",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": "Ylt recovers 4 health. He can use this free action even while Unconscious or otherwise prevented from using actions."
+    },
+    "Tension Parry": {
+      "Action cost": "Reaction",
+      "Focus cost": "0",
+      "Investiture cost": "1",
+      "Attack": "",
+      "Range": "",
+      "AOE": "Self",
+      "Graze": "",
+      "Hit": "",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": "Before Ylt is hit or grazed by an attack against Physical defense, he can infuse Tension into his clothing to increase his Physical defense by 2 until the start of his next turn, including against the triggering attack. If the attack hit, this increase can change it into a miss, and if the attack grazed, he ignores its effects."
+    }
+  },
+  "physical_skills": { 
+    "Light Weaponry": 5,
+    "Tension": 5
+  },
+  "cognitive_skills": {
+    "Deduction": 6,
+    "Discipline": 6,
+    "Cohesion": 6
+  },
+  "spiritual_skills": {
+    "Insight": 5,
+    "Leadership": 6,
+    "Perception": 5,
+    "Illumination": 6,
+    "Progression": 5
+  }
+}

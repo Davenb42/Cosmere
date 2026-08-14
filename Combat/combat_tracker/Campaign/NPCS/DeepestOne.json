@@ -1,0 +1,126 @@
+{
+  "name": "Deepest One",
+  "health": {
+    "current": 45,
+    "max": 45
+  },
+  "focus": {
+    "current": 8,
+    "max": 8
+  },
+  "investiture": {
+    "current": 6,
+    "max": 6
+  },
+  "strength": 3,
+  "speed": 5,
+  "physical defense": 18,
+  "intelligence": 1,
+  "willpower": 6,
+  "cognitive defense": 17,
+  "awareness": 4,
+  "presence": 2,
+  "spiritual defense": 16,
+  "movement": 40,
+  "immunities": "",
+  "deflect": 0,
+  "features": {
+    "Pure Tones": "The Deepest One ignores the Disoriented condition while standing on or submerged in solid stone.",
+    "Swim Through Stone": "The Deepest One can move through solid surfaces as if moving along the ground, ignoring difficult terrain. While fully submerged, the Deepest One must spend 1 focus each time they use an action other than the Move action or their Regenerate free action. The Deepest One can’t use this feature on surfaces made of wood.",
+    "Merging Form": "Before the Deepest One takes impact or keen damage from a non-wooden source, they can spend 1 focus to increase their deflect value to 6 against that damage (no action required)."
+  },
+  "Actions": {
+    "Strike: Carapace Nails": {
+      "Action cost": "1",
+      "Focus cost": "",
+      "Investiture cost": "",
+      "Attack": "+8",
+      "Range": "5ft.",
+      "AOE": "One target",
+      "Graze": "7 keen damage",
+      "Hit": "15 keen damage",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": ""
+    },
+    "Strike: Trip Attack": {
+      "Action cost": "1",
+      "Focus cost": "",
+      "Investiture cost": "",
+      "Attack": "+8",
+      "Range": "5ft.",
+      "AOE": "One target",
+      "Graze": "3 impact damage",
+      "Hit": "11 impact damage",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": "Deepest One can knock the target Prone"
+    },
+    "Grasping Hands": {
+      "Action cost": "2",
+      "Focus cost": "0",
+      "Investiture cost": "0",
+      "Attack": "",
+      "Range": "5ft.",
+      "AOE": "",
+      "Graze": "",
+      "Hit": "",
+      "Duration": "",
+      "Saving Throw": "DC 17 Agility test or become Restrained.",
+      "Description": "If the Restrained target is also Prone, they begin suffocating and are Afflicted [2d10 vital]. The Restrained character can use 2 actions to make a DC 17 Agility test, removing the Restrained condition on a success. If the Deepest One takes at least 20 damage on a single turn, the target escapes and is no longer Restrained."
+    },
+    "Surge of Cohesion": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Investiture cost": "1",
+      "Attack": "",
+      "Range": "30ft.",
+      "AOE": "10ft. stone area",
+      "Graze": "",
+      "Hit": "",
+      "Duration": "",
+      "Saving Throw": "DC 15 Agility or Athletics test to avoid conditions.",
+      "Description": "The chosen object or area changes shape in a manner they choose, though not violently enough to cause damage."
+    },
+    "Regenerate": {
+      "Action cost": "Free",
+      "Focus cost": "0",
+      "Investiture cost": "1",
+      "Attack": "",
+      "Range": "",
+      "AOE": "",
+      "Graze": "",
+      "Hit": "",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": "The Deepest One recovers 5 (1d6 + 2) health. They can use this free action even while Unconscious or otherwise prevented from using actions."
+    }, 
+    "Entrap": {
+      "Action cost": "Reaction",
+      "Focus cost": "",
+      "Investiture cost": "",
+      "Attack": "",
+      "Range": "",
+      "AOE": "One target",
+      "Graze": "",
+      "Hit": "",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": "When an enemy triggers a Reactive Strike from the Deepest One while the Deepest One is submerged, the Deepest One can instead use their Grasping Hands as a Reaction, spending focus as if they made a Reactive Strike."
+    }
+  },
+  "physical_skills": {
+    "Agility": "7",
+    "Light Weaponry": "8",
+    "Stealth": "7"
+  },
+  "cognitive_skills": { 
+    "Discipline": "9",
+    "Cohesion": "9"
+  },
+  "spiritual_skills": {
+    "Insight": "6",
+    "Perception": "7",
+    "Survival": "6"
+  }
+}

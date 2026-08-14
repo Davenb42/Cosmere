@@ -1,0 +1,11 @@
+{
+    "name": "Battle of the Hall",
+
+    "npcs": {
+        "Ylt": 1,
+        "Kaiana": 1,
+        "Archer": 2,
+        "Zealot": 6,
+        "Spearmaster": 1
+    }
+}

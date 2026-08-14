@@ -1,0 +1,79 @@
+{
+  "name": "Greater Skyeel",
+  "health": {
+    "current": 24,
+    "max": 24
+  },
+  "focus": {
+    "current": 3,
+    "max": 3
+  },
+  "investiture": {
+    "current": 0,
+    "max": 0
+  },
+  "strength": 3,
+  "speed": 3,
+  "physical defense": 16,
+  "intelligence": 0,
+  "willpower": 1,
+  "cognitive defense": 11,
+  "awareness": 3,
+  "presence": 0,
+  "spiritual defense": 13,
+  "movement": 10,
+  "immunities": "",
+  "deflect": 0,
+  "features": {
+    "Enhanced Senses": "Advantage on non-attack tests that rely on sight.",
+    "Slippery": "Doesn't trigger reactive strikes while swimming."
+  },
+  "Actions": {
+    "Bite": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Attack": "+5",
+      "Range": "5ft.",
+      "AOE": "One target",
+      "Graze": "3 keen damage",
+      "Hit": "9 keen damage",
+      "Duration": "",
+      "Saving Throw": "DC 14 Athletics to release the skyeel",
+      "Description": "Spend 1 focus to restrain target, can only bite this target."
+    },
+    "Dive Bomb": {
+      "Action cost": "2",
+      "Focus cost": "0",
+      "Attack": "",
+      "Range": "60ft.",
+      "AOE": "",
+      "Graze": "",
+      "Hit": "",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": "Use bite on target, gain advantage, can't fly again until end of scene."
+    },
+    "Constrict": {
+      "Action cost": "3",
+      "Focus cost": "0",
+      "Attack": "",
+      "Range": "",
+      "AOE": "Restrained target",
+      "Graze": "",
+      "Hit": "15 impact damage",
+      "Duration": "",
+      "Saving Throw": "",
+      "Description": "The greater skyeel squeezes an enemy they have Restrained."
+    }
+  },
+  "physical_skills": {
+    "Agility": 5,
+    "Athletics": 3,
+    "Stealth": 4
+  },
+  "cognitive_skills": {},
+  "spiritual_skills": {
+    "Perception": 5,
+    "Survival": 4
+  }
+}
