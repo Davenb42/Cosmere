@@ -1,0 +1,12 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run Combat Tracker",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "gui.app",
+            "cwd": "${workspaceFolder}/Combat"
+        }
+    ]
+}
