@@ -1,4 +1,5 @@
 import json
+import random
 from pathlib import Path
 
 from combat_tracker.engine.character import Character
@@ -129,10 +130,11 @@ class EncounterLoader:
             presence=data.get("presence", 0),
 
             movement=data["movement"],
+            senses=data.get("senses", ""),
 
-            health=Resource(**data["health"]),
-            focus=Resource(**data["focus"]),
-            investiture=Resource(**data["investiture"]),
+            health=self._load_health(data["health"]),
+            focus=Resource(data["focus"]),
+            investiture=Resource(data["investiture"]),
 
             defenses=Defenses(
                 physical=defenses["physical"],
@@ -143,8 +145,15 @@ class EncounterLoader:
             skills=skills,
 
             talents=talents,
-            actions=actions
+            actions=actions,
+            tactics=data.get("Tactics", data.get("tactics", ""))
         )
+
+    @staticmethod
+    def _load_health(value):
+        if isinstance(value, dict):
+            return Resource(random.randint(value["min"], value["max"]))
+        return Resource(value)
 
     def assign_ids(self, combatants):
 

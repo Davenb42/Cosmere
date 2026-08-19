@@ -1,0 +1,81 @@
+{
+  "name": "Lilinum",
+  "health": {
+    "min": 34,
+    "max": 48
+  },
+  "focus": 5,
+  "investiture": 6,
+  "strength": 2,
+  "speed": 4,
+  "physical defense": 16,
+  "intelligence": 6,
+  "willpower": 3,
+  "cognitive defense": 19,
+  "awareness": 4,
+  "presence": 1,
+  "spiritual defense": 15,
+  "deflect": 2,
+  "movement": "30 ft.",
+  "senses": "20 ft. (sight)",
+  "immunities": "",
+  "physical_skills": {
+    "Agility": "+7", 
+    "Athletics": "+5", 
+    "Light Weaponry": "+7"
+  },
+  "cognitive_skills": {
+    "Discipline": "+7",
+    "Intimidation": "+7",
+    "Division": "+9"
+  },
+  "spiritual_skills": {
+    "Perception": "+6",
+    "Survival": "+6"
+  },
+  "features": {
+    "Instinctive Aggression": "It costs Lilinum no focus to use the Reactive Strike reaction.",
+    "Shroud of Dust": "When an enemy makes a ranged attack or other test against Lilinum from at least 25 feet away, if that test relies on sight or smell, it gains a disadvantage."
+  },
+  "Actions": {
+    "Strike: Claws": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Investiture cost": "0",
+      "Description": "Attack +7, reach 5 ft., one target. Graze: 2 (1d4) keen damage and 3 (1d6) spirit damage. Hit: 9 (1d4 + 7) keen damage and 3 (1d6) spirit damage."
+    },
+    "Strike: Shardblade": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Investiture cost": "0",
+      "Description": "Attack +7, reach 5 ft., one target. Graze: 8 (2d8) spirit damage. Hit: 15 (2d8 + 7) spirit damage."
+    },
+    "Devastating Touch": {
+      "Action cost": "2",
+      "Focus cost": "0",
+      "Investiture cost": "0",
+      "Description": "Attack +9, reach 5 ft., one target. Graze: 10 (3d6) spirit damage. Hit: 19 (3d6 + 9) spirit damage."
+    },
+    "Surge of Division": {
+      "Action cost": "2",
+      "Focus cost": "0",
+      "Investiture cost": "2",
+      "Description": "Lilinum chooses a Large (10-foot) object within 30 feet of her that isn’t being worn or held, or a portion of such an object, destroying it in a manner of her choosing. Depending on the nature of the destruction, this can cause an effect such as obscuring the area with dust, opening a passage in a wall, triggering a rockslide that deals damage or applies the Restrained condition, or electrifying the area with a blast of light and heat that applies the Disoriented condition. Each character potentially affected by that destruction must make a DC 15 Agility or Athletics test. On a failure, a character takes 13 (3d8) damage of an appropriate type, or they otherwise suffer an effect that fits the destruction. On a success, a character takes no damage and suffers no other effect."
+    },
+    "Regenerate": {
+      "Action cost": "Free",
+      "Focus cost": "0",
+      "Investiture cost": "1",
+      "Description": "Lilinum recovers 5 (1d6+2) health. She can use this free action even while Unconscious or otherwise prevented from using actions."
+    },
+    "Demolish Weapon": {
+      "Action cost": "Reaction",
+      "Focus cost": "0",
+      "Investiture cost": "0",
+      "Description": "After Lilinum is hit or grazed by a non-Invested weapon, she can turn that weapon to dust."
+    }
+  },
+  "Tactics": "Lilinum fights with a playful recklessness, engaging foes for maximum destruction and chaos with little heed for her safety or that of her allies. She favors her Shardblade in combat, then follows it with her Devastating Touch or Claws. If a group of characters is within a structure, she uses her Surge of Division to collapse it on them.",
+  "Opportunity": "An enemy can spend an Opportunity to disable Lilinum’s Shroud of Dust feature and prevent her from using her Surge of Division and Regenerate actions until the end of Lilinum’s next turn.",
+  "Complication": "The GM can spend a Complication from an enemy’s test to have Lilinum use either her Claws or Shardblade action as ↩. When she does, she gains an advantage on that attack test."
+}

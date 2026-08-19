@@ -1,17 +1,11 @@
 {
   "name": "Nimbleform",
   "health": {
-    "current": 20,
-    "max": 20
+    "min": 15,
+    "max": 25
   },
-  "focus": {
-    "current": 4,
-    "max": 4
-  },
-  "investiture": {
-    "current": 0,
-    "max": 0
-  },
+  "focus": 4,
+  "investiture": 0,
   "strength": 1,
   "speed": 3,
   "physical defense": 14,
@@ -21,63 +15,47 @@
   "awareness": 3,
   "presence": 2,
   "spiritual defense": 15,
-  "movement": 30,
-  "immunities": "",
   "deflect": 0,
+  "movement": "30 ft.",
+  "senses": "20 ft. (sight)",
+  "immunities": "",
+  "physical_skills": {
+    "Agility": "+5",
+    "Light Weaponry": "+5",
+    "Stealth": "+4"
+  },
+  "cognitive_skills": {
+    "Crafting": "+4",
+    "Deduction": "+5",
+    "Lore": "+4"
+  },
+  "spiritual_skills": {
+    "Perception": "+5",
+    "Survival": "+5"
+  },
   "features": {
-    "Deadly Speed": "At the start of each scene, if they aren't surprised, take a fast turn before any other character, which doesn't count as their turn.",
-    "Keen Senses": "They can spend 1 focus to gain advantage on a Perception test, no action cost."
+    "Deadly Speed": "At the start of each scene, if the nimbleform singer isn’t Surprised, they can take a fast turn before any other characters (this doesn’t count as their turn this round).",
+    "Keen Senses": "The nimbleform singer can spend 1 focus to gain an advantage on a Perception test (no action required)."
   },
   "Actions": {
     "Strike Mace": {
       "Action cost": "1",
       "Focus cost": "0",
-      "Attack": "+5",
-      "Range": "5ft.",
-      "AOE": "One target",
-      "Graze": "3 impact damage",
-      "Hit": "8 impact damage",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": ""
+      "Investiture cost": "0",
+      "Description": "Attack +5, reach 5 ft., one target. Graze: 3 (1d6) impact damage. Hit: 8 (1d6 + 5) impact damage."
     },
     "Strike Shortbow": {
       "Action cost": "1",
       "Focus cost": "0",
-      "Attack": "+5",
-      "Range": "80/320ft.",
-      "AOE": "One target",
-      "Graze": "3 keen damage",
-      "Hit": "8 keen damage",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": ""
+      "Investiture cost": "0",
+      "Description": "Attack +5, range 80/320 ft., one target. Graze: 3 (1d6) keen damage. Hit: 8 (1d6 + 5) keen damage."
     },
     "Chosen Target": {
       "Action cost": "2",
       "Focus cost": "2",
-      "Attack": "",
-      "Range": "120ft.",
-      "AOE": "One target",
-      "Graze": "",
-      "Hit": "",
-      "Duration": "1 hour",
-      "Saving Throw": "",
-      "Description": "Extra 3 damage on target, gain advantage on survival tests against enemy."
+      "Investiture cost": "0",
+      "Description": "The nimbleform singer chooses an enemy they can sense within 120 feet of them. For 1 hour, when the nimbleform hits their chosen enemy with a weapon attack, they deal an extra 3 (1d6) damage. In addition, the nimbleform singer gains an advantage on Survival tests to track that enemy."
     }
   },
-  "physical_skills": {
-    "Agility": 5,
-    "Light Weaponry": 5,
-    "Stealth": 4
-  },
-  "cognitive_skills": {
-    "Crafting": 4,
-    "Deduction": 5,
-    "Lore": 4
-  },
-  "spiritual_skills": {
-    "Perception": 5,
-    "Survival": 5
-  }
+  "Tactics": "While nimbleform singers rarely fight, they’re experts at tracking creatures and surveying an area, and they can easily exploit an enemy’s weakness using their Chosen Target action."
 }

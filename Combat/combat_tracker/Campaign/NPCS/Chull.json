@@ -1,17 +1,11 @@
 {
   "name": "Chull",
   "health": {
-    "current": 30,
-    "max": 30
+    "min": 23,
+    "max": 37
   },
-  "focus": {
-    "current": 3,
-    "max": 3
-  },
-  "investiture": {
-    "current": 0,
-    "max": 0
-  },
+  "focus": 3,
+  "investiture": 0,
   "strength": 4,
   "speed": 0,
   "physical defense": 14,
@@ -21,44 +15,34 @@
   "awareness": 3,
   "presence": 0,
   "spiritual defense": 13,
-  "movement": 10,
-  "immunities": "",
   "deflect": 2,
+  "movement": "10 ft.",
+  "senses": "20 ft. (sight)",
+  "immunities": "",
+  "physical_skills": {
+    "Athletics": "+6"
+  },
+  "cognitive_skills": {},
+  "spiritual_skills": {
+    "Perception": "+5"
+  },
   "features": {
-    "Beast of Burden": "Carrying capacity of 1500 lbs.",
-    "Plodding Pace": "Move action once per turn."
+    "Beast of Burden": "The chull’s carrying capacity is 1,500 lbs",
+    "Plodding Pace": "The chull can only use the Move action once per turn."
   },
   "Actions": {
-    "Strike Pincer": {
+    "Strike: Pincer": {
       "Action cost": "1",
       "Focus cost": "0",
-      "Attack": "+6",
-      "Range": "10ft.",
-      "AOE": "One target",
-      "Graze": "3 keen damage",
-      "Hit": "9 keen damage",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": ""
+      "Investiture cost": "0",
+      "Description": "Attack +6, reach 10 ft., one target. Graze: 3 (1d6) keen damage. Hit: 9 (1d6 + 6) keen damage."
     },
     "Defense Curl": {
       "Action cost": "2",
       "Focus cost": "0",
-      "Attack": "",
-      "Range": "",
-      "AOE": "",
-      "Graze": "",
-      "Hit": "",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": "Deflect value increases by 6 and can use the Brace action, spend 1 focus to mantain next round."
+      "Investiture cost": "0",
+      "Description": "The chull retracts their head and legs to defend themself until the start of their next turn. While retracted, the chull’s deflect value increases to 6 and they can use the Brace action as if they were in cover. At the start of each of their turns, the chull can spend 1 focus to maintain this effect for an additional round."
     }
   },
-  "physical_skills": {
-    "Athletics": 6
-  },
-  "cognitive_skills": {},
-  "spiritual_skills": {
-    "Perception": 5
-  }
+  "Tactics": "Immensely docile, a chull almost always retreats into their shell with their Defense Curl during combat. However, once pushed to the brink, they use their large claws to defend themselves; a pinch from a chull hurts."
 }

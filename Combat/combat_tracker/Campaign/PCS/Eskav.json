@@ -1,17 +1,8 @@
 {
   "name": "Eskav",
-  "health": {
-    "current": 18,
-    "max": 18
-  },
-  "focus": {
-    "current": 3,
-    "max": 3
-  },
-  "investiture": {
-    "current": 4,
-    "max": 4
-  },
+  "health": 18,
+  "focus": 3,
+  "investiture": 4,
   "strength": 3,
   "speed": 2,
   "physical defense": 16,
@@ -21,9 +12,21 @@
   "awareness": 2,
   "presence": 2,
   "spiritual defense": 15,
-  "movement": 25,
-  "recovery die": "1d6",
   "deflect": 1,
+  "movement": "25 ft.",
+  "senses": "10 ft. (Sight)",
+  "recovery die": "1d6",
+  "physical_skills": {
+    "Agility": "+3",
+    "Athletics": "+4",
+    "Light Weaponry": "+3",
+    "Stealth": "+3"
+  },
+  "cognitive_skills": {},
+  "spiritual_skills": {
+    "Perception": "+4",
+    "Survival": "+3"
+  },
   "Talents": {
     "Buscar Presa": {
       "Action Cost": "Special",
@@ -55,45 +58,23 @@
     }
   },
   "Actions": {
-    "Strike Rapier": {
+    "Strike: Rapier": {
       "Action cost": "1",
       "Focus cost": "0",
-      "Attack": "+3",
-      "Range": "5ft.",
-      "Damage": "1d6(+3) keen damage",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": "Desenfunde rápido"
+      "Investiture cost": "0",
+      "Description": "Attack +3, reach 5 ft., one target. Graze: 1d6 keen damage. Hit: 1d6 + 3 impact damage. Desenfunde rápido: Para desenfundar esta arma puedes usar un ▷."
     },
-    "Strike Shortbow": {
+    "Strike: Shortbow": {
       "Action cost": "1",
       "Focus cost": "0",
-      "Attack": "+3",
-      "Range": "80/320ft.",
-      "Damage": "1d6(+3) keen damage",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": "Con Dos Manos"
+      "Investiture cost": "0",
+      "Description": "Attack +3, reach 5 ft., one target. Graze: 1d6 keen damage. Hit: 1d6 + 3 impact damage. Con Dos Manos: Debes empuñar esta arma con ambas manos. Desenfunde rápido (Expertise): Para desenfundar esta arma puedes usar un ▷."
     },
-    "Strike Knife": {
+    "Strike: Knife": {
       "Action cost": "1",
       "Focus cost": "0",
-      "Attack": "+3",
-      "Range": "5ft.",
-      "Damage": "1d4(+3) keen damage",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": "Discreet"
+      "Investiture cost": "0",
+      "Description": "Attack +3, reach 5 ft., one target. Graze: 1d4 keen damage. Hit: 1d4 + 3 impact damage. Discreto: Obtienes ventaja en cualquier tirada para evitar que te quiten esta arma."
     }
-  },
-  "physical_skills": {
-    "Agility": 3,
-    "Athletics": 4,
-    "Light Weaponry": 3
-  },
-  "cognitive_skills": {},
-  "spiritual_skills": {
-    "Perception": 2,
-    "Survival": 3
   }
 }

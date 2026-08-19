@@ -1,17 +1,11 @@
 {
   "name": "Bandit",
   "health": {
-    "current": 11,
-    "max": 11
+    "min": 8,
+    "max": 14
   },
-  "focus": {
-    "current": 2,
-    "max": 2
-  },
-  "investiture": {
-    "current": 0,
-    "max": 0
-  },
+  "focus": 2,
+  "investiture": 0,
   "strength": 1,
   "speed": 1,
   "physical defense": 12,
@@ -21,62 +15,46 @@
   "awareness": 2,
   "presence": 1,
   "spiritual defense": 13,
-  "movement": 25,
-  "immunities": "",
   "deflect": 1,
+  "movement": "25 ft.",
+  "senses": "10 ft. (sight)",
+  "immunities": "",
+  "physical_skills": {
+    "Agility": "+3",
+    "Athletics": "+3",
+    "Light Weaponry": "+2"
+  },
+  "cognitive_skills": {
+    "Discipline": "+1",
+    "Intimidation": "+3"
+  },
+  "spiritual_skills": {
+    "Perception": "+3",
+    "Survival": "+3"
+  },
   "features": {
-    "Minion": "Attacks can't crit, and they're defeated once they suffer an injury.",
-    "Momentum": "If moving 10ft. in a straight line toward target and uses the mace, gain advantage."
+    "Minion": "The bandit’s attacks can’t critically hit, and they’re immediately defeated when they suffer an injury.",
+    "Momentum": "If the bandit moves at least 10 feet in a straight line toward a target then makes a Mace attack against them on that turn, the bandit gains an advantage on that attack."
   },
   "Actions": {
-    "Strike Mace": {
+    "Strike: Mace": {
       "Action cost": "1",
       "Focus cost": "0",
-      "Attack": "+2",
-      "Range": "5ft.",
-      "AOE": "One target",
-      "Graze": "3 impact damage",
-      "Hit": "5 impact damage",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": ""
+      "Investiture cost": "0",
+      "Description": "Attack +2, reach 5 ft., one target. Graze: 3 (1d6) impact damage. Hit: 5 (1d6 + 2) impact damage."
     },
-    "Strike Shortbow": {
+    "Strike: Shortbow": {
       "Action cost": "1",
       "Focus cost": "0",
-      "Attack": "+2",
-      "Range": "80/320ft.",
-      "AOE": "One target",
-      "Graze": "3 keen damage",
-      "Hit": "5 keen damage",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": ""
+      "Investiture cost": "0",
+      "Description": "Attack +2, range 80/320 ft., one target. Graze: 3 (1d6) keen damage. Hit: 5 (1d6 + 2) keen damage."
     },
     "Trip": {
       "Action cost": "1",
       "Focus cost": "1",
-      "Attack": "",
-      "Range": "5ft.",
-      "AOE": "",
-      "Graze": "",
-      "Hit": "",
-      "Duration": "",
-      "Saving Throw": "Athletics Vs Athletics/Agility",
-      "Description": "Knock prone."
+      "Investiture cost": "0",
+      "Description": "The bandit makes an Athletics test against a target within 5 feet of them, opposed by the target’s choice of Athletics or Agility. If the bandit succeeds on this test, the target is knocked Prone."
     }
   },
-  "physical_skills": {
-    "Agility": 3,
-    "Athletics": 3,
-    "Light Weaponry": 2
-  },
-  "cognitive_skills": {
-    "Discipline": 1,
-    "Intimidation": 3
-  },
-  "spiritual_skills": {
-    "Perception": 3,
-    "Survival": 3
-  }
+  "Tactics": "A bandit is a simple but efficient attacker. They attack with their Shortbow from a distance, chipping away at an unsuspecting caravanner’s health as they move in. Once within range, the bandit charges their target to gain Momentum, then ruthlessly debilitates them with their Mace. After overcoming the civilians (and usually ending their lives), the bandit makes off with their ill-gotten gains."
 }

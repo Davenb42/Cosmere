@@ -1,17 +1,11 @@
 {
-  "name": "Meridas",
+  "name": "Meridas Amaram",
   "health": {
-    "current": 40,
-    "max": 40
+    "min": 31,
+    "max": 49
   },
-  "focus": {
-    "current": 5,
-    "max": 5
-  },
-  "investiture": {
-    "current": 0,
-    "max": 0
-  },
+  "focus": 5,
+  "investiture": 0,
   "strength": 3,
   "speed": 4,
   "physical defense": 17,
@@ -21,110 +15,70 @@
   "awareness": 2,
   "presence": 4,
   "spiritual defense": 16,
-  "movement": 30,
-  "immunities": "",
   "deflect": 0,
+  "movement": "30 ft.",
+  "senses": "10 ft. (sight)",
+  "immunities": "",
+  "physical_skills": {
+    "Agility": "+6",
+    "Heavy Weaponry": "+6",
+    "Light Weaponry": "+7"
+  },
+  "cognitive_skills": {
+    "Discipline": "+4",
+    "Intimidation": "+5"
+  },
+  "spiritual_skills": {
+    "Insight": "+4",
+    "Leadership": "+6",
+    "Persuasion": "+6"
+  },
   "features": {
-    "Inspiring Leadership": "When using Gain Advantage, choose an ally to influence, the ally also gains advantage against the same target."
+    "Inspiring Leadership": "When the duelist successfully uses the Gain Advantage action, they can choose one ally they can influence. That ally also gains an advantage on the next test they make against the duelist’s target."
   },
   "Actions": {
-    "Strike Shardblade": {
+    "Strike: Shardblade": {
       "Action cost": "1",
       "Focus cost": "0",
-      "Attack": "+6",
-      "Range": "5ft.",
-      "AOE": "One target",
-      "Graze": "9 spirit damage",
-      "Hit": "22 spirit damage",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": ""
+      "Investiture cost": "0",
+      "Description": "Attack +6, reach 5 ft., one target. Graze: 9 (2d8) spirit damage. Hit: 22 (2d8 + 6) spirit damage."
     },
     "Change Stance": {
       "Action cost": "1",
       "Focus cost": "1",
-      "Attack": "",
-      "Range": "",
-      "AOE": "",
-      "Graze": "",
-      "Hit": "",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": "Shift into Flamestance or Windstance."
+      "Investiture cost": "0",
+      "Description": " The duelist shifts into one of the following stances, losing the effects of any previous stance and gaining the effects of the new stance."
     },
     "Flamestance": {
-      "Action cost": "Free",
+      "Action cost": "0",
       "Focus cost": "0",
-      "Attack": "",
-      "Range": "5ft.",
-      "AOE": "",
-      "Graze": "",
-      "Hit": "",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": "If enemy withing 5ft. and no allies within 5ft., gain an action to use Gain Advantage or a Strike."
+      "Investiture cost": "0",
+      "Description": "While there’s only one enemy within 5 feet of the duelist and no allies within 5 feet of them or that enemy, the duelist can use ▷ to gain ►, which they can spend only on the Gain Advantage action or on an action that includes an attack test."
     },
     "Windstance": {
-      "Action cost": "Free",
+      "Action cost": "0",
       "Focus cost": "0",
-      "Attack": "",
-      "Range": "5ft.",
-      "AOE": "",
-      "Graze": "",
-      "Hit": "",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": "If enemy withing 5ft. and no allies within 5ft., gain an action to use Disengage or a Strike."
+      "Investiture cost": "0",
+      "Description": "While there are two or more enemies within 5 feet of the duelist, the duelist can use ▷ to gain ►, which they can spend only on the Disengage action or on an action that includes an attack test."
     },
     "Feint": {
       "Action cost": "1",
       "Focus cost": "1",
-      "Attack": "",
-      "Range": "5ft.",
-      "AOE": "",
-      "Graze": "",
-      "Hit": "",
-      "Duration": "",
-      "Saving Throw": "Heavy Weaponry Vs Cognitive Defense",
-      "Description": "Lose 1 focus, use Opportunity to use Change Stance as a Free Action."
+      "Investiture cost": "0",
+      "Description": "The duelist tests Heavy Weaponry against the Cognitive defense of a target within 5 feet of them. If the duelist succeeds, the target loses ↩ and 1d4 focus. If the duelist fails, the target loses 1 focus. The duelist can spend Opportunities from this test to use their Change Stance action as without spending focus."
     },
     "Jarring Insight": {
       "Action cost": "1",
       "Focus cost": "0",
-      "Attack": "",
-      "Range": "",
-      "AOE": "",
-      "Graze": "",
-      "Hit": "",
-      "Duration": "",
-      "Saving Throw": "Insight Vs Discipline",
-      "Description": "Lose 1 action the next turn and gain disadvantage on their next contribution."
+      "Investiture cost": "0",
+      "Description": "The duelist reads their enemy with practiced ease, making an opposed Insight test against the target’s Discipline. If the duelist succeeds, the target loses one ► at the beginning of their next turn, or if they’re in a conversation, the target gains a disadvantage on their next contribution."
     },
     "Reposition": {
       "Action cost": "Reaction",
       "Focus cost": "1",
-      "Attack": "",
-      "Range": "",
-      "AOE": "",
-      "Graze": "",
-      "Hit": "",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": "Before being unwillingly moved, ignore effect and use Disengage."
+      "Investiture cost": "0",
+      "Description": "Before the duelist is unwillingly moved, they ignore that effect and use the Disengage action as a ▷."
     }
-  },
-  "physical_skills": {
-    "Agility": 6,
-    "Heavy Weaponry": 6,
-    "Light Weaponry": 7
-  },
-  "cognitive_skills": {
-    "Discipline": 4,
-    "Intimidation": 5
-  },
-  "spiritual_skills": {
-    "Insight": 4,
-    "Leadership": 6,
-    "Persuasion": 6
-  }
+  }, 
+  "Tactics": "Shardbearers are incredible warriors who control the battlefield. A duelist Shardbearer disrupts their opponents with Feint and uses their exceptional mobility to position themselves for Flamestance or Windstance. With Jarring Insight, a duelist is a threat to their opponent’s plans both in and out of combat."
 }

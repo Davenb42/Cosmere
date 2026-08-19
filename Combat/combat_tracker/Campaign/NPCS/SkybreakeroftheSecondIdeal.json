@@ -1,0 +1,80 @@
+{
+  "name": "Skybreaker of the Second Ideal",
+  "health": {
+    "min": 30,
+    "max": 50
+  },
+  "focus": 5,
+  "investiture": 6,
+  "strength": 2,
+  "speed": 3,
+  "physical defense": 15,
+  "intelligence": 2,
+  "willpower": 3,
+  "cognitive defense": 15,
+  "awareness": 4,
+  "presence": 1,
+  "spiritual defense": 15,
+  "deflect": 0,
+  "movement": "30 ft.",
+  "senses": "20 ft. (sight)",
+  "immunities": "",
+  "physical_skills": {
+    "Agility": "+6",
+    "Heavy Weaponry": "+5",
+    "Light Weaponry": "+6"
+  },
+  "cognitive_skills": {
+    "Deduction": "+5",
+    "Discipline": "+6",
+    "Intimidation": "+6",
+    "Lore": "+4"
+  },
+  "spiritual_skills": {
+    "Insight": "+7",
+    "Perception": "+6",
+    "Gravitation": "+6"
+  },
+  "features": {
+    "Truthseeker": "The Skybreaker gains an advantage on Deduction and Insight tests made to ascertain truth."
+  },
+  "Actions": {
+    "Strike: Sidesword": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Investiture cost": "0",
+      "Description": "Attack +6, reach 5 ft., one target. Graze: 3 (1d6) keen damage. Hit: 9 (1d6 + 6) keen damage."
+    },
+    "Lashing Shot": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Investiture cost": "1",
+      "Description": "Attack +6, range 30 ft., one target. The Skybreaker touches a Medium or smaller unattended object and launches it at the target. Graze: 9 (2d8) impact or keen damage. Hit: 15 (2d8 + 6) impact or keen damage."
+    },
+    "Offensive Gravitation": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Investiture cost": "1",
+      "Description": "The Skybreaker makes a Gravitation test against the Physical defense of a target within reach. On a success, the Skybreaker moves the target up to 25 feet in any direction, and the target becomes Restrained until the start of the Skybreaker’s next turn. If the target hits an object or surface, they take 9 (2d8) impact damage. If the target passes within reach of an object that they aren’t going to hit, they can make a DC 16 Agility test, grabbing the object and stopping this forced movement on a success."
+    },
+    "Gravitational Support": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Investiture cost": "1",
+      "Description": "The Skybreaker gains a flying rate of 25 feet until the start of their next turn. At the start of each of their turns, they can spend 1 Investiture to maintain this effect for an additional round. Alternatively, they can infuse an ally with a flying movement of 25 feet until the end of the ally’s next turn. When the Skybreaker does so, they can spend additional Investiture to extend this effect for a number of rounds equal to the Investiture spent."
+    },
+    "Regenerate": {
+      "Action cost": "Free",
+      "Focus cost": "0",
+      "Investiture cost": "1",
+      "Description": "The Skybreaker recovers 5 (1d6 + 2) health. They can use this free action even while Unconscious or otherwise prevented from using actions."
+    }, 
+    "Menace": {
+      "Action cost": "Reaction",
+      "Focus cost": "0",
+      "Investiture cost": "0",
+      "Description": "After the Skybreaker is hit with an attack, they make an Intimidation test against the attacker’s Cognitive defense. On a success, the attacker loses 1 focus."
+    }
+  },
+  "Tactics": "A Skybreaker of the Second Ideal is an aerial combatant who wields Gravitation to devastating effect. They begin combat with Gravitational Support to gain a tactical advantage, then use Offensive Gravitation and Lashing Shot against foes both near and far, and they freely Menace combatants. Skybreakers dedicate themselves to pursuing justice. As such, they’re likely to prioritize foes who they deem criminals, initially ignoring others who they don’t feel the need to apprehend and punish."
+}

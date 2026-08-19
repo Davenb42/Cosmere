@@ -1,17 +1,11 @@
 {
   "name": "Archer",
   "health": {
-    "current": 12,
-    "max": 12
+    "min": 9,
+    "max": 15
   },
-  "focus": {
-    "current": 3,
-    "max": 3
-  },
-  "investiture": {
-    "current": 0,
-    "max": 0
-  },
+  "focus": 3,
+  "investiture": 0,
   "strength": 2,
   "speed": 1,
   "physical defense": 13,
@@ -21,72 +15,50 @@
   "awareness": 2,
   "presence": 1,
   "spiritual defense": 13,
-  "movement": 25,
-  "immunities": "",
   "deflect": 1,
+  "movement": "25 ft.",
+  "senses": "10 ft. (sight)",
+  "immunities": "",
+  "physical_skills": {
+    "Agility": "+3",
+    "Heavy Weaponry": "+4",
+    "Light Weaponry": "+3"
+  },
+  "cognitive_skills": {
+    "Discipline": "+3"
+  },
+  "spiritual_skills": {
+    "Perception": "+4",
+    "Survival": "+3"
+  },
   "features": {
-    "Minion": "Attacks can't crit, and they're defeated once they suffer an injury."
+    "Minion": "The archer’s attacks can’t critically hit, and they’re immediately defeated when they suffer an injury"
   },
   "Actions": {
-    "Strike Knife": {
+    "Strike: Knife": {
       "Action cost": "1",
       "Focus cost": "0",
-      "Attack": "+3",
-      "Range": "5ft.",
-      "AOE": "One target",
-      "Graze": "2 keen damage",
-      "Hit": "5 keen damage",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": ""
+      "Investiture cost": "0",
+      "Description": "Attack +3, reach 5 ft., one target. Graze: 2 (1d4) keen damage. Hit: 5 (1d4 + 3) keen damage."
     },
-    "Strike Longbow": {
+    "Strike: Longbow": {
       "Action cost": "1",
       "Focus cost": "0",
-      "Attack": "+4",
-      "Range": "150/600ft.",
-      "AOE": "One Prone target",
-      "Graze": "3 keen damage",
-      "Hit": "7 keen damage",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": ""
+      "Investiture cost": "0",
+      "Description": "Strike: Longbow. Attack +4, range 150/600 ft., one target. Graze: 3 (1d6) keen damage. Hit: 7 (1d6 + 4) keen damage."
     },
     "Take Aim": {
       "Action cost": "Free",
-      "Focus cost": "",
-      "Attack": "",
-      "Range": "",
-      "AOE": "",
-      "Graze": "",
-      "Hit": "",
-      "Duration": "",
-      "Saving Throw": "",
+      "Focus cost": "0",
+      "Investiture cost": "0",
       "Description": "On their first turn of a scene, if they aren't surprised, use free action to Gain Advantage."
     },
     "Immobilizing Shot": {
       "Action cost": "Reaction",
       "Focus cost": "1",
-      "Attack": "",
-      "Range": "150ft.",
-      "AOE": "",
-      "Graze": "",
-      "Hit": "",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": "If attacked, make a longbow strike, target is immobilized until the end of their next turn."
+      "Investiture cost": "0",
+      "Description": "When an enemy the archer can sense moves while the archer is within 150 feet of them, the archer makes a Longbow attack against them. On a hit, the target is also Immobilized until the end of the archer’s next turn."
     }
   },
-  "physical_skills": {
-    "Agility": 3,
-    "Heavy Weaponry": 4,
-    "Light Weaponry": 3
-  },
-  "cognitive_skills": {
-    "Discipline": 3
-  },
-  "spiritual_skills": {
-    "Perception": 4,
-    "Survival": 3
-  }
+  "Tactics": "Soldiers are trained to be effective on a battlefield in their specialized roles. An archer fights at a distance. They use Immobilizing Shot to immediately take the upper hand, then follow up with Longbow."
 }

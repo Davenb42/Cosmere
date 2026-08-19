@@ -1,17 +1,11 @@
 {
   "name": "Taszo-son-Clutio",
   "health": {
-    "current": 17,
-    "max": 17
+    "min": 14,
+    "max": 20
   },
-  "focus": {
-    "current": 4,
-    "max": 4
-  },
-  "investiture": {
-    "current": 4,
-    "max": 4
-  },
+  "focus": 4,
+  "investiture": 0,
   "strength": 0,
   "speed": 3,
   "physical defense": 13,
@@ -21,51 +15,41 @@
   "awareness": 2,
   "presence": 1,
   "spiritual defense": 13,
-  "movement": 30,
-  "immunities": "",
   "deflect": 0,
+  "movement": "30 ft.",
+  "senses": "10 ft. (sight)",
+  "immunities": "",
+  "physical_skills": {
+    "Agility": "+3",
+    "Light Weaponry": "+3"
+  },
+  "cognitive_skills": {
+    "Lore": "+2",
+    "Deduction": "+2",
+    "Discipline": "+4"
+  },
+  "spiritual_skills": {
+    "Insight": "+4",
+    "Perception": "+4",
+    "Persuasion": "+4"
+  },
   "features": {
-    "Resolved": "If he spends focus to resist influence, that character also loses 1 focus.",
-    "Broken Arm": "Can only use 1 arm."
+    "Resolved": "After Taszo spends focus to resist a character’s influence, that character loses 1 focus.",
+    "Broken Arm": "Taszo can only use one hand."
   },
   "Actions": {
     "Strike Sidesword": {
       "Action cost": "1",
       "Focus cost": "0",
-      "Attack": "+3",
-      "Range": "5ft.",
-      "AOE": "One target",
-      "Graze": "3 keen damage",
-      "Hit": "8 keen damage",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": ""
+      "Investiture cost": "0",
+      "Description": "Attack +3, reach 5 ft., one target. Graze: 3 (1d6) keen damage. Hit: 8 (1d6 + 3) keen damage."
     },
     "Strike Shortbow": {
       "Action cost": "Reaction",
       "Focus cost": "1",
-      "Attack": "+3",
-      "Range": "5ft.",
-      "AOE": "One target",
-      "Graze": "",
-      "Hit": "",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": "Add an Opportunity to a ally's failed test."
+      "Investiture cost": "0",
+      "Description": "When an ally within 5 feet of Taszo fails a test, Taszo adds an Opportunity to the test result."
     }
   },
-  "physical_skills": {
-    "Agility": 3,
-    "Light Weaponry": 3
-  },
-  "cognitive_skills": {
-    "Lore": 2,
-    "Deduction": 2,
-    "Discipline": 4
-  },
-  "spiritual_skills": {
-    "Insight": 4,
-    "Perception": 4,
-    "Persuasion": 4
-  }
+  "Tactics": "Taszo seeks to be helpful, though he is unaccustomed to fighting with his broken arm. He assists whoever is most threatened, spending his focus on A Friend in Need to aid allies in tough situations. "
 }

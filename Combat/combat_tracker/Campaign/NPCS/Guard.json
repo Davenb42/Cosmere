@@ -1,17 +1,11 @@
 {
   "name": "Guard",
   "health": {
-    "current": 24,
-    "max": 24
+    "min": 19,
+    "max": 29
   },
-  "focus": {
-    "current": 4,
-    "max": 4
-  },
-  "investiture": {
-    "current": 0,
-    "max": 0
-  },
+  "focus": 4,
+  "investiture": 0,
   "strength": 3,
   "speed": 1,
   "physical defense": 14,
@@ -21,60 +15,44 @@
   "awareness": 3,
   "presence": 1,
   "spiritual defense": 14,
-  "movement": 25,
-  "immunities": "",
   "deflect": 2,
+  "movement": "25 ft.",
+  "senses": "20 ft. (sight)",
+  "immunities": "",
+  "physical_skills": {
+    "Athletics": "+5",
+    "Heavy Weaponry": "+5"
+  },
+  "cognitive_skills": {
+    "Discipline": "+4",
+    "Intimidation": "+4"
+  },
+  "spiritual_skills": {
+    "Insight": "+4",
+    "Perception": "+5"
+  },
   "features": {
-    "Raise the Alert": "Guard and allies gain Focused condition until the end of the scene if enemy is detected or sensed."
+    "Raise the Alert!": "After an enemy the guard can sense within 60 feet of them fails a Stealth test, or after the guard succeeds on a test to notice that enemy, this guard and each allied guard who can sense that enemy gains the Focused condition until the end of the scene."
   },
   "Actions": {
-    "Strike Longspear": {
+    "Strike: Longspear": {
       "Action cost": "1",
       "Focus cost": "0",
-      "Attack": "+5",
-      "Range": "5ft.",
-      "AOE": "One target",
-      "Graze": "4 keen damage",
-      "Hit": "9 keen damage",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": "Spend 1 focus to knock target prone."
+      "Investiture cost": "0",
+      "Description": "Attack +5, reach 5 ft., one target. Graze: 4 (1d8) keen damage. Hit: 9 (1d8 + 5) keen damage, and the guard can spend 1 focus to knock the target Prone."
     },
     "Debilitate": {
       "Action cost": "2",
       "Focus cost": "2",
-      "Attack": "+5",
-      "Range": "5ft.",
-      "AOE": "One Prone target",
-      "Graze": "9 impact damage",
-      "Hit": "14 impact damage",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": "Grant ally advantage on test against an enemy in reach of commoner."
+      "Investiture cost": "0",
+      "Description": "Attack +5, reach 5 ft., one Prone target. Graze: 9 (2d8) impact damage. Hit: 14 (2d8 + 5) impact damage."
     },
     "Work as One": {
       "Action cost": "Free",
       "Focus cost": "1",
-      "Attack": "",
-      "Range": "",
-      "AOE": "",
-      "Graze": "",
-      "Hit": "",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": "After a succesful hit, urge ally to advance, who can use the Disengage action for free."
+      "Investiture cost": "0",
+      "Description": " After the guard hits with an attack, they choose an ally who they can influence, urging them to advance. That ally can immediately Disengage (no action required)."
     }
   },
-  "physical_skills": {
-    "Athletics": 5,
-    "Heavy Weaponry": 5
-  },
-  "cognitive_skills": {
-    "Discipline": 4,
-    "Intimidation": 4
-  },
-  "spiritual_skills": {
-    "Insight": 4,
-    "Perception": 5
-  }
+  "Tactics": "A guard quickly incapacitates their targets, especially those discovered committing a crime. They aim to knock an opponent prone with their Longspear, then use Debilitate to inflict significant damage. While accompanied by other guards or allies, a guard uses Work as One, quickly and efficiently coordinating to subdue opponents. "
 }

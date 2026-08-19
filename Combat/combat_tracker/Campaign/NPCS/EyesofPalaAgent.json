@@ -1,0 +1,69 @@
+{
+  "name": "Eyes of Pala Agent",
+  "health": {
+    "min": 20,
+    "max": 30
+  },
+  "focus": 4,
+  "investiture": 0,
+  "strength": 2,
+  "speed": 2,
+  "physical defense": 14,
+  "intelligence": 1,
+  "willpower": 2,
+  "cognitive defense": 13,
+  "awareness": 3,
+  "presence": 2,
+  "spiritual defense": 15,
+  "deflect": 0,
+  "movement": "25 ft.",
+  "senses": "20 ft. (sight)",
+  "immunities": "",
+  "physical_skills": {
+    "Athletics": "+4", 
+    "Light Weaponry": "+4", 
+    "Stealth": "+4"
+  },
+  "cognitive_skills": {
+    "Discipline": "+4"
+  },
+  "spiritual_skills": {
+    "Insight": "+5",
+    "Perception": "+5"
+  },
+  "features": {
+  },
+  "Actions": {
+    "Strike: Sidesword": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Investiture cost": "0",
+      "Description": "Attack +4, reach 5 ft., one target. Graze: 3 (1d6) keen damage. Hit: 7 (1d6 + 4) keen damage, and if the target is Prone, they lose 1 focus"
+    },
+    "Strike: Shortbow": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Investiture cost": "0",
+      "Description": " Attack +4 to hit, range 80/320 ft., one target. Graze: 3 (1d6) keen damage. Hit: 7 (1d6 + 4) keen damage, and the agent can spend 1 focus to knock the target Prone."
+    },
+    "Insightful Defense": {
+      "Action cost": "Free",
+      "Focus cost": "0",
+      "Investiture cost": "0",
+      "Description": "The agent makes an Insight test against the Spiritual defense of a character they can sense within 60 feet of them. On a success, the target can’t gain advantage on attacks against the agent for 1 minute or until the agent uses this action on another target."
+    },
+    "Exploit Opening": {
+      "Action cost": "Reaction",
+      "Focus cost": "0",
+      "Investiture cost": "0",
+      "Description": "After an enemy within 5 feet of the agent grazes them with an attack, the agent makes a Reactive Strike (no action required) against that enemy as if they had voluntarily left the agent’s reach."
+    },
+    "Quick Escape": {
+      "Action cost": "Reaction",
+      "Focus cost": "0",
+      "Investiture cost": "0",
+      "Description": "After an ally within 5 feet of the agent hits a target with a melee attack, the agent moves up to half their movement rate without triggering Reactive Strikes."
+    }
+  },
+  "Tactics": "An Eyes of Pala agent uses their honed intuition to navigate the battlefield. They identify the largest threat and use Insightful Defense on that target to better avoid deadly attacks. By working together, agents who favor the shortbow and those who favor the sidesword can knock down opponents and deplete their focus. If needed, agents coordinate with their allies, using Quick Escape to retreat when a peer gives them an opening."
+}

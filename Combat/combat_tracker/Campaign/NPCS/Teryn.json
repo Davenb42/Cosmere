@@ -1,17 +1,11 @@
 {
   "name": "Teryn",
   "health": {
-    "current": 38,
-    "max": 38
+    "min": 30,
+    "max": 46
   },
-  "focus": {
-    "current": 5,
-    "max": 5
-  },
-  "investiture": {
-    "current": 0,
-    "max": 0
-  },
+  "focus": 5,
+  "investiture": 0,
   "strength": 3,
   "speed": 2,
   "physical defense": 15,
@@ -21,8 +15,24 @@
   "awareness": 2,
   "presence": 1,
   "spiritual defense": 13,
-  "movement": 25,
   "deflect": 1,
+  "movement": "25 ft.",
+  "senses": "10 ft. (sight)",
+  "immunities": "",
+  "physical_skills": {
+    "Agility": "+5",
+    "Athletics": "+4",
+    "Heavy Weaponry": "+6",
+    "Light Weaponry": "+4"
+  },
+  "cognitive_skills": {
+    "Discipline": "+4",
+    "Intimidation": "+4"
+  },
+  "spiritual_skills": {
+    "Perception": "+5",
+    "Survival": "+3"
+  },
   "features": {
     "Defensive Flourish": "The spearmaster can wield their longspear defensively, allowing them to use the Brace action as if they had a shield.",
     "Merciless": "The spearmaster gains an additional advantage on attacks against Prone targets."
@@ -32,54 +42,20 @@
       "Action cost": "1",
       "Focus cost": "0",
       "Investiture cost": "0",
-      "Attack": "+6",
-      "Range": "10ft.",
-      "AOE": "One target",
-      "Graze": "4 (1d8) keen damage",
-      "Hit": "10 (1d8 + 6) keen damage",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": "The spearmaster can spend 1 focus to knock the target Prone."
+      "Description": "Attack +6, reach 10 ft., one target. Graze: 4 (1d8) keen damage. Hit: 10 (1d8 + 6) keen damage, and the spearmaster can spend 1 focus to knock the target Prone."
     },
     "Kick": {
       "Action cost": "1",
       "Focus cost": "0",
       "Investiture cost": "0",
-      "Attack": "+4",
-      "Range": "5ft.",
-      "AOE": "One target",
-      "Graze": "2 (1d4) impact damage",
-      "Hit": "6 (1d4 + 4) impact damage",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": "If the target is Medium or smaller, the spearmaster can spend 1 focus to push them 5 feet."
+      "Description": "Attack +4, reach 5 ft., one target. Graze: 2 (1d4) impact damage. Hit: 6 (1d4 + 4) impact damage, and if the target is Medium or smaller, the spearmaster can spend 1 focus to push them 5 feet."
     },
     "Run Through": {
       "Action cost": "2",
       "Focus cost": "1",
       "Investiture cost": "0",
-      "Attack": "+6",
-      "Range": "10ft.",
-      "AOE": "Up to two targets within 5 ft. of each other",
-      "Graze": "4 (1d8) keen damage",
-      "Hit": "10 (1d8 + 6) keen damage",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": ""
+      "Description": "Attack +6, reach 10 ft., up to two targets within 5 ft. of each other. Graze: 4 (1d8) keen damage. Hit: 10 (1d8 + 6) keen damage."
     }
   },
-  "physical_skills": {
-    "Agility": 5,
-    "Athletics": 4,
-    "Heavy Weaponry": 6,
-    "Light Weaponry": 4
-  },
-  "cognitive_skills": {
-    "Discipline": 4,
-    "Intimidation": 4
-  },
-  "spiritual_skills": {
-    "Perception": 5,
-    "Survival": 3
-  }
+  "Tactics": "A spearmaster is a skilled and careful combatant, taking slow turns so they can make multiple attacks. They spend focus to knock targets Prone with their Longspear, then prioritize attacking Prone targets to take advantage of Merciless. If an enemy gets too close, the spearmaster tries to Kick them away and line up a Run Through attack. When they have an extra action, they spend it on Gain Advantage or Brace, depending on whether they find themself on the offensive or the defensive."
 }

@@ -1,17 +1,11 @@
 {
   "name": "",
   "health": {
-    "current": 0,
+    "min": 0,
     "max": 0
   },
-  "focus": {
-    "current": 0,
-    "max": 0
-  },
-  "investiture": {
-    "current": 0,
-    "max": 0
-  },
+  "focus": 0,
+  "investiture": 0,
   "strength": 0,
   "speed": 0,
   "physical defense": 0,
@@ -21,28 +15,23 @@
   "awareness": 0,
   "presence": 0,
   "spiritual defense": 0,
-  "movement": 0,
-  "immunities": "",
   "deflect": 0,
+  "movement": "",
+  "senses": "",
+  "immunities": "",
+  "physical_skills": {},
+  "cognitive_skills": {},
+  "spiritual_skills": {},
   "features": {
-    "Minion": ""
+    "": ""
   },
   "Actions": {
     "Strike": {
       "Action cost": "",
       "Focus cost": "",
       "Investiture cost": "",
-      "Attack": "",
-      "Range": "",
-      "AOE": "",
-      "Graze": "",
-      "Hit": "",
-      "Duration": "",
-      "Saving Throw": "",
       "Description": ""
     }
   },
-  "physical_skills": {},
-  "cognitive_skills": {},
-  "spiritual_skills": {}
+  "Tactics": ""
 }

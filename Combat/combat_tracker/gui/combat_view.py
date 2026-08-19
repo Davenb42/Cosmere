@@ -367,7 +367,8 @@ class CombatView(QWidget):
             f"HP {character.health.current}/{character.health.maximum}   "
             f"Focus {character.focus.current}/{character.focus.maximum}   "
             f"Investiture {character.investiture.current}/{character.investiture.maximum}   "
-            f"Deflect {character.defenses.deflect}"
+            f"Deflect {character.defenses.deflect}\n"
+            f"Movement {character.movement}   Senses {character.senses}"
         )
         details.setStyleSheet("font-size: 16px; font-weight: 600; color: #edf3f8;")
         top_layout.addWidget(details)
@@ -387,6 +388,13 @@ class CombatView(QWidget):
         conditions_label.setStyleSheet("font-size: 14px; color: #dbe5f0;")
         top_layout.addWidget(conditions_label)
 
+        skills = []
+        for skill_group in character.skills.values():
+            skills.extend(f"{name} {value}" for name, value in skill_group.items())
+        top_layout.addWidget(
+            self._make_detail_label(f"Skills: {', '.join(skills) if skills else 'None'}")
+        )
+
         bottom_layout.addWidget(self._make_subtitle_label("Talents" if character.character_type == CharacterType.PC else "Features"))
         if character.talents:
             formatter = action_text.format_talent_lines if character.character_type == CharacterType.PC else action_text.format_feature_lines
@@ -394,6 +402,10 @@ class CombatView(QWidget):
                 bottom_layout.addWidget(self._make_detail_label("\n".join(formatter(key, value))))
         else:
             bottom_layout.addWidget(self._make_detail_label("None"))
+
+        if character.character_type == CharacterType.NPC and character.tactics:
+            bottom_layout.addWidget(self._make_subtitle_label("Tactics"))
+            bottom_layout.addWidget(self._make_detail_label(character.tactics))
 
         bottom_layout.addWidget(self._make_subtitle_label("Actions"))
         if character.actions:

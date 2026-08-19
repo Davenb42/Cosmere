@@ -1,0 +1,65 @@
+{
+  "name": "Eyes of Pala Watcher",
+  "health": {
+    "min": 34,
+    "max": 50
+  },
+  "focus": 5,
+  "investiture": 0,
+  "strength": 2,
+  "speed": 3,
+  "physical defense": 15,
+  "intelligence": 2,
+  "willpower": 3,
+  "cognitive defense": 15,
+  "awareness": 4,
+  "presence": 1,
+  "spiritual defense": 16,
+  "deflect": 0,
+  "movement": "30 ft.",
+  "senses": "20 ft. (hearing)",
+  "immunities": "",
+  "physical_skills": {
+    "Athletics": "+4",
+    "Heavy Weaponry": "+5",
+    "Light Weaponry": "+5",
+    "Stealth": "+6"
+  },
+  "cognitive_skills": {
+    "Discipline": "+6",
+    "Intimidation": "+5"
+  },
+  "spiritual_skills": {
+    "Insight": "+7",
+    "Perception": "+7"
+  },
+  "features": {
+  },
+  "Actions": {
+    "Strike: Longsword": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Investiture cost": "0",
+      "Description": "Attack +5, reach 5 ft., one target. Graze: 4 (1d8) keen damage. Hit: 11 (1d8 + 7) keen damage, and the target becomes Slowed until the end of the watcher’s next turn."
+    },
+    "Fan of Blades": {
+      "Action cost": "2",
+      "Focus cost": "2",
+      "Investiture cost": "0",
+      "Description": "Attack +5, reach 5 ft., one or more targets of the Watcher’s choice. Graze: 4 (1d8) keen damage. Hit: 9 (1d8 + 5) keen damage, and the target becomes Afflicted [1d8 vital] until they regain at least 1 health"
+    },
+    "Insightful Defense": {
+      "Action cost": "Free",
+      "Focus cost": "0",
+      "Investiture cost": "0",
+      "Description": "The watcher makes an Insight test against the Spiritual defense of a character they can sense within 60 feet of them. On a success, the target can’t gain advantage on attacks against the watcher for 1 minute or until the watcher uses this action on another target."
+    },
+    "Exploitative Escape": {
+      "Action cost": "Reaction",
+      "Focus cost": "0",
+      "Investiture cost": "0",
+      "Description": "After an enemy within 5 feet of the watcher grazes them with an attack, the watcher Strikes the attacker (no action required) then moves up to half their movement rate without triggering Reactive Strikes."
+    }
+  },
+  "Tactics": "An Eyes of Pala watcher uses Insightful Defense either at the start of combat or amidst battle to gain the upper hand over an opponent. Exploitative Escape allows them to retreat after an enemy’s misstep, then they move to an opportune position to hit multiple foes with Fan of Blades. "
+}

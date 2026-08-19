@@ -1,17 +1,11 @@
 {
   "name": "Svalka",
   "health": {
-    "current": 10,
-    "max": 10
+    "min": 8,
+    "max": 12
   },
-  "focus": {
-    "current": 2,
-    "max": 2
-  },
-  "investiture": {
-    "current": 0,
-    "max": 0
-  },
+  "focus": 2,
+  "investiture": 0,
   "strength": 0,
   "speed": 1,
   "physical defense": 11,
@@ -21,47 +15,37 @@
   "awareness": 1,
   "presence": 0,
   "spiritual defense": 11,
-  "movement": 25,
-  "immunities": "",
   "deflect": 2,
+  "movement": "25 ft.",
+  "senses": "10 ft. (sight)",
+  "immunities": "",
+  "physical_skills": {
+    "Athletics": "+1"
+  },
+  "cognitive_skills": {
+    "Crafting": "+2"
+  },
+  "spiritual_skills": {
+    "Insight": "+2",
+    "Perception": "+2"
+  },
   "features": {
-    "Minion": "Attacks can't crit, and they're defeated once they suffer an injury.",
-    "Capable": "Expertise on one profession."
+    "Minion": "The commoner’s attacks can’t critically hit, and they’re immediately defeated when they suffer an injury. ",
+    "Capable": "The commoner has a utility expertise in one profession, and they gain an advantage on skill tests related to that profession."
   },
   "Actions": {
-    "Strike Improvised Weapon": {
+    "Strike: Improvised Weapon": {
       "Action cost": "1",
       "Focus cost": "0",
-      "Attack": "+1",
-      "Range": "5ft.",
-      "AOE": "One target",
-      "Graze": "2 impact damage",
-      "Hit": "3 impact damage",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": "On a complication, it's destroyed"
+      "Investiture cost": "0",
+      "Description": "Attack +1, reach 5 ft., one target. On a Complication, this improvised weapon is destroyed. Graze: 2 (1d4) impact damage. Hit: 3 (1d4 + 1) impact damage."
     },
     "Distract": {
       "Action cost": "Reaction",
       "Focus cost": "1",
-      "Attack": "",
-      "Range": "",
-      "AOE": "",
-      "Graze": "",
-      "Hit": "",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": "Grant ally advantage on test against an enemy in reach of commoner."
+      "Investiture cost": "0",
+      "Description": "When an ally makes a test against an enemy who is within reach of the commoner, the commoner grants the ally an advantage on that test."
     }
   },
-  "physical_skills": {
-    "Athletics": 1
-  },
-  "cognitive_skills": {
-    "Crafting": 2
-  },
-  "spiritual_skills": {
-    "Insight": 2,
-    "Perception": 2
-  }
+  "Tactics": "In combat, a commoner generally flees and seeks safety unless their loved ones are in immediate danger. When forced to fight, the commoner might resort to an Improvised Weapon, or they might Distract to aid a more capable ally. In conversations, they usually concede to those they consider more competent."
 }

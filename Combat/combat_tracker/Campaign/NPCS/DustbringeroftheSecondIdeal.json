@@ -1,0 +1,84 @@
+{
+  "name": "Dustbringer of the Second Ideal",
+  "health": {
+    "min": 30,
+    "max": 50
+  },
+  "focus": 4,
+  "investiture": 5,
+  "strength": 2,
+  "speed": 3,
+  "physical defense": 15,
+  "intelligence": 3,
+  "willpower": 2,
+  "cognitive defense": 15,
+  "awareness": 3,
+  "presence": 1,
+  "spiritual defense": 14,
+  "deflect": 2,
+  "movement": "40 ft. (30 ft. while Investiture is 0)",
+  "senses": "20 ft. (sight)",
+  "immunities": "",
+  "physical_skills": {
+    "Agility": "+6",
+    "Light Weaponry": "+6",
+    "Stealth": "+6",
+    "Abrasion": "+5"
+  },
+  "cognitive_skills": {
+    "Discipline": "+4", 
+    "Intimidation": "+4",
+    "Division": "+6"
+  },
+  "spiritual_skills": { 
+    "Leadership": "+3", 
+    "Perception": "+5"
+  },
+  "features": {
+  },
+  "Actions": {
+    "Strike: Sidesword": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Investiture cost": "0",
+      "Description": "Attack +6, reach 5 ft., one target. Graze: 3 (1d6) keen damage. Hit: 9 (1d6 + 6) keen damage, and the Dustbringer can spend 1 focus to use the Disengage action as ▷."
+    },
+    "Strike: Shortbow": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Investiture cost": "0",
+      "Description": "Attack +6, range 80/320 ft., one target. Graze: 3 (1d6) keen damage. Hit: 9 (1d6 + 6) keen damage."
+    },
+    "Decaying Touch": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Investiture cost": "1",
+      "Description": "Attack +6 vs Spiritual defense, reach 5 ft., one target. Graze: 13 (3d8) spirit damage. Hit: 19 (3d8 + 6) spirit damage, and the target must succeed on a DC 14 Agility test or their armor rusts and decays, permanently decreasing its deflect value by 1. Armor damaged in this way can be repaired with proper materials as a downtime activity."
+    },
+    "Burst of Flame": {
+      "Action cost": "3",
+      "Focus cost": "0",
+      "Investiture cost": "2",
+      "Description": "The Dustbringer emits a burst of fire that deals 4 (1d8) energy damage to each character within 10 feet of them and sets unattended objects in that area ablaze. Additionally, the Dustbringer can spend 1 focus or more to shower sparks onto that many enemies within 30 feet of them; each target must succeed on a DC 14 Agility test or lose one ► on their next turn."
+    },
+    "Eroding Escape": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Investiture cost": "1",
+      "Description": "The Dustbringer targets themself or an ally in reach, ending one condition on them that is either applying the Immobilized condition, the Restrained condition, or a disadvantage on a physical test."
+    },
+    "Regenerate": {
+      "Action cost": "Free",
+      "Focus cost": "0",
+      "Investiture cost": "1",
+      "Description": "The Dustbringer recovers 5 (1d6 + 2) health. They can use this free action even while Unconscious or otherwise prevented from using actions."
+    }, 
+    "Skate": {
+      "Action cost": "Free",
+      "Focus cost": "2",
+      "Investiture cost": "0",
+      "Description": "The Dustbringer moves up to their movement rate in a straight line."
+    }
+  },
+  "Tactics": "A Dustbringer of the Second Ideal carves a destructive path in and out of melee range with their foes. They use Skate to close the distance, then attack with their Sidesword before disengaging. Burst of Flame becomes their primary tactic for groups of enemies, and Decaying Touch saps the strength of their bulkier foes. Ultimately, the Dustbringer devastates an area and is hard to pin down—and their Eroding Escape ensures that."
+}

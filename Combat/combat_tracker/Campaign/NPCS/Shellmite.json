@@ -1,0 +1,48 @@
+{
+  "name": "Shellmite",
+  "health": {
+    "min": 7,
+    "max": 11
+  },
+  "focus": 3,
+  "investiture": 0,
+  "strength": 2,
+  "speed": 1,
+  "physical defense": 13,
+  "intelligence": 0,
+  "willpower": 1,
+  "cognitive defense": 11,
+  "awareness": 2,
+  "presence": 0,
+  "spiritual defense": 12,
+  "deflect": 0,
+  "movement": "25 ft.",
+  "senses": "10 ft. (sight)",
+  "immunities": "",
+  "physical_skills": {
+    "Stealth": "+3"
+  },
+  "cognitive_skills": {},
+  "spiritual_skills": {
+    "Perception": "+4"
+  },
+  "features": {
+    "Minion": "The shellmite’s attacks can’t critically hit, and they’re immediately defeated when they suffer an injury.",
+    "Rugged Camouflage": "An undetected shellmite gains an advantage on attack tests. While the shellmite is motionless, they’re almost indistinguishable from a normal rock, requiring a successful DC 14 Survival test to identify them. This test gains a disadvantage when the shellmite is in cover or in an area where the other character’s primary sense is obscured."
+  },
+  "Actions": {
+    "Strike: Pincer": {
+      "Action cost": "2",
+      "Focus cost": "0",
+      "Investiture cost": "0",
+      "Description": "Attack +2, reach 5 ft., one target. Graze: 2 (1d4) keen damage. Hit: 4 (1d4 + 2) keen damage."
+    },
+    "Feeding Frenzy": {
+      "Action cost": "2",
+      "Focus cost": "2",
+      "Investiture cost": "0",
+      "Description": "The shellmite whips up a frenzy against an enemy within 5 feet of them. Each shellmite within 5 feet of the target can use ↩ to join the frenzy. The target takes 2 (1d4) keen damage per frenzied shellmite."
+    }
+  },
+  "Tactics": "A shellmite uses their Rugged Camouflage to hide among common rocks. When unlucky travelers walk into a nest of shellmites, these crustaceans strike quickly with a Pincer, gaining an advantage on their first attack. Shellmites then use their Feeding Frenzy to overwhelm intruders, tearing and ripping at clothing and armor with their strong claws, while sticking together to take advantage of their numbers. Shellmites are reliant on surprise, so try placing multiple hidden shellmites throughout an area to keep PCs on their toes."
+}

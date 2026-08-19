@@ -1,17 +1,11 @@
 {
   "name": "Deepest One",
   "health": {
-    "current": 45,
-    "max": 45
+    "min": 39,
+    "max": 51
   },
-  "focus": {
-    "current": 8,
-    "max": 8
-  },
-  "investiture": {
-    "current": 6,
-    "max": 6
-  },
+  "focus": 8,
+  "investiture": 6,
   "strength": 3,
   "speed": 5,
   "physical defense": 18,
@@ -21,106 +15,66 @@
   "awareness": 4,
   "presence": 2,
   "spiritual defense": 16,
-  "movement": 40,
-  "immunities": "",
   "deflect": 0,
+  "movement": "40 ft.",
+  "senses": "20 ft. (sight, and while submerged, hearing)",
+  "immunities": "",
+  "physical_skills": {
+    "Agility": "+7",
+    "Light Weaponry": "+8",
+    "Stealth": "+7"
+  },
+  "cognitive_skills": { 
+    "Discipline": "+9",
+    "Cohesion": "+9"
+  },
+  "spiritual_skills": {
+    "Insight": "+6",
+    "Perception": "+7",
+    "Survival": "+6"
+  },
   "features": {
-    "Pure Tones": "The Deepest One ignores the Disoriented condition while standing on or submerged in solid stone.",
+    "Pure Tones": " The Deepest One ignores the Disoriented condition while standing on or submerged in solid stone.",
     "Swim Through Stone": "The Deepest One can move through solid surfaces as if moving along the ground, ignoring difficult terrain. While fully submerged, the Deepest One must spend 1 focus each time they use an action other than the Move action or their Regenerate free action. The Deepest One can’t use this feature on surfaces made of wood.",
-    "Merging Form": "Before the Deepest One takes impact or keen damage from a non-wooden source, they can spend 1 focus to increase their deflect value to 6 against that damage (no action required)."
+    "Merging Form (Costs 1 Focus)": " Before the Deepest One takes impact or keen damage from a non-wooden source, they can increase their deflect value to 6 against that damage (no action required)."
   },
   "Actions": {
     "Strike: Carapace Nails": {
       "Action cost": "1",
-      "Focus cost": "",
-      "Investiture cost": "",
-      "Attack": "+8",
-      "Range": "5ft.",
-      "AOE": "One target",
-      "Graze": "7 keen damage",
-      "Hit": "15 keen damage",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": ""
+      "Focus cost": "0",
+      "Investiture cost": "0",
+      "Description": "Attack +8, reach 5 ft., one target. Graze: 7 (2d6) keen damage. Hit: 15 (2d6 + 8) keen damage."
     },
     "Strike: Trip Attack": {
       "Action cost": "1",
-      "Focus cost": "",
-      "Investiture cost": "",
-      "Attack": "+8",
-      "Range": "5ft.",
-      "AOE": "One target",
-      "Graze": "3 impact damage",
-      "Hit": "11 impact damage",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": "Deepest One can knock the target Prone"
+      "Focus cost": "0",
+      "Investiture cost": "0",
+      "Description": "Attack +8, reach 5 ft., one target. Graze: 3 (1d6) impact damage. Hit: 11 (1d6 + 8) impact damage, and the Deepest One can knock the target Prone."
     },
     "Grasping Hands": {
       "Action cost": "2",
       "Focus cost": "0",
       "Investiture cost": "0",
-      "Attack": "",
-      "Range": "5ft.",
-      "AOE": "",
-      "Graze": "",
-      "Hit": "",
-      "Duration": "",
-      "Saving Throw": "DC 17 Agility test or become Restrained.",
-      "Description": "If the Restrained target is also Prone, they begin suffocating and are Afflicted [2d10 vital]. The Restrained character can use 2 actions to make a DC 17 Agility test, removing the Restrained condition on a success. If the Deepest One takes at least 20 damage on a single turn, the target escapes and is no longer Restrained."
+      "Description": "The Deepest One strangles a target they can sense within 5 feet of them. The target must succeed on a DC 17 Agility test or become Restrained while the Deepest One remains within 5 feet of them. If the Restrained target is also Prone, they begin suffocating and are Afflicted [2d10 vital] until they remove either the Restrained or Prone condition. As ►►, the Restrained target can make a DC 17 Agility test, removing the Restrained condition on a success. If the Deepest One takes at least 20 damage on a single turn, the target escapes and is no longer Restrained."
     },
     "Surge of Cohesion": {
       "Action cost": "1",
       "Focus cost": "0",
       "Investiture cost": "1",
-      "Attack": "",
-      "Range": "30ft.",
-      "AOE": "10ft. stone area",
-      "Graze": "",
-      "Hit": "",
-      "Duration": "",
-      "Saving Throw": "DC 15 Agility or Athletics test to avoid conditions.",
-      "Description": "The chosen object or area changes shape in a manner they choose, though not violently enough to cause damage."
+      "Description": "The Deepest One chooses a Large (10-foot) or smaller area or object within 30 feet of them that is made of stone or earth and that isn’t being worn or held. That object or area changes shape in a manner they choose, though not violently enough to cause damage. Depending on the nature of the reshaping, this can cause an effect such as creating or removing cover or difficult terrain, or applying the Restrained condition to characters in that area. If the effect would apply a condition, a character can avoid it with a successful DC 15 Agility or Athletics test."
     },
     "Regenerate": {
       "Action cost": "Free",
       "Focus cost": "0",
       "Investiture cost": "1",
-      "Attack": "",
-      "Range": "",
-      "AOE": "",
-      "Graze": "",
-      "Hit": "",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": "The Deepest One recovers 5 (1d6 + 2) health. They can use this free action even while Unconscious or otherwise prevented from using actions."
+      "Description": "The Deepest One recovers 5 (1d6 + 2) health. They can use this free action even while Unconscious or otherwise prevented from using actions. "
     }, 
     "Entrap": {
       "Action cost": "Reaction",
-      "Focus cost": "",
-      "Investiture cost": "",
-      "Attack": "",
-      "Range": "",
-      "AOE": "One target",
-      "Graze": "",
-      "Hit": "",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": "When an enemy triggers a Reactive Strike from the Deepest One while the Deepest One is submerged, the Deepest One can instead use their Grasping Hands as a Reaction, spending focus as if they made a Reactive Strike."
+      "Focus cost": "0",
+      "Investiture cost": "0",
+      "Description": "When an enemy triggers a Reactive Strike from the Deepest One while the Deepest One is submerged, the Deepest One can instead use their Grasping Hands as a reaction, spending focus as if they made a Reactive Strike."
     }
   },
-  "physical_skills": {
-    "Agility": "7",
-    "Light Weaponry": "8",
-    "Stealth": "7"
-  },
-  "cognitive_skills": { 
-    "Discipline": "9",
-    "Cohesion": "9"
-  },
-  "spiritual_skills": {
-    "Insight": "6",
-    "Perception": "7",
-    "Survival": "6"
-  }
+  "Tactics": "A Deepest One is an eerie foe, unsettling and ruthless. They freely move within solid surfaces, striking with their Carapace Nails or Trip Attack while maintaining their protection. They can reshape the battlefield with their Surge of Cohesion, hinder foes with Entrap, or drag a single enemy down to suffocate with their Grasping Hands—especially one they already knocked prone with Trip Attack."
 }

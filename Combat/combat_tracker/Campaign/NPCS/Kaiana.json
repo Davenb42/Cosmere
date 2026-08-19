@@ -1,17 +1,11 @@
 {
   "name": "Kaiana",
   "health": {
-    "current": 34,
-    "max": 34
+    "min": 28,
+    "max": 40
   },
-  "focus": {
-    "current": 4,
-    "max": 4
-  },
-  "investiture": {
-    "current": 5,
-    "max": 5
-  },
+  "focus": 4,
+  "investiture": 5,
   "strength": 1,
   "speed": 3,
   "physical defense": 14,
@@ -21,118 +15,72 @@
   "awareness": 3,
   "presence": 3,
   "spiritual defense": 16,
-  "movement": 30,
   "deflect": 0,
+  "movement": "30 ft.",
+  "senses": "20 ft. (sight)",
+  "immunities": "",
+  "physical_skills": {
+    "Agility": "+5",
+    "Light Weaponry": "+5"
+  },
+  "cognitive_skills": {
+    "Discipline": "+4",
+    "Medicine": "+3"
+  },
+  "spiritual_skills": {
+    "Insight": "+5",
+    "Leadership": "+4",
+    "Perception": "+5",
+    "Progression": "+5",
+    "Illumination": "+4"
+  },
   "features": {
-    "Passionate Ally": "Costs 1 Focus. When Kaiana successfully uses the Gain Advantage action, she can choose one ally she can influence within 60 feet of her. That ally also gains an advantage on the next test they make against Kaiana's target.",
-    "Quick Escape": "Once per scene, Kaiana can use her Disorienting Flash as a Free Action. After she does, she immediately gains 2 actions that she can only use on the Interact, Disengage, and Move actions."
+    "Passionate Ally (Costs 1 Focus)": "When Kaiana successfully uses the Gain Advantage action, she can choose one ally she can influence within 60 feet of her. That ally also gains an advantage on the next test they make against Kaiana's target.",
+    "Quick Escape": "Once per scene, Kaiana can use her Disorienting Flash as ▷. After she does, she immediately gains ►► that she can only use on the Interact, Disengage, and Move actions."
   },
   "Actions": {
     "Strike: Knife": {
       "Action cost": "1",
       "Focus cost": "0",
       "Investiture cost": "0",
-      "Attack": "+5",
-      "Range": "5ft. or 20/60ft.",
-      "AOE": "One target",
-      "Graze": "2 keen damage",
-      "Hit": "7 keen damage",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": "Kaiana can spend 1 focus to make the target Slowed until the end of the target's next turn."
+      "Description": "Attack +5, reach 5 ft. or range 20/60 ft., one target. Graze: 2 (1d4) keen damage. Hit: 7 (1d4 + 5) keen damage, and Kaiana can spend 1 focus to make the target Slowed until the end of the target’s next turn."
     },
     "Distracting Illusion": {
       "Action cost": "1",
       "Focus cost": "0",
       "Investiture cost": "1",
-      "Attack": "",
-      "Range": "30ft.",
-      "AOE": "Self or one ally",
-      "Graze": "",
-      "Hit": "",
-      "Duration": "Until an attack misses that character or the end of the scene",
-      "Saving Throw": "",
-      "Description": "Kaiana creates an illusory duplicate of herself or an ally she can sense within 30 feet of her. The illusion appears in that character's space and moves with them. Attacks against that character gain a disadvantage and can't graze."
+      "Description": "Kaiana creates an illusory duplicate of herself or an ally she can sense within 30 feet of her. The illusion appears in that character’s space and moves with them. Attacks against that character gain a disadvantage and can’t graze. The illusion ends after an attack misses that character or at the end of the scene."
     },
     "Disorienting Flash": {
       "Action cost": "2",
       "Focus cost": "0",
       "Investiture cost": "1",
-      "Attack": "",
-      "Range": "5ft.",
-      "AOE": "Each character within 5 feet of her",
-      "Graze": "",
-      "Hit": "",
-      "Duration": "Until the end of their next turn",
-      "Saving Throw": "Illumination test against the Cognitive defense of each target",
       "Description": "Kaiana projects light, making an Illumination test against the Cognitive defense of each character within 5 feet of her. Each character she succeeds against becomes Disoriented until the end of their next turn."
     },
     "Regrowth": {
       "Action cost": "2",
       "Focus cost": "0",
       "Investiture cost": "1",
-      "Attack": "",
-      "Range": "Touch",
-      "AOE": "Self or one target",
-      "Graze": "",
-      "Hit": "Restores 8 (1d6 + 5) health",
-      "Duration": "",
-      "Saving Throw": "",
       "Description": "Kaiana restores 8 (1d6 + 5) health to herself or another character she can touch."
     },
     "Regenerate": {
       "Action cost": "Free",
       "Focus cost": "0",
       "Investiture cost": "1",
-      "Attack": "",
-      "Range": "",
-      "AOE": "Self",
-      "Graze": "",
-      "Hit": "Recovers 4 (1d6 + 1) health",
-      "Duration": "",
-      "Saving Throw": "",
       "Description": "Kaiana recovers 4 (1d6 + 1) health. She can use this free action even while Unconscious or otherwise prevented from using actions."
     },
     "Reflexive Growth": {
       "Action cost": "Reaction",
       "Focus cost": "0",
       "Investiture cost": "1",
-      "Attack": "",
-      "Range": "20ft.",
-      "AOE": "Self or one ally",
-      "Graze": "",
-      "Hit": "",
-      "Duration": "Until the end of their next turn",
-      "Saving Throw": "Progression test against the attacker's Physical defense",
-      "Description": "Before Kaiana or an ally she can sense within 20 feet of her is hit by a melee attack, she tosses a seed from her pouch and makes a Progression test against the attacker's Physical defense. On a success, a plant rapidly grows around the target; they are Restrained (adding a disadvantage to their test, potentially changing the hit into a miss), and they can't make Reactive Strikes until the end of their next turn."
+      "Description": "Before Kaiana or an ally she can sense within 20 feet of her is hit by a melee attack, she tosses a seed from her pouch and makes a Progression test against the attacker’s Physical defense. On a success, a plant rapidly grows around the target; they are Restrained (adding a disadvantage to their test, potentially changing the hit into a miss), and they can’t make Reactive Strikes until the end of their next turn."
     },
-    "Strike: Raysium Knife": {
+    "Strike: Raysium Knife (Chapter 4)": {
       "Action cost": "1",
       "Focus cost": "0",
       "Investiture cost": "0",
-      "Attack": "+5",
-      "Range": "5ft. or 20/60ft.",
-      "AOE": "One target",
-      "Graze": "2 keen damage",
-      "Hit": "7 keen damage",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": "On a hit the target loses 1 Investiture. Kaiana can spend 1 focus to make the target Slowed until the end of the target's next turn."
+      "Description": "Kaiana makes a Knife attack (no action required). On a hit, the target also loses 1 Investiture."
     }
   },
-  "physical_skills": {
-    "Agility": 5,
-    "Light Weaponry": 5
-  },
-  "cognitive_skills": {
-    "Discipline": 4,
-    "Medicine": 3
-  },
-  "spiritual_skills": {
-    "Insight": 5,
-    "Leadership": 4,
-    "Perception": 5,
-    "Progression": 5,
-    "Illumination": 4
-  }
+  "Tactics": "Kaiana is particularly skilled in Progression and uses it to support her allies: Her Reflexive Growth deters attackers, and when needed, she heals allies with Regrowth. Meanwhile, her Distracting Illusion can protect weaker or injured allies. When she isn’t needed to react and protect (or when she runs out of Investiture), she uses her Passionate Ally to give allies an opening, and she uses her Knife to impede enemies."
 }

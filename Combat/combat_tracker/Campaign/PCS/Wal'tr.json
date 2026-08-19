@@ -1,17 +1,8 @@
 {
   "name": "Wal'tr",
-  "health": {
-    "current": 12,
-    "max": 12
-  },
-  "focus": {
-    "current": 2,
-    "max": 2
-  },
-  "investiture": {
-    "current": 0,
-    "max": 0
-  },
+  "health": 12,
+  "focus": 2,
+  "investiture": 0,
   "strength": 2,
   "speed": 2,
   "physical defense": 14,
@@ -21,9 +12,20 @@
   "awareness": 3,
   "presence": 0,
   "spiritual defense": 13,
-  "movement": 40,
-  "immunities": "",
   "deflect": 0,
+  "movement": "40 ft.",
+  "senses": "40 ft. (smell)",
+  "recovery die": "1d4",
+  "physical_skills": {
+    "Agility": "+4",
+    "Athletics": "+4",
+    "Stealth": "+3"
+  },
+  "cognitive_skills": {},
+  "spiritual_skills": {
+    "Perception": "+5",
+    "Survival": "+4"
+  },
   "Talents": {
     "Enhanced Senses": {
       "Action Cost": "Always",
@@ -35,51 +37,29 @@
     }
   },
   "Actions": {
-    "Strike Bite": {
+    "Strike: Bite": {
       "Action cost": "1",
       "Focus cost": "0",
-      "Attack": "+4",
-      "Range": "5ft.",
-      "AOE": "One target",
-      "Graze": "2 keen damage",
-      "Hit": "6 keen damage",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": "If target is medium or smaller, spend 1 focus to knock the target prone and move 10ft. while dragging them."
+      "Investiture cost": "0",
+      "Description": " Attack +4, reach 5 ft., one target. Graze: 1d4 keen damage. Hit: 1d4 + 4 keen damage, and if the target is Medium or smaller, the axehound can spend 1 focus to knock the target Prone, then move up to 10 feet while dragging the target behind them."
     },
     "Pack Instincts": {
       "Action cost": "Free",
-      "Focus cost": "",
-      "Attack": "",
-      "Range": "5ft.",
-      "AOE": "",
-      "Graze": "",
-      "Hit": "",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": "While close to an ally, use the gain advantage action for free."
+      "Focus cost": "0",
+      "Investiture cost": "0",
+      "Description": "While within 5 feet of an ally, the axehound can use the Gain Advantage action as ▷."
     },
     "On the Hunt": {
       "Action cost": "Reaction",
-      "Focus cost": "",
-      "Attack": "",
-      "Range": "30ft.",
-      "AOE": "",
-      "Graze": "",
-      "Hit": "",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": "If an enemy falls prone, move 15ft. toward them."
+      "Focus cost": "0",
+      "Investiture cost": "0",
+      "Description": " After an enemy within 30 feet of the axehound falls Prone, the axehound moves up to 15 feet toward them."
+    },
+    "Track": {
+      "Action cost": "2",
+      "Focus cost": "0",
+      "Investiture cost": "0",
+      "Description": " The animal companion helps their Hunter track one character of the Hunter’s choice who the animal companion can sense within their reach. The target becomes the Hunter’s quarry for their Seek Quarry talent."
     }
-  },
-  "physical_skills": {
-    "Agility": 4,
-    "Athletics": 4,
-    "Stealth": 3
-  },
-  "cognitive_skills": {},
-  "spiritual_skills": {
-    "Perception": 5,
-    "Survival": 4
   }
 }

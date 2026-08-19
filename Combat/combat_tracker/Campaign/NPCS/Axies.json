@@ -1,17 +1,11 @@
 {
   "name": "Axies",
   "health": {
-    "current": 60,
-    "max": 60
+    "min": 40,
+    "max": 72
   },
-  "focus": {
-    "current": 6,
-    "max": 6
-  },
-  "investiture": {
-    "current": 0,
-    "max": 0
-  },
+  "focus": 6,
+  "investiture": 0,
   "strength": 3,
   "speed": 4,
   "physical defense": 17,
@@ -21,64 +15,48 @@
   "awareness": 6,
   "presence": 3,
   "spiritual defense": 19,
-  "movement": 30,
-  "immunities": "Afflicted, Exhausted, Stunned, Unconscious",
   "deflect": 0,
+  "movement": "30 ft.",
+  "senses": "50 ft. (sight)",
+  "immunities": "Afflicted, Exhausted, Stunned, Unconscious",
+  "physical_skills": {
+    "Agility": "+6",
+    "Stealth": "+8",
+    "Thievery": "+8"
+  },
+  "cognitive_skills": {
+    "Deduction": "+8",
+    "Discipline": "+5",
+    "Lore": "+10"
+  },
+  "spiritual_skills": {
+    "Deception": "+5",
+    "Insight": "+10",
+    "Perception": "+10"
+  },
   "features": {
-    "Immortal": "Axies can’t die due to old age, natural causes, or physical injuries. If Axies is reduced to 0 health, he suffers no injuries and regains 20 (5d8) health at the start of his next turn",
+    "Immortal": "Axies can’t die due to old age, natural causes, or physical injuries. If Axies is reduced to 0 health, he suffers no injuries and regains 20 (5d8) health at the start of his next turn.",
     "Curse of Kind": "Axies must raise the stakes when making a risky or difficult skill test, and he gains a disadvantage on all plot die rolls."
   },
   "Actions": {
-    "Strike Unarmed": {
+    "Strike: Unarmed": {
       "Action cost": "1",
       "Focus cost": "0",
-      "Attack": "+3",
-      "Range": "5ft.",
-      "AOE": "One target",
-      "Graze": "2 impact damage",
-      "Hit": "5 impact damage",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": ""
+      "Investiture cost": "0",
+      "Description": "Attack +3, reach 5 ft., one target. Graze: 2 (1d4) impact damage. Hit: 5 (1d4 + 3) impact damage."
     },
     "Fun fact": {
       "Action cost": "1",
       "Focus cost": "1",
-      "Attack": "",
-      "Range": "20ft.",
-      "AOE": "",
-      "Graze": "",
-      "Hit": "",
-      "Duration": "",
-      "Saving Throw": "DC 15 Lore test and raises the stakes",
-      "Description": "On a success, the chosen ally gains 2 focus. Whether the test succeeds or fails, on Opportunities, that ally’s next test gains an advantage, and on Complications, that ally’s next test gains a disadvantage."
+      "Investiture cost": "0",
+      "Description": "Axies chooses an ally he can influence within 20 feet of him, then makes a DC 15 Lore test and raises the stakes. On a success, the chosen ally gains 2 focus. Whether the test succeeds or fails, on Opportunities, that ally’s next test gains an advantage, and on Complications, that ally’s next test gains a disadvantage."
     },
     "Shift Form": {
-      "Action cost": "1",
+      "Action cost": "2",
       "Focus cost": "1",
-      "Attack": "",
-      "Range": "",
-      "AOE": "",
-      "Graze": "",
-      "Hit": "",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": " Axies shifts his features to conceal his identity. While disguised in this way, any tests made to see through Axies’s shifted form gain a disadvantage. This disguise ends when Axies chooses or when he is reduced to 0 focus."
+      "Investiture cost": "0",
+      "Description": "Axies shifts his features to conceal his identity. While disguised in this way, any tests made to see through Axies’s shifted form gain a disadvantage. This disguise ends when Axies chooses or when he is reduced to 0 focus."
     }
   },
-  "physical_skills": {
-    "Agility": 6,
-    "Stealth": 8,
-    "Thievery": 8
-  },
-  "cognitive_skills": {
-    "Deduction": 8,
-    "Discipline": 5,
-    "Lore": 10
-  },
-  "spiritual_skills": {
-    "Deception": 5,
-    "Insight": 10,
-    "Perception": 10
-  }
+  "Tactics": "Despite his immortality, Axies is a scholar who prefers to avoid any kind of physical conflict. If he finds himself in the middle of a fight, he generally proves unhelpful. He’s always happy to use his Fun Fact to share some arcane lore about spren, but his Curse of Kind trait means his words are likely to distract his allies."
 }

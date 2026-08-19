@@ -1,17 +1,11 @@
 {
   "name": "Shansan",
   "health": {
-    "current": 18,
-    "max": 18
+    "min": 15,
+    "max": 21
   },
-  "focus": {
-    "current": 4,
-    "max": 4
-  },
-  "investiture": {
-    "current": 0,
-    "max": 0
-  },
+  "focus": 4,
+  "investiture": 0,
   "strength": 1,
   "speed": 1,
   "physical defense": 12,
@@ -21,51 +15,41 @@
   "awareness": 2,
   "presence": 1,
   "spiritual defense": 13,
-  "movement": 25,
-  "immunities": "",
   "deflect": 0,
+  "movement": "25 ft.",
+  "senses": "10 ft. (sight)",
+  "immunities": "",
+  "physical_skills": {
+    "Agility": "+2",
+    "Athletics": "+2",
+    "Light Weaponry": "+2"
+  },
+  "cognitive_skills": {
+    "Crafting": "+2",
+    "Deduction": "+2"
+  },
+  "spiritual_skills": {
+    "Deception": "+2",
+    "Insight": "+4",
+    "Perception": "+4"
+  },
   "features": {
-    "Capable": "Esoteric glyphs expertise, advantage on skill tests",
-    "Stern Countenance": "If they spend 1 focus to resist influence, opponent loses 1 focus"
+    "Capable": "The expert has a utility expertise in one profession, and they gain an advantage on skill tests related to that profession.",
+    "Stern Countenance": "After the expert spends focus to resist a character’s influence, that character loses 1 focus."
   },
   "Actions": {
     "Strike Improvised Weapon": {
       "Action cost": "1",
       "Focus cost": "0",
-      "Attack": "+2",
-      "Range": "5ft.",
-      "AOE": "One target",
-      "Graze": "2 impact damage",
-      "Hit": "3 impact damage",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": "On a complication, it's destroyed"
+      "Investiture cost": "0",
+      "Description": "Attack +2, reach 5 ft., one target. On a Complication, this improvised weapon is destroyed. Graze: 2 (1d4) impact damage. Hit: 3 (1d4 + 2) impact damage."
     },
     "Counter Argument": {
       "Action cost": "1",
       "Focus cost": "0",
-      "Attack": "",
-      "Range": "",
-      "AOE": "One target",
-      "Graze": "",
-      "Hit": "",
-      "Duration": "",
-      "Saving Throw": "Persuasion vs Spiritual defense",
-      "Description": "Lose 3 focus"
+      "Investiture cost": "0",
+      "Description": "During a conversation, the expert makes a Persuasion test against a character’s Spiritual defense. On a success, the target loses 3 focus."
     }
   },
-  "physical_skills": {
-    "Agility": 2,
-    "Athletics": 2,
-    "Light Weaponry": 2
-  },
-  "cognitive_skills": {
-    "Crafting": 2,
-    "Deduction": 2
-  },
-  "spiritual_skills": {
-    "Deception": 2,
-    "Insight": 4,
-    "Perception": 4
-  }
+  "Tactics": "An expert usually fights cautiously with their Improvised Weapon, but unlike most commoners, they might run straight into danger if they believe in a cause or see a chance for glory. In conversations, they’re more likely than commoners stand their ground. If a PC challenges an expert’s beliefs, the expert is more likely to spend focus to resist influence. If sufficiently provoked, they may use their Counter Argument and Stern Countenance to make things difficult for their opponent."
 }

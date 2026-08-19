@@ -1,0 +1,64 @@
+{
+  "name": "Shadowform Zealot",
+  "health": {
+    "min": 17,
+    "max": 27
+  },
+  "focus": 5,
+  "investiture": 4,
+  "strength": 1,
+  "speed": 4,
+  "physical defense": 15,
+  "intelligence": 1,
+  "willpower": 3,
+  "cognitive defense": 14,
+  "awareness": 2,
+  "presence": 2,
+  "spiritual defense": 14,
+  "deflect": 0,
+  "movement": "30 ft.",
+  "senses": "10 ft. (sight); 40 ft. in darkness",
+  "immunities": "",
+  "physical_skills": {
+    "Agility": "+5",
+    "Light Weaponry": "+6",
+    "Stealth": "+7"
+  },
+  "cognitive_skills": {
+    "Intimidation": "+5"
+  },
+  "spiritual_skills": {
+    "Perception": "+4",
+    "Survival": "+4"
+  },
+  "features": {
+    "Unbodied": "All attacks against the shadowform zealot’s Physical defense gain a disadvantage. Additionally, the shadowform zealot ignores difficult terrain, and they can move through any gaps with a diameter of 6 inches or greater."
+  },
+  "Actions": {
+    "Strike: Shadow Claws": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Investiture cost": "0",
+      "Description": "Attack +6, reach 5 ft., one target. The shadowform zealot can only use this action if they’re in a darkened area or if they have used their Manifest free action this turn. Graze: 4 (1d8) spirit damage. Hit: 10 (1d8 + 6) spirit damage."
+    },
+    "Drag Through Shadows": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Investiture cost": "1",
+      "Description": "The shadowform zealot transports themself to a darkened area they can sense within 30 feet of them. This movement doesn’t trigger Reactive Strikes. When the shadowform zealot uses this action, they can also transport one character within 5 feet of them. If the target is unwilling, the shadowform zealot must first succeed on an Agility test against the target’s Physical defense. A transported target appears in an unoccupied space of the shadowform zealot’s choice within 5 feet of where the shadowform zealot transported to."
+    },
+    "Grieving Dirge": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Investiture cost": "2",
+      "Description": "The shadowform zealot makes an Intimidation test against the Spiritual defense of a target they can influence within 30 feet of them. On a success, the target becomes Exhausted [−1]."
+    },
+    "Manifest": {
+      "Action cost": "Free",
+      "Focus cost": "0",
+      "Investiture cost": "0",
+      "Description": "The shadowform zealot briefly coalesces into a more solid form. Until the beginning of their next turn, they can’t benefit from their Unbodied feature, but they can use the Strike action even in brightly lit areas."
+    }
+  },
+  "Tactics": "A shadowform zealot is a slippery foe who takes advantage of tactical positioning. They move opponents into areas of shadow using Drag Through Shadows, then gather around to strike using their Shadow Claws. They wear down significant threats with Grieving Dirge, and if they need to position themselves or escape, shadowform zealots rely on Unbodied and Drag Through Shadows."
+}

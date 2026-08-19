@@ -54,69 +54,24 @@ def action_symbol(action):
     if "always" in value:
         return "∞"
 
-    return "►"
+    return ""
 
 
 def format_action_lines(action_name, action_data):
     lines = [f"{action_symbol(action_data)} {normalize_action_name(action_name)}"]
-
-    aoe = get_action_value(action_data, "aoe", "target")
-    attack = get_action_value(action_data, "attack")
-    action_range = get_action_value(action_data, "range")
-    saving_throw = get_action_value(action_data, "saving throw")
-    damage = get_action_value(action_data, "damage")
-    graze = get_action_value(action_data, "graze")
-    hit = get_action_value(action_data, "hit")
-    duration = get_action_value(action_data, "duration")
     description = get_action_value(action_data, "description")
     focus_cost = get_action_value(action_data, "focus cost")
     investiture_cost = get_action_value(action_data, "investiture cost")
 
-    summary = []
-    if not is_blank(aoe):
-        summary.append(str(aoe).strip())
-
-    if not is_blank(attack):
-        attack_text = str(attack).strip()
-        if "d20" not in attack_text.lower() and (
-            attack_text.startswith("+")
-            or attack_text.startswith("-")
-            or attack_text.isdigit()
-        ):
-            attack_text = f"1d20{attack_text}"
-        attack_text = f"{attack_text} vs Physical Def."
-        summary.append(attack_text)
-
-    if not is_blank(action_range):
-        summary.append(f"({str(action_range).strip()})")
-
-    if summary:
-        lines.append(" ".join(summary))
-
-    if not is_blank(saving_throw):
-        lines.append(str(saving_throw).strip())
-
-    if not is_blank(graze):
-        lines.append(f"Graze: {str(graze).strip()}")
-
-    if not is_blank(hit):
-        lines.append(f"Hit: {str(hit).strip()}")
-
-    if not is_blank(damage):
-        lines.append(f"Damage: {str(damage).strip()}")
-
-    if not is_blank(duration):
-        lines.append(f"Duration: {str(duration).strip()}")
-
     if not is_blank(focus_cost):
         focus_text = str(focus_cost).strip()
         if focus_text not in {"0", "0.0"}:
-            lines.append(f"Focus Cost: {focus_text}")
+            lines.append(f"Focus Cost {focus_text}")
 
     if not is_blank(investiture_cost):
         investiture_text = str(investiture_cost).strip()
         if investiture_text not in {"0", "0.0"}:
-            lines.append(f"Investiture Cost: {investiture_text}")
+            lines.append(f"Investiture Cost {investiture_text}")
 
     if not is_blank(description):
         lines.append(str(description).strip())

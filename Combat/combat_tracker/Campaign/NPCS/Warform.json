@@ -1,17 +1,11 @@
 {
   "name": "Warform Singer",
   "health": {
-    "current": 24,
-    "max": 24
+    "min": 20,
+    "max": 28
   },
-  "focus": {
-    "current": 4,
-    "max": 4
-  },
-  "investiture": {
-    "current": 0,
-    "max": 0
-  },
+  "focus": 4,
+  "investiture": 0,
   "strength": 3,
   "speed": 1,
   "physical defense": 14,
@@ -21,62 +15,46 @@
   "awareness": 2,
   "presence": 2,
   "spiritual defense": 14,
-  "movement": 25,
-  "immunities": "",
   "deflect": 2,
+  "movement": "25 ft.",
+  "senses": "10 ft. (sight)",
+  "immunities": "",
+  "physical_skills": {
+    "Athletics": "+5",
+    "Heavy Weaponry": "+4",
+    "Light Weaponry": "+3"
+  },
+  "cognitive_skills": {
+    "Discipline": "+5",
+    "Intimidation": "+4"
+  },
+  "spiritual_skills": {
+    "Leadership": "+4",
+    "Perception": "+5"
+  },
   "features": {
-    "External Carapace": "Their carapace allows them to use the Brace action.",
-    "Martial Experience": "They can use the strike action twice on their turn."
+    "External Carapace": "The warform can use their carapace like a shield, allowing them to use the Brace action",
+    "Martial Experience": "The warform can use their Strike action twice on their turn."
   },
   "Actions": {
-    "Strike Axe": {
+    "Strike: Axe": {
       "Action cost": "1",
       "Focus cost": "0",
-      "Attack": "+4",
-      "Range": "5ft.",
-      "AOE": "One target",
-      "Graze": "3 keen damage",
-      "Hit": "7 keen damage",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": "They can jump 10 feet before or after the attack."
+      "Investiture cost": "0",
+      "Description": "Attack +4, reach 5 ft., one target. The warform can jump up to 10 feet before or after making this attack. Graze: 3 (1d6) keen damage. Hit: 7 (1d6 + 4) keen damage."
     },
-    "Strike Shortbow": {
+    "Strike: Shortbow": {
       "Action cost": "1",
       "Focus cost": "0",
-      "Attack": "+3",
-      "Range": "80/320ft.",
-      "AOE": "One target",
-      "Graze": "3 keen damage",
-      "Hit": "6 keen damage",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": ""
+      "Investiture cost": "0",
+      "Description": "Attack +3, range 80/320 ft., one target. Graze: 3 (1d6) keen damage. Hit: 6 (1d6 + 3) keen damage."
     },
     "Warpair coordination": {
       "Action cost": "Reaction",
       "Focus cost": "1",
-      "Attack": "",
-      "Range": "5ft.",
-      "AOE": "",
-      "Graze": "",
-      "Hit": "",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": "After another nearby warform moves, they can move up to their movement speed within 5ft. of the other warform."
+      "Investiture cost": "0",
+      "Description": "After another warform within 5 feet of this warform takes the Move action, this warform moves up to their movement rate, ending their movement within 5 feet of the other warform."
     }
   },
-  "physical_skills": {
-    "Athletics": 5,
-    "Heavy Weaponry": 4,
-    "Light Weaponry": 3
-  },
-  "cognitive_skills": {
-    "Discipline": 5,
-    "Intimidation": 4
-  },
-  "spiritual_skills": {
-    "Leadership": 4,
-    "Perception": 5
-  }
+  "Tactics": "A warform singer is a brutally efficient combatant, especially when fighting alongside their warpair—another warform singer. Warpairs descend on a target together with their Warpair Coordination and, using their Martial Experience, they make multiple Axe attacks against a single foe to fell them. In a tight spot, the warform singer relies on their External Carapace for relief from an onslaught while their warpair continues fighting."
 }

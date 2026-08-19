@@ -1,17 +1,8 @@
 {
   "name": "Eris",
-  "health": {
-    "current": 17,
-    "max": 17
-  },
-  "focus": {
-    "current": 5,
-    "max": 5
-  },
-  "investiture": {
-    "current": 4,
-    "max": 4
-  },
+  "health": 17,
+  "focus": 5,
+  "investiture": 4,
   "strength": 2,
   "speed": 2,
   "physical defense": 14,
@@ -21,9 +12,22 @@
   "awareness": 2,
   "presence": 1,
   "spiritual defense": 13,
-  "movement": 25,
-  "recovery die": "1d8",
   "deflect": 1,
+  "movement": "25 ft.",
+  "senses": "10 ft. (Sight)",
+  "recovery die": "1d8",
+  "physical_skills": {
+    "Heavy Weaponry": "+3",
+    "Light Weaponry": "+3"
+  },
+  "cognitive_skills": {
+    "Lore": "+3",
+    "Medicine": "+4"
+  },
+  "spiritual_skills": {
+    "Leadership": "+2",
+    "Persuasion": "+2"
+  },
   "Talents": {
     "Erudición": {
       "Action Cost": "Special",
@@ -59,45 +63,23 @@
     }
   },
   "Actions": {
-    "Strike Hammer": {
+    "Strike: Hammer": {
       "Action cost": "1",
       "Focus cost": "0",
-      "Attack": "+3",
-      "Range": "5ft.",
-      "Damage": "1d10(+3) impact damage",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": "Two Handed, Momentum"
+      "Investiture cost": "0",
+      "Description": "Attack +3, reach 5 ft., one target. Graze: 1d10 impact damage. Hit: 1d10 + 3 impact damage. Two-Handed: Must wield this weapon with both hands. Momentum (Expertise): If you already moved at least 10 ft. in a straight line, you gain advantage on the attack."
     },
-    "Strike Shield": {
+    "Strike: Shield": {
       "Action cost": "1",
       "Focus cost": "0",
-      "Attack": "+3",
-      "Range": "5ft.",
-      "Damage": "1d4(+3) impact damage",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": "Defensive"
+      "Investiture cost": "0",
+      "Description": "Attack +3, reach 5 ft., one target. Graze: 1d4 impact damage. Hit: 1d4 + 3 impact damage. Defensive: You can use the Brace action without cover nearby."
     },
-    "Strike Knife": {
+    "Strike: Knife": {
       "Action cost": "1",
       "Focus cost": "0",
-      "Attack": "+3",
-      "Range": "5ft.",
-      "Damage": "1d4(+3) keen damage",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": "Discreet"
+      "Investiture cost": "0",
+      "Description": "Attack +3, reach 5 ft., one target. Graze: 1d4 keen damage. Hit: 1d4 + 3 keen damage."
     }
-  },
-  "physical_skills": {
-    "Light Weaponry": 3
-  },
-  "cognitive_skills": {
-    "Lore": 3,
-    "Medicine": 4
-  },
-  "spiritual_skills": {
-    "Leadership": 2
   }
 }

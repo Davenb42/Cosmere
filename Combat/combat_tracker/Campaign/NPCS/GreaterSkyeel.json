@@ -1,17 +1,11 @@
 {
   "name": "Greater Skyeel",
   "health": {
-    "current": 24,
-    "max": 24
+    "min": 19,
+    "max": 29
   },
-  "focus": {
-    "current": 3,
-    "max": 3
-  },
-  "investiture": {
-    "current": 0,
-    "max": 0
-  },
+  "focus": 3,
+  "investiture": 0,
   "strength": 3,
   "speed": 3,
   "physical defense": 16,
@@ -21,59 +15,43 @@
   "awareness": 3,
   "presence": 0,
   "spiritual defense": 13,
-  "movement": 10,
-  "immunities": "",
   "deflect": 0,
+  "movement": "10 ft., fly 30 ft., swim 40 ft.",
+  "senses": "20 ft. (sight)",
+  "immunities": "",
+  "physical_skills": {
+    "Agility": "+5",
+    "Athletics": "+3",
+    "Stealth": "+4"
+  },
+  "cognitive_skills": {},
+  "spiritual_skills": {
+    "Perception": "+5",
+    "Survival": "+4"
+  },
   "features": {
-    "Enhanced Senses": "Advantage on non-attack tests that rely on sight.",
-    "Slippery": "Doesn't trigger reactive strikes while swimming."
+    "Enhanced Senses": "The skyeel gains an advantage on nonattack tests that rely on sight.",
+    "Slippery": "The skyeel doesn’t trigger Reactive Strikes while swimming."
   },
   "Actions": {
     "Bite": {
       "Action cost": "1",
       "Focus cost": "0",
-      "Attack": "+5",
-      "Range": "5ft.",
-      "AOE": "One target",
-      "Graze": "3 keen damage",
-      "Hit": "9 keen damage",
-      "Duration": "",
-      "Saving Throw": "DC 14 Athletics to release the skyeel",
-      "Description": "Spend 1 focus to restrain target, can only bite this target."
+      "Investiture cost": "0",
+      "Description": "Attack +5, reach 5 ft., one target. Graze: 3 (1d6) keen damage. Hit: 9 (1d8 + 5) keen damage, and if the target is Medium or smaller, the greater skyeel can spend 1 focus to wrap their body around the target. If they do, the target becomes Restrained, the skyeel attaches to the target, and the skyeel can’t use their Bite against a different target until they release the current one. As ►, the Restrained target or a character within 5 feet of them can make a DC 14 Athletics test, forcing the skyeel to release the target on a success."
     },
     "Dive Bomb": {
       "Action cost": "2",
       "Focus cost": "0",
-      "Attack": "",
-      "Range": "60ft.",
-      "AOE": "",
-      "Graze": "",
-      "Hit": "",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": "Use bite on target, gain advantage, can't fly again until end of scene."
+      "Investiture cost": "0",
+      "Description": "The greater skyeel flies up to 60 feet toward a target they can sense on the ground, without triggering Reactive Strikes, then uses their Bite against the target. This attack gains an advantage. After the skyeel uses this action, they can’t fly again until the end of the scene."
     },
     "Constrict": {
       "Action cost": "3",
       "Focus cost": "0",
-      "Attack": "",
-      "Range": "",
-      "AOE": "Restrained target",
-      "Graze": "",
-      "Hit": "15 impact damage",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": "The greater skyeel squeezes an enemy they have Restrained."
+      "Investiture cost": "0",
+      "Description": "The greater skyeel squeezes an enemy they have Restrained, dealing 15 (3d6 + 5) impact damage."
     }
   },
-  "physical_skills": {
-    "Agility": 5,
-    "Athletics": 3,
-    "Stealth": 4
-  },
-  "cognitive_skills": {},
-  "spiritual_skills": {
-    "Perception": 5,
-    "Survival": 4
-  }
+  "Tactics": "A skyeel remains in flight and hidden until they choose a target, then the skyeel uses their Dive Bomb to bite and restrain their prey. In the rare instance where a greater skyeel attacks a larger target, they use Dive Bomb then Constrict their Restrained prey, hoping for an easy meal."
 }

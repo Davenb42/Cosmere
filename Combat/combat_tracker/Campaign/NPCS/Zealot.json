@@ -1,17 +1,11 @@
 {
   "name": "Zealot",
   "health": {
-    "current": 12,
-    "max": 12
+    "min": 9,
+    "max": 14
   },
-  "focus": {
-    "current": 4,
-    "max": 4
-  },
-  "investiture": {
-    "current": 0,
-    "max": 0
-  },
+  "focus": 4,
+  "investiture": 0,
   "strength": 3,
   "speed": 1,
   "physical defense": 14,
@@ -21,61 +15,45 @@
   "awareness": 1,
   "presence": 2,
   "spiritual defense": 13,
-  "movement": 25,
-  "immunities": "",
   "deflect": 0,
+  "movement": "25 ft.",
+  "senses": "10 ft. (sight)",
+  "immunities": "",
+  "physical_skills": {
+    "Agility": "+3",
+    "Heavy Weaponry": "+4"
+  },
+  "cognitive_skills": {
+    "Intimidation": "+3"
+  },
+  "spiritual_skills": {
+    "Perception": "+3",
+    "Survival": "+3"
+  },
   "features": {
-    "Minion": "Attacks can't crit, and they're defeated once they suffer an injury.",
-    "Fanatical": " Intimidation and Persuasion tests against the zealot gain a disadvantage.",
+    "Minion": "The zealot’s attacks can’t critically hit, and they’re immediately defeated when they suffer an injury.",
+    "Fanatical": "Intimidation and Persuasion tests against the zealot gain a disadvantage.",
     "Frenzied": "While the zealot is at half health or less, they can’t use the Brace action, but their movement rate increases by 10 feet and their damage rolls gain an advantage."
   },
   "Actions": {
-    "Strike Longsword": {
+    "Strike: Longsword": {
       "Action cost": "1",
       "Focus cost": "0",
-      "Attack": "+4",
-      "Range": "5ft.",
-      "AOE": "One target",
-      "Graze": "4 keen damage",
-      "Hit": "8 keen damage",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": ""
+      "Investiture cost": "0",
+      "Description": "Attack +4, reach 5 ft., one target. Graze: 4 (1d8) keen damage. Hit: 8 (1d8 + 4) keen damage."
     },
     "Brace": {
       "Action cost": "1",
-      "Focus cost": "",
-      "Attack": "",
-      "Range": "",
-      "AOE": "",
-      "Graze": "",
-      "Hit": "",
-      "Duration": "",
-      "Saving Throw": "",
+      "Focus cost": "0",
+      "Investiture cost": "0",
       "Description": "The zealot raises their shield, and attacks against them gain a disadvantage until the start of the zealot’s next turn."
     },
     "Inspire Zeal": {
       "Action cost": "1",
       "Focus cost": "1",
-      "Attack": "",
-      "Range": "20ft.",
-      "AOE": "One ally",
-      "Graze": "",
-      "Hit": "",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": "The zealot inspires an ally they can influence within 20 feet of them. That ally can immediately use the Strike action as a reaction."
+      "Investiture cost": "0",
+      "Description": "The zealot inspires an ally they can influence within 20 feet of them. That ally can immediately use the Strike action as ↩."
     }
   },
-  "physical_skills": {
-    "Agility": 3,
-    "Heavy Weaponry": 4
-  },
-  "cognitive_skills": {
-    "Intimidation": 3
-  },
-  "spiritual_skills": {
-    "Perception": 3,
-    "Survival": 3
-  }
+  "Tactics": "A zealot fights with fanaticism. They and their fellow zealots crowd around enemies and attack recklessly with their Longsword. As a battle grows more violent and their companions become Frenzied, a zealot uses Inspire Zeal to encourage courage and brutality in the face of death."
 }

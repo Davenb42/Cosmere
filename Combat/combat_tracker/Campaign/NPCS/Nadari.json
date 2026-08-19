@@ -1,17 +1,11 @@
 {
   "name": "Nadari",
   "health": {
-    "current": 20,
-    "max": 20
+    "min": 16,
+    "max": 24
   },
-  "focus": {
-    "current": 3,
-    "max": 3
-  },
-  "investiture": {
-    "current": 0,
-    "max": 0
-  },
+  "focus": 3,
+  "investiture": 0,
   "strength": 1,
   "speed": 3,
   "physical defense": 14,
@@ -21,74 +15,52 @@
   "awareness": 2,
   "presence": 1,
   "spiritual defense": 13,
-  "movement": 30,
-  "immunities": "",
   "deflect": 1,
+  "movement": "30 ft.",
+  "senses": "20 ft. (sight)",
+  "immunities": "",
+  "physical_skills": {
+    "Agility": "+5",
+    "Light Weaponry": "+5",
+    "Stealth": "+5",
+    "Thievery": "+5"
+  },
+  "cognitive_skills": {
+  },
+  "spiritual_skills": {
+    "Deception": "+3",
+    "Perception": "+4",
+    "Persuasion": "+3"
+  },
   "features": {
-    "Quick Hands": " When a character triggers a Reactive Strike reaction from the thief, the thief can instead use their Pickpocket as a Reaction (without spending focus for a Reactive Strike).",
-    "Vanishing Act": "If using cover at the end of their turn, make a Stealth test (no action required) against the enemies Spiritual Defense, each enemy that fails can no longer sense the thief."
+    "Quick Hands": "When a character triggers a Reactive Strike reaction from the thief, the thief can instead use their Pickpocket as ↩ (without spending focus for a Reactive Strike).",
+    "Vanishing Act": "At the end of the thief’s turn, if they’re in cover or in an area where their enemy’s primary sense is obscured, the thief can make a Stealth test (no action required) with advantage against the Spiritual defense of each enemy who can sense them. Each enemy they succeed against loses track of them and can no longer sense them until the thief attacks or takes another action that would expose them."
   },
   "Actions": {
     "Strike Dagger": {
       "Action cost": "1",
       "Focus cost": "0",
-      "Attack": "+5",
-      "Range": "20/60ft.",
-      "AOE": "One target",
-      "Graze": "2 keen damage",
-      "Hit": "7 keen damage",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": "On a hit or graze, if the target is Disoriented, they take an extra 2 (1d4) keen damage."
+      "Investiture cost": "0",
+      "Description": "Attack +5, reach 5 ft. or range 20/60 ft., one target. Graze: 2 (1d4) keen damage. Hit: 7 (1d4 + 5) keen damage. On a hit or graze, if the target is Disoriented, they take an extra 2 (1d4) keen damage."
     },
     "Disorienting Distraction": {
       "Action cost": "1",
       "Focus cost": "1",
-      "Attack": "",
-      "Range": "10ft.",
-      "AOE": "All enemies within range",
-      "Graze": "",
-      "Hit": "",
-      "Duration": "Thief's next turn",
-      "Saving Throw": "DC 13 Agility test or become Disoriented",
-      "Description": "The thief throws sand, flour, or a similar substance to distract and confuse foes."
+      "Investiture cost": "0",
+      "Description": "The thief throws sand, flour, or a similar substance to distract and confuse foes. Each enemy within 10 feet of them must succeed on a DC 13 Agility test or become Disoriented until the end of the thief’s next turn."
     },
     "Pickpocket": {
       "Action cost": "2",
       "Focus cost": "2",
-      "Attack": "",
-      "Range": "5ft.",
-      "AOE": "One target",
-      "Graze": "",
-      "Hit": "",
-      "Duration": "",
-      "Saving Throw": "Thievery test against the target’s Perception",
-      "Description": "If the target is Disoriented, the target gains a disadvantage on their test. If the thief succeeds, they can choose to steal up to 50 marks or one item the target isn’t wielding or wearing."
+      "Investiture cost": "0",
+      "Description": "The thief attempts to rifle through the belongings of a humanoid within 5 feet of them, making an opposed Thievery test against the target’s Perception. If the target is Disoriented, the target gains a disadvantage on their test. If the thief succeeds, they can choose to steal up to 50 marks or one item the target isn’t wielding or wearing."
     },
     "Slippery": {
       "Action cost": "Reaction",
-      "Focus cost": "",
-      "Attack": "",
-      "Range": "5ft.",
-      "AOE": "",
-      "Graze": "",
-      "Hit": "",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": "After an enemy ends a Move action within 5 feet of the thief, the thief can use the Disengage action as a Reaction. If the thief ends this movement in cover or in an area where an enemy’s primary sense is obscured, enemies affected by that cover or obscured senses gain a disadvantage on attacks against the thief until the end of the thief’s next turn."
+      "Focus cost": "0",
+      "Investiture cost": "0",
+      "Description": " After an enemy ends a Move action within 5 feet of the thief, the thief can use the Disengage action as ↩. If the thief ends this movement in cover or in an area where an enemy’s primary sense is obscured, enemies affected by that cover or obscured senses gain a disadvantage on attacks against the thief until the end of the thief’s next turn."
     }
   },
-  "physical_skills": {
-    "Agility": 5,
-    "Light Weaponry": 5,
-    "Stealth": 5,
-    "Thievery": 5
-  },
-  "cognitive_skills": {
-  },
-  "spiritual_skills": {
-    "Deception": 3,
-    "Perception": 4,
-    "Persuasion": 3
-  }
+  "Tactics": "A thief begins by using Disorienting Distraction and—if trying to avoid a fight—they immediately follow it with Pickpocket to steal away their prize. In a fight, their Disorienting Distraction is equally useful for making their Dagger strike more lethal. Should they get pinned down, they use Slippery to flee the scene."
 }

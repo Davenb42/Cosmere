@@ -1,17 +1,11 @@
 {
   "name": "Juvenile Whitespine",
   "health": {
-    "current": 23,
-    "max": 23
+    "min": 19,
+    "max": 27
   },
-  "focus": {
-    "current": 4,
-    "max": 4
-  },
-  "investiture": {
-    "current": 0,
-    "max": 0
-  },
+  "focus": 4,
+  "investiture": 0,
   "strength": 2,
   "speed": 3,
   "physical defense": 15,
@@ -21,61 +15,45 @@
   "awareness": 3,
   "presence": 0,
   "spiritual defense": 13,
-  "movement": 40,
-  "immunities": "",
   "deflect": 1,
+  "movement": "40 ft.",
+  "senses": "20 ft. (smell)",
+  "immunities": "",
+  "physical_skills": {
+    "Agility": "+6",
+    "Athletics": "+5",
+    "Stealth": "+6"
+  },
+  "cognitive_skills": {
+    "Intimidation": "+4"
+  },
+  "spiritual_skills": {
+    "Perception": "+5",
+    "Survival": "+5"
+  },
   "features": {
-    "Enhanced Senses": "Advantage on non-attack tests that rely on smell.",
-    "Spined Carapace": "If grazed, enemy takes 3 keen damage"
+    "Enhanced Senses": "The whitespine gains an advantage on non-attack tests that rely on smell.",
+    "Spined Carapace": "After an enemy within 5 feet of the whitespine grazes them with a weapon attack, that enemy takes 3 (1d6) keen damage"
   },
   "Actions": {
-    "Strike Claws": {
+    "Strike: Claws": {
       "Action cost": "1",
       "Focus cost": "0",
-      "Attack": "+5",
-      "Range": "5ft.",
-      "AOE": "One target",
-      "Graze": "3 keen damage",
-      "Hit": "8 keen damage",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": "Spend 1 focus to make target Afflicted 1d4"
+      "Investiture cost": "0",
+      "Description": "Attack +5, reach 5 ft., one target. Graze: 3 (1d6) keen damage. Hit: 8 (1d6 + 5) keen damage, and the whitespine can spend 1 focus to make the target Afflicted [1d4 vital] until the target regains at least 1 health."
     },
     "Gory Tusks": {
       "Action cost": "1",
       "Focus cost": "0",
-      "Attack": "+5",
-      "Range": "5ft.",
-      "AOE": "One target",
-      "Graze": "4 impact damage",
-      "Hit": "9 impact damage",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": "If used after 15ft. of movement, extra 4 damage, DC 12 Athletics test or knocked prone."
+      "Investiture cost": "0",
+      "Description": " Attack +5, reach 5 ft., one target. Graze: 4 (1d8) impact damage. Hit: 9 (1d8 + 5) impact damage. If the whitespine hits with this attack immediately after moving at least 15 feet, the target takes an extra 4 (1d8) impact damage and must succeed on a DC 12 Athletics test or be knocked Prone. "
     },
     "Pheromone Release": {
       "Action cost": "2",
       "Focus cost": "1",
-      "Attack": "",
-      "Range": "10ft.",
-      "AOE": "",
-      "Graze": "",
-      "Hit": "",
-      "Duration": "",
-      "Saving Throw": "DC 13 Discipline",
-      "Description": "Become Stunned until Whitespine's next turn"
+      "Investiture cost": "0",
+      "Description": "The whitespine releases foul pheromones. Each non-whitespine character within 10 feet of them must succeed on a DC 13 Discipline test or become Stunned until the end of the whitespine's next turn."
     }
   },
-  "physical_skills": {
-    "Agility": 6,
-    "Athletics": 5,
-    "Stealth": 6
-  },
-  "cognitive_skills": {
-    "Intimidation": 4
-  },
-  "spiritual_skills": {
-    "Perception": 5,
-    "Survival": 5
-  }
+  "Tactics": "Angry about being kept in captivity, a juvenile whitespine lashes out at anyone they can. They prefer to charge at distant, weak opponents to deal extra damage with their Goring Tusks, then follow with their Claws to leave prey bleeding out. A whitespine is quick to leave an enemy’s reach to charge yet another with their Goring Tusks for more extra damage. When a fight goes poorly, a whitespine uses Pheromone Release, stupefying their opponents so the whitespine can retreat or overwhelm them."
 }

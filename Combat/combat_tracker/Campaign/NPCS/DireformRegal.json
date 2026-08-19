@@ -1,17 +1,11 @@
 {
   "name": "Direform Regal",
   "health": {
-    "current": 42,
-    "max": 42
+    "min": 33,
+    "max": 51
   },
-  "focus": {
-    "current": 5,
-    "max": 5
-  },
-  "investiture": {
-    "current": 5,
-    "max": 5
-  },
+  "focus": 5,
+  "investiture": 5,
   "strength": 5,
   "speed": 3,
   "physical defense": 18,
@@ -21,92 +15,59 @@
   "awareness": 3,
   "presence": 1,
   "spiritual defense": 14,
-  "movement": 30,
-  "immunities": "",
   "deflect": 4,
+  "movement": "30 ft.",
+  "senses": "20 ft. (sight)",
+  "immunities": "",
+  "physical_skills": {
+    "Agility": "+5",
+    "Athletics": "+8",
+    "Heavy Weaponry": "+8",
+    "Light Weaponry": "+6"
+  },
+  "cognitive_skills": {
+    "Discipline": "+6",
+    "Intimidation": "+6"
+  },
+  "spiritual_skills": {
+    "Perception": "+5"
+  },
   "features": {
     "Martial Experience": "The direform can use their Strike action twice on their turn.",
     "Obstinate Guard": "It costs the direform 1 fewer focus to resist an enemy’s influence.",
     "Spiked Carapace": "The direform can use their carapace like a shield, allowing them to use the Brace action. While benefiting from Brace, the first time on each turn that the direform is either hit or grazed by a melee attack or is successfully Grappled or Shoved by an enemy, that enemy takes 3 (1d6) keen damage."
   },
   "Actions": {
-    "Strike Hammer": {
+    "Strike: Hammer": {
       "Action cost": "1",
       "Focus cost": "0",
       "Investiture cost": "0",
-      "Attack": "+8",
-      "Range": "5ft.",
-      "AOE": "One target",
-      "Graze": "5 impact damage",
-      "Hit": "13 impact damage",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": "The direform gains an advantage on this attack if they moved at least 10 feet in a straight line toward the target this turn."
+      "Description": "Attack +8, reach 5 ft., one target. The direform gains an advantage on this attack if they moved at least 10 feet in a straight line toward the target this turn. Graze: 5 (1d10) impact damage. Hit: 13 (1d10 + 8) impact damage."
     },
     "Strike Longbow": {
       "Action cost": "1",
       "Focus cost": "0",
       "Investiture cost": "0",
-      "Attack": "+8",
-      "Range": "150/600ft.",
-      "AOE": "One target",
-      "Graze": "3 keen damage",
-      "Hit": "11 keen damage",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": ""
+      "Description": "Attack +8, range 150/600 ft., one target. Graze: 3 (1d6) keen damage. Hit: 11 (1d6 + 8) keen damage."
     },
     "Invested Enhancement": {
       "Action cost": "1",
       "Focus cost": "0",
       "Investiture cost": "1",
-      "Attack": "",
-      "Range": "",
-      "AOE": "",
-      "Graze": "",
-      "Hit": "",
-      "Duration": "Until the end of their next turn",
-      "Saving Throw": "",
-      "Description": "The direform becomes Enhanced [Strength +1] and Enhanced [Speed +1]. This temporarily increases each of their Physical skills by 1, including their Hammer and Longbow actions’ attack and damage rolls. At the end of each of the direform’s turns, they can spend 1 Investiture to maintain this effect for an additional round."
+      "Description": "The direform becomes Enhanced [Strength +1] and Enhanced [Speed +1] until the end of their next turn. This temporarily increases each of their Physical skills by 1, including their Hammer and Longbow actions’ attack and damage rolls. At the end of each of the direform’s turns, they can spend 1 Investiture to maintain this effect for an additional round."
     },
     "Stand Firm": {
       "Action cost": "Reaction",
       "Focus cost": "1",
       "Investiture cost": "0",
-      "Attack": "",
-      "Range": "",
-      "AOE": "",
-      "Graze": "",
-      "Hit": "",
-      "Duration": "",
-      "Saving Throw": "",
       "Description": "Before the direform is unwillingly moved or knocked Prone, they ignore that effect."
     },
     "Tackle": {
       "Action cost": "Reaction",
       "Focus cost": "Reactive Strike",
-      "Investiture cost": "0",
-      "Attack": "",
-      "Range": "5ft.",
-      "AOE": "One target",
-      "Graze": "",
-      "Hit": "3 keen damage",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": "When an enemy triggers a Reactive Strike from the direform, the direform can instead attempt to Grapple the enemy, spending focus as if they made a Reactive Strike. If the Grapple succeeds, the enemy also takes 3 (1d6) keen damage from the direform’s carapace spikes."
+      "Investiture cost": "0",  
+      "Description": "When an enemy triggers a Reactive Strike from the direform, the direform can instead attempt to Grapple the enemy as ↩, spending focus as if they made a Reactive Strike. If the Grapple succeeds, the enemy also takes 3 (1d6) keen damage from the direform’s carapace spikes."
     }
   },
-  "physical_skills": {
-    "Agility": 5,
-    "Athletics": 8,
-    "Heavy Weaponry": 8,
-    "Light Weaponry": 6
-  },
-  "cognitive_skills": {
-    "Discipline": 6,
-    "Intimidation": 6
-  },
-  "spiritual_skills": {
-    "Perception": 5
-  }
+  "Tactics": "A direform Regal is a brutal foe who seeks to dominate in hand-to-hand combat. Until an enemy draws close enough for the Regal to charge in with their Hammer, the direform peppers enemies with their Longbow. Once a foe nears, the direform closes the distance, uses Invested Enhancement, and begins hammering away, mixing in the Brace action to take advantage of their Spiked Carapace. When a weakened foe attempts to flee, the direform uses Tackle to cut off their escape."
 }

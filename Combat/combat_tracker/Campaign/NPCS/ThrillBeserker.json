@@ -1,17 +1,11 @@
 {
   "name": "Thrill Berserker",
   "health": {
-    "current": 22,
-    "max": 22
+    "min": 18,
+    "max": 26
   },
-  "focus": {
-    "current": 5,
-    "max": 5
-  },
-  "investiture": {
-    "current": 0,
-    "max": 0
-  },
+  "focus": 5,
+  "investiture": 0,
   "strength": 2,
   "speed": 2,
   "physical defense": 14,
@@ -21,84 +15,56 @@
   "awareness": 2,
   "presence": 2,
   "spiritual defense": 14,
-  "movement": 25,
-  "immunities": "",
   "deflect": 0,
+  "movement": "25 ft.",
+  "senses": "10 ft. (sight)",
+  "immunities": "",
+  "physical_skills": {
+    "Athletics": "+4",
+    "Heavy Weaponry": "+4",
+    "Light Weaponry": "+3"
+  },
+  "cognitive_skills": {
+    "Intimidation": "+5"
+  },
+  "spiritual_skills": {
+    "Leadership": "+3",
+    "Perception": "+4"
+  },
   "features": {
-    "Infectious Thrill": "When an enemy rolls a complication on an attack, the enemy gains a +3 to that d20 roll, the enemy must choose a target within 5ft of the berserker and graze."
+    "Infectious Thrill": "When an enemy rolls a Complication Complication on an attack test against the berserker, the enemy gains a +3 bonus to that d20 roll. Regardless of whether the attack hits or misses, if any other characters are within 5 feet of the berserker, the enemy must choose one. The enemy’s attack also grazes the chosen character (without spending focus)."
   },
   "Actions": {
     "Strike Longsword": {
       "Action cost": "1",
       "Focus cost": "0",
-      "Attack": "+4",
-      "Range": "5ft.",
-      "AOE": "One target",
-      "Graze": "4 keen damage",
-      "Hit": "8 keen damage",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": "If the target is Prone, take an extra 4 keen damage."
+      "Investiture cost": "0",
+      "Description": "Attack +4, reach 5 ft., one target. Graze: 4 (1d8) keen damage. Hit: 8 (1d8 + 4) keen damage, and if the target is Prone, they take an extra 4 (1d8) damage."
     },
     "Strike Dagger": {
       "Action cost": "1",
       "Focus cost": "0",
-      "Attack": "+2",
-      "Range": "20/60ft.",
-      "AOE": "One target",
-      "Graze": "2 keen damage",
-      "Hit": "5 keen damage",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": ""
+      "Investiture cost": "0",
+      "Description": " Attack +3, range 20/60 ft., one target. Graze: 2 (1d4) keen damage. Hit: 5 (1d4 + 3) keen damage."
     },
     "Shield Bash": {
       "Action cost": "1",
       "Focus cost": "0",
-      "Attack": "",
-      "Range": "",
-      "AOE": "One target",
-      "Graze": "",
-      "Hit": "",
-      "Duration": "",
-      "Saving Throw": "Athletics Vs Physical Defense",
-      "Description": "Knock them prone."
+      "Investiture cost": "0",
+      "Description": "The berserker makes an Athletics test against the Physical defense of a Large or smaller character within 5 feet of them, knocking them Prone on a success."
     },
     "Berserker Rage": {
       "Action cost": "Free",
       "Focus cost": "2",
-      "Attack": "",
-      "Range": "",
-      "AOE": "",
-      "Graze": "",
-      "Hit": "",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": "The next Strike deals an extra 3 damage on a hit."
+      "Investiture cost": "0",
+      "Description": "The Thrill surges within the berserker. Their next Strike targets each character within 5 feet of them and deals an extra 3 (1d6) damage on a hit."
     },
     "Lash Out": {
       "Action cost": "Reaction",
       "Focus cost": "1",
-      "Attack": "",
-      "Range": "5ft.",
-      "AOE": "",
-      "Graze": "",
-      "Hit": "",
-      "Duration": "",
-      "Saving Throw": "",
-      "Description": "After being attacked, deal 4 keen damage to the attacker."
+      "Investiture cost": "0",
+      "Description": " After the berserker is attacked by an enemy within 5 feet of them, the berserker deals 4 (1d8) keen damage to the attacker"
     }
-  },
-  "physical_skills": {
-    "Athletics": 4,
-    "Heavy Weaponry": 4,
-    "Light Weaponry": 3
-  },
-  "cognitive_skills": {
-    "Intimidation": 5
-  },
-  "spiritual_skills": {
-    "Leadership": 3,
-    "Perception": 4
-  }
+  }, 
+  "Tactics": "A Thrill berserker rushes into battle, undeterred by formidable enemies and careful fortifications. They fight with alarming ferocity, using Berserker Rage and Shield Bash to cleave their path, regardless of whether friend or foe stands in the way."
 }

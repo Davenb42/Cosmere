@@ -29,7 +29,8 @@ class Character:
     awareness: int
     presence: int
 
-    movement: int
+    movement: str
+    senses: str
 
     health: Resource
     focus: Resource
@@ -40,6 +41,7 @@ class Character:
 
     talents: dict
     actions: dict
+    tactics: str = ""
 
     # ---------- Runtime ----------
 
