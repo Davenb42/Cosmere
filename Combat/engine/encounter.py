@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import List
 
-from combat_tracker.engine.character import Character
+from engine.character import Character
 
 
 @dataclass

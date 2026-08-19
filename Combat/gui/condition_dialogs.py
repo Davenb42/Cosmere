@@ -10,7 +10,7 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 
-from combat_tracker.engine.condition import Condition
+from engine.condition import Condition
 
 
 __all__ = ["ConditionSelectionDialog", "ConditionReminderDialog"]

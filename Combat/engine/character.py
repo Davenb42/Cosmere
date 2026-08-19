@@ -1,10 +1,10 @@
 from dataclasses import dataclass, field
 from enum import Enum
 from typing import Optional
-from combat_tracker.engine.defenses import Defenses
-from combat_tracker.engine.condition import Condition
+from engine.defenses import Defenses
+from engine.condition import Condition
 
-from combat_tracker.engine.resources import Resource
+from engine.resources import Resource
 
 
 class CharacterType(Enum):

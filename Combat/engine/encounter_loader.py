@@ -2,11 +2,11 @@ import json
 import random
 from pathlib import Path
 
-from combat_tracker.engine.character import Character
-from combat_tracker.engine.character import CharacterType
-from combat_tracker.engine.encounter import Encounter
-from combat_tracker.engine.resources import Resource
-from combat_tracker.engine.defenses import Defenses
+from engine.character import Character
+from engine.character import CharacterType
+from engine.encounter import Encounter
+from engine.resources import Resource
+from engine.defenses import Defenses
 
 
 class EncounterLoader:

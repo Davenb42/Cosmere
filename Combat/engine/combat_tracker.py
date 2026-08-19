@@ -1,5 +1,5 @@
-from combat_tracker.engine.combat_state import CombatState
-from combat_tracker.engine.turn_manager import TurnManager
+from engine.combat_state import CombatState
+from engine.turn_manager import TurnManager
 
 
 class CombatTracker:

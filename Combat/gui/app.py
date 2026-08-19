@@ -2,7 +2,7 @@ import sys
 
 from PySide6.QtWidgets import QApplication
 
-from combat_tracker.gui.campaign_manager import CampaignManagerWindow
+from gui.campaign_manager import CampaignManagerWindow
 
 
 def main():

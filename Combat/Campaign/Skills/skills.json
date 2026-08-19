@@ -1,0 +1,26 @@
+{
+    "Physical Skills": {
+        "Agility": "Speed",
+        "Athletics": "Strength",
+        "Heavy Weaponry": "Strength",
+        "Light Weaponry": "Speed",
+        "Stealth": "Speed",
+        "Thievery": "Speed"
+    },
+    "Cognitive Skills": {
+        "Crafting": "Intellect",
+        "Deduction": "Intellect",
+        "Discipline": "Willpower",
+        "Intimidation": "Willpower",
+        "Lore": "Intellect",
+        "Medicine": "Intellect"
+    },
+    "Spiritual Skills": {
+        "Deception": "Presence",
+        "Insight": "Awareness",
+        "Leadership": "Presence",
+        "Perception": "Awareness",
+        "Persuasion": "Presence",
+        "Survival": "Awareness"
+    }
+}

@@ -1,7 +1,7 @@
 from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QFrame, QMainWindow, QScrollArea, QVBoxLayout, QWidget
 
-from combat_tracker.gui.panel_base import CombatPanel
+from gui.panel_base import CombatPanel
 
 
 class CharacterSheetWindow(QMainWindow):

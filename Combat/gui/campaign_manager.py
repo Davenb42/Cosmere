@@ -13,7 +13,7 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 
-from combat_tracker.gui.combat_window import CombatWindow
+from gui.combat_window import CombatWindow
 
 
 class CampaignManagerWindow(QMainWindow):

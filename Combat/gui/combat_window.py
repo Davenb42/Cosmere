@@ -10,16 +10,16 @@ from PySide6.QtWidgets import (
     QVBoxLayout,
 )
 
-from combat_tracker.engine.character import CharacterType
-from combat_tracker.engine.combat_tracker import CombatTracker
-from combat_tracker.engine.encounter_loader import EncounterLoader
-from combat_tracker.engine.infused_object import InfusedObject
-from combat_tracker.gui.combat_view import CombatView
-from combat_tracker.gui.condition_dialogs import (
+from engine.character import CharacterType
+from engine.combat_tracker import CombatTracker
+from engine.encounter_loader import EncounterLoader
+from engine.infused_object import InfusedObject
+from gui.combat_view import CombatView
+from gui.condition_dialogs import (
     ConditionReminderDialog,
     ConditionSelectionDialog,
 )
-from combat_tracker.gui.infused_object_dialogs import (
+from gui.infused_object_dialogs import (
     AddInfusedObjectDialog,
     InfuseInvestitureDialog,
     InfusedObjectsReminderDialog,

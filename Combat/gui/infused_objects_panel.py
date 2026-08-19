@@ -10,7 +10,7 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 
-from combat_tracker.gui.panel_base import CombatPanel
+from gui.panel_base import CombatPanel
 
 
 __all__ = ["InfusedObjectsPanel"]

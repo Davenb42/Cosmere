@@ -12,11 +12,11 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 
-from combat_tracker.engine.character import CharacterType
-from combat_tracker.gui import action_text
-from combat_tracker.gui.character_sheet_window import CharacterSheetWindow
-from combat_tracker.gui.infused_objects_panel import InfusedObjectsPanel
-from combat_tracker.gui.panel_base import CombatPanel
+from engine.character import CharacterType
+from gui import action_text
+from gui.character_sheet_window import CharacterSheetWindow
+from gui.infused_objects_panel import InfusedObjectsPanel
+from gui.panel_base import CombatPanel
 
 
 __all__ = ["CombatView", "NoWheelSpinBox"]
