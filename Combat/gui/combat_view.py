@@ -262,15 +262,18 @@ class CombatView(QWidget):
         label = QLabel(f"{character.display_name}")
         label.setStyleSheet("font-weight: 600;")
         h.addWidget(label)
-        
-        spend_reaction = QPushButton("Spend Reaction")
-        spend_reaction.setEnabled(character.reaction_available)
-        if not character.reaction_available:
-            spend_reaction.setText("Reaction Spent")
-        spend_reaction.clicked.connect(
-            lambda _, target=character: self.combat_window.spend_reaction(target)
-        )
-        h.addWidget(spend_reaction)
+
+        if character.reaction_available:
+            reaction_button = QPushButton("Spend Reaction")
+            reaction_button.clicked.connect(
+                lambda _, target=character: self.combat_window.spend_reaction(target)
+            )
+        else:
+            reaction_button = QPushButton("Regain Reaction")
+            reaction_button.clicked.connect(
+                lambda _, target=character: self.combat_window.regain_reaction(target)
+            )
+        h.addWidget(reaction_button)
 
         view_sheet = QPushButton("View Sheet")
         view_sheet.clicked.connect(lambda _, target=character: self.open_character_sheet(target))
@@ -286,7 +289,13 @@ class CombatView(QWidget):
         deflect_label.setStyleSheet("color: #d5effd; font-weight: 600;")
         h.addWidget(deflect_label)
 
-        other_widgets = [label, spend_reaction, view_sheet, add_condition, deflect_label]
+        other_widgets = [
+            label,
+            reaction_button,
+            view_sheet,
+            add_condition,
+            deflect_label,
+        ]
 
         for key in ("health", "focus", "investiture"):
             resource = getattr(character, key)
@@ -301,8 +310,6 @@ class CombatView(QWidget):
         if excluded:
             for widget in other_widgets:
                 widget.setEnabled(False)
-            if not character.reaction_available:
-                spend_reaction.setText("Reaction Spent")
 
         return row
 

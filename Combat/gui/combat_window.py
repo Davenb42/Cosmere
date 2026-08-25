@@ -7,6 +7,7 @@ from PySide6.QtWidgets import (
     QDialogButtonBox,
     QLabel,
     QMainWindow,
+    QMessageBox,
     QVBoxLayout,
 )
 
@@ -224,6 +225,21 @@ class CombatWindow(QMainWindow):
 
         character.reaction_available = False
         self.view.refresh()
+
+    def regain_reaction(self, character):
+        if character is None:
+            return
+
+        dialog = QMessageBox(self)
+        dialog.setWindowTitle("Regain Reaction")
+        dialog.setText("Do you want this character to regain a reaction?")
+        accept_button = dialog.addButton("Accept", QMessageBox.AcceptRole)
+        dialog.addButton("Cancel", QMessageBox.RejectRole)
+        dialog.exec()
+
+        if dialog.clickedButton() == accept_button:
+            character.reaction_available = True
+            self.view.refresh()
 
     def end_turn(self):
         if self.current_character is None:
