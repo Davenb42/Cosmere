@@ -1,0 +1,10 @@
+{
+    "name": "Storm the Keep",
+
+    "npcs": {
+        "TukariSpearInfantry": 4,
+        "Farriqa": 1,
+        "Gamish": 1,
+        "SpearInfantry": 3
+    }
+}

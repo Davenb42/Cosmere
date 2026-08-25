@@ -1,0 +1,65 @@
+{
+  "name": "Farriqa",
+  "health": {
+    "min": 30,
+    "max": 50
+  },
+  "focus": 6,
+  "investiture": 5,
+  "strength": 2,
+  "speed": 4,
+  "physical defense": 16,
+  "intelligence": 2,
+  "willpower": 4,
+  "cognitive defense": 16,
+  "awareness": 1,
+  "presence": 3,
+  "spiritual defense": 14,
+  "deflect": 1,
+  "movement": "30 ft.",
+  "senses": "10 ft. (sight)",
+  "immunities": "",
+  "physical_skills": {
+    "Agility": "+7",
+    "Athletics": "+5",
+    "Light Weaponry": "+6"
+  },
+  "cognitive_skills": {
+    "Discipline": "+6",
+    "Intimidation": "+7"
+  },
+  "spiritual_skills": {
+    "Perception": "+4"
+  },
+  "features": {
+    "Water Weakness": "While the stormform is drenched in water, they can’t use their Bolt of Lightning or Electrical Charge.",
+    "Barbed Carapace": "While the stormform is Restrained by the Grapple action or a similar effect, the character restraining the stormform is Afflicted [1d8 keen]."
+  },
+  "Actions": {
+    "Strike: Shortspear": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Investiture cost": "0",
+      "Description": " Attack +6, reach 5 ft., one target. Graze: 4 (1d8) keen damage. Hit: 10 (1d8 + 6) keen damage."
+    },
+    "Bolt of Lightning": {
+      "Action cost": "2",
+      "Focus cost": "0",
+      "Investiture cost": "1",
+      "Description": "Attack +7, range 60 ft., one target. This attack gains a disadvantage unless the Regal spends 1 focus to ignore it. Graze: 8 (2d8) energy damage. Hit: 15 (2d8 + 7) energy damage."
+    },
+    "Storm Leap": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Investiture cost": "1",
+      "Description": "The Regal jumps up to 60 feet. If they land within 5 feet of an enemy, the Regal can use the Gain Advantage action as ▷."
+    },
+    "Electrical Charge": {
+      "Action cost": "Free",
+      "Focus cost": "0",
+      "Investiture cost": "0",
+      "Description": "After the Regal uses the Move action, they become electrically charged until the start of their next turn. While charged, they’re immune to energy damage, and whenever the charged Regal is hit by an attack by an enemy within 5 feet of them, the attacker takes 4 (1d8) energy damage."
+    }
+  },
+  "Tactics": "A stormform Regal is a cunning foe, one specialized in closing distances and defending themself. The Regal uses Storm Leap to jump to a weak-looking foe, hoping to goad them into taking damage from Electrical Charge. Meanwhile, the Regal alternates between using their Shortspear and Bolt of Lightning to strike injured enemies."
+}

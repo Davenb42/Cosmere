@@ -1,0 +1,10 @@
+{
+    "name": "Rearguard",
+
+    "npcs": {
+        "EyesofPalaAgent": 3,
+        "Bandit": 2,
+        "Archer": 2,
+        "Axoq": 1
+    }
+}

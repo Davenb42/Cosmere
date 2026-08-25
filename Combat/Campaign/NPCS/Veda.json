@@ -1,0 +1,51 @@
+{
+  "name": "Veda",
+  "health": {
+    "min": 8,
+    "max": 12
+  },
+  "focus": 2,
+  "investiture": 0,
+  "strength": 0,
+  "speed": 1,
+  "physical defense": 11,
+  "intelligence": 1,
+  "willpower": 0,
+  "cognitive defense": 11,
+  "awareness": 1,
+  "presence": 0,
+  "spiritual defense": 11,
+  "deflect": 2,
+  "movement": "25 ft.",
+  "senses": "10 ft. (sight)",
+  "immunities": "",
+  "physical_skills": {
+    "Athletics": "+1"
+  },
+  "cognitive_skills": {
+    "Crafting": "+2"
+  },
+  "spiritual_skills": {
+    "Insight": "+2",
+    "Perception": "+2"
+  },
+  "features": {
+    "Minion": "The commoner’s attacks can’t critically hit, and they’re immediately defeated when they suffer an injury. ",
+    "Capable": "The commoner has a utility expertise in one profession, and they gain an advantage on skill tests related to that profession."
+  },
+  "Actions": {
+    "Strike: Improvised Weapon": {
+      "Action cost": "1",
+      "Focus cost": "0",
+      "Investiture cost": "0",
+      "Description": "Attack +1, reach 5 ft., one target. On a Complication, this improvised weapon is destroyed. Graze: 2 (1d4) impact damage. Hit: 3 (1d4 + 1) impact damage."
+    },
+    "Distract": {
+      "Action cost": "Reaction",
+      "Focus cost": "1",
+      "Investiture cost": "0",
+      "Description": "When an ally makes a test against an enemy who is within reach of the commoner, the commoner grants the ally an advantage on that test."
+    }
+  },
+  "Tactics": "In combat, a commoner generally flees and seeks safety unless their loved ones are in immediate danger. When forced to fight, the commoner might resort to an Improvised Weapon, or they might Distract to aid a more capable ally. In conversations, they usually concede to those they consider more competent."
+}

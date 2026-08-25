@@ -1,0 +1,9 @@
+{
+    "name": "Assault on the Walls",
+
+    "npcs": {
+        "SpearInfantry": 4,
+        "Axoq": 1,
+        "TukariArchers": 8
+    }
+}

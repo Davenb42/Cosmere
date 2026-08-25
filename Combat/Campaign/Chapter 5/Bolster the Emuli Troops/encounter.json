@@ -1,0 +1,8 @@
+{
+    "name": "Bolster the Emuli Troops",
+
+    "npcs": {
+        "Gamish": 1,
+        "SpearInfantry": 3
+    }
+}
