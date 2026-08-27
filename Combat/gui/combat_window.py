@@ -116,7 +116,6 @@ class CombatWindow(QMainWindow):
             self.turn_index += 1
 
         if self.turn_index >= len(self.turn_order):
-            self.process_infused_objects_round_end()
             self.tracker.state.round_number += 1
             self.begin_round()
             return
@@ -124,6 +123,7 @@ class CombatWindow(QMainWindow):
         self.current_character = self.turn_order[self.turn_index]
         self.tracker.state.active_character = self.current_character
         self.current_character.start_turn()
+        self.process_infused_objects_turn(self.current_character)
         self.view.refresh()
         self.show_condition_reminder(self.current_character)
 
@@ -149,6 +149,7 @@ class CombatWindow(QMainWindow):
                 surge=dialog.object_surge(),
                 investiture=dialog.object_investiture(),
                 created_round=self.tracker.state.round_number,
+                creator_id=self.current_character.id if self.current_character else None,
             )
         )
         self.view.refresh()
@@ -160,7 +161,7 @@ class CombatWindow(QMainWindow):
 
         infused_object.investiture += dialog.amount()
         if infused_object.investiture > 0:
-            infused_object.zero_at_round = None
+            infused_object.pending_removal = False
         self.view.refresh()
 
     def recall_infused_object(self, infused_object):
@@ -168,33 +169,30 @@ class CombatWindow(QMainWindow):
             self.tracker.state.infused_objects.remove(infused_object)
         self.view.refresh()
 
-    def process_infused_objects_round_end(self):
+    def process_infused_objects_turn(self, character):
         state = self.tracker.state
-        ending_round = state.round_number
 
+        # Objects that reached 0 last turn have stayed visible until now; clear them.
         state.infused_objects = [
             infused_object
             for infused_object in state.infused_objects
-            if infused_object.zero_at_round is None
-            or ending_round <= infused_object.zero_at_round
+            if not infused_object.pending_removal
         ]
 
+        newly_depleted = []
         for infused_object in state.infused_objects:
             if (
-                ending_round >= infused_object.created_round + 1
+                infused_object.creator_id == character.id
+                and state.round_number > infused_object.created_round
                 and infused_object.investiture > 0
             ):
                 infused_object.investiture -= 1
-                if infused_object.investiture == 0:
-                    infused_object.zero_at_round = ending_round
+                if infused_object.investiture <= 0:
+                    infused_object.pending_removal = True
+                    newly_depleted.append(infused_object)
 
-        depleted = [
-            infused_object
-            for infused_object in state.infused_objects
-            if infused_object.investiture <= 0
-        ]
-        if depleted:
-            InfusedObjectsReminderDialog(depleted, self).exec()
+        if newly_depleted:
+            InfusedObjectsReminderDialog(newly_depleted, self).exec()
 
     def show_condition_reminder(self, character):
         if not character.conditions:

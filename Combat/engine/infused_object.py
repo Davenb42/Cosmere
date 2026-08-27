@@ -13,4 +13,6 @@ class InfusedObject:
 
     created_round: int
 
-    zero_at_round: Optional[int] = None
+    creator_id: Optional[int] = None
+
+    pending_removal: bool = False
