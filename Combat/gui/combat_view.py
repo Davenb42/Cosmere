@@ -15,7 +15,7 @@ from PySide6.QtWidgets import (
 from engine.character import CharacterType
 from gui import action_text
 from gui.character_sheet_window import CharacterSheetWindow
-from gui.infused_objects_panel import InfusedObjectsPanel
+from gui.infusions_panel import InfusionsPanel
 from gui.panel_base import CombatPanel
 
 
@@ -109,9 +109,9 @@ class CombatView(QWidget):
         self.party_panel = CombatPanel("Party")
         self.turn_panel = CombatPanel("CURRENT TURN")
         self.enemies_panel = CombatPanel("Enemies")
-        self.infused_objects_panel = InfusedObjectsPanel(self.combat_window)
+        self.infusions_panel = InfusionsPanel(self.combat_window)
 
-        for panel in (self.party_panel, self.enemies_panel, self.infused_objects_panel):
+        for panel in (self.party_panel, self.enemies_panel, self.infusions_panel):
             panel.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
 
         self.turn_panel.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
@@ -190,7 +190,7 @@ class CombatView(QWidget):
         self.body.addWidget(self.party_panel, 0, 0)
         self.body.addWidget(self.turn_panel, 0, 1, 3, 1)
         self.body.addWidget(self.enemies_panel, 1, 0)
-        self.body.addWidget(self.infused_objects_panel, 2, 0)
+        self.body.addWidget(self.infusions_panel, 2, 0)
 
         self.root.addLayout(self.body, 1)
 
@@ -460,7 +460,7 @@ class CombatView(QWidget):
         self.party_layout.addStretch()
         self.enemies_layout.addStretch()
 
-        self.infused_objects_panel.refresh(state.infused_objects)
+        self.infusions_panel.refresh(state.infusions)
 
     def refresh_turn_only(self):
         state = self.combat_window.tracker.state

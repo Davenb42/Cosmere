@@ -14,23 +14,23 @@ from PySide6.QtWidgets import (
 
 
 __all__ = [
-    "AddInfusedObjectDialog",
+    "AddInfusionDialog",
     "InfuseInvestitureDialog",
-    "InfusedObjectsReminderDialog",
+    "InfusionsReminderDialog",
 ]
 
 
-class AddInfusedObjectDialog(QDialog):
-    """Prompts for a new infused object's name, surge, and starting investiture."""
+class AddInfusionDialog(QDialog):
+    """Prompts for a new infusion's name, surge, and starting investiture."""
 
-    def __init__(self, surges, parent=None):
+    def __init__(self, surges, characters, parent=None):
         super().__init__(parent)
-        self.setWindowTitle("Add Infused Object")
+        self.setWindowTitle("Add Infusion")
         self.resize(360, 260)
 
         layout = QVBoxLayout(self)
 
-        layout.addWidget(QLabel("Object Name"))
+        layout.addWidget(QLabel("Infusion Name"))
         self.name_edit = QLineEdit()
         layout.addWidget(self.name_edit)
 
@@ -45,31 +45,41 @@ class AddInfusedObjectDialog(QDialog):
         self.investiture_spin.setValue(1)
         layout.addWidget(self.investiture_spin)
 
+        layout.addWidget(QLabel("Apply to Character"))
+        self.character_combo = QComboBox()
+        self.character_combo.addItem("No Character", None)
+        for character in characters:
+            self.character_combo.addItem(character.display_name, character.id)
+        layout.addWidget(self.character_combo)
+
         buttons = QDialogButtonBox(QDialogButtonBox.Ok | QDialogButtonBox.Cancel)
         buttons.accepted.connect(self.accept)
         buttons.rejected.connect(self.reject)
         layout.addWidget(buttons)
 
-    def object_name(self):
+    def infusion_name(self):
         return self.name_edit.text().strip()
 
-    def object_surge(self):
+    def infusion_surge(self):
         return self.surge_combo.currentText()
 
-    def object_investiture(self):
+    def infusion_investiture(self):
         return self.investiture_spin.value()
+
+    def recipient_id(self):
+        return self.character_combo.currentData()
 
 
 class InfuseInvestitureDialog(QDialog):
-    """Prompts for an amount of investiture to add to an existing infused object."""
+    """Prompts for an amount of investiture to add to an existing infusion."""
 
-    def __init__(self, infused_object, parent=None):
+    def __init__(self, infusion, parent=None):
         super().__init__(parent)
-        self.setWindowTitle(f"Infuse {infused_object.name}")
+        self.setWindowTitle(f"Infuse {infusion.name}")
         self.resize(320, 160)
 
         layout = QVBoxLayout(self)
-        layout.addWidget(QLabel(f"Add investiture to {infused_object.name}"))
+        layout.addWidget(QLabel(f"Add investiture to {infusion.name}"))
 
         self.amount_spin = QSpinBox()
         self.amount_spin.setRange(1, 99)
@@ -85,17 +95,17 @@ class InfuseInvestitureDialog(QDialog):
         return self.amount_spin.value()
 
 
-class InfusedObjectsReminderDialog(QDialog):
-    """Reminds the user which infused objects ran out of investiture this round."""
+class InfusionsReminderDialog(QDialog):
+    """Reminds the user which infusions ran out of investiture this round."""
 
-    def __init__(self, depleted_objects, parent=None):
+    def __init__(self, depleted_infusions, parent=None):
         super().__init__(parent)
-        self.setWindowTitle("Depleted Infused Objects")
+        self.setWindowTitle("Depleted Infusions")
         self.resize(420, 320)
 
         layout = QVBoxLayout(self)
         layout.addWidget(
-            QLabel("The following infused objects have run out of investiture:")
+            QLabel("The following infusions have run out of investiture:")
         )
 
         scroll = QScrollArea()
@@ -107,8 +117,8 @@ class InfusedObjectsReminderDialog(QDialog):
         content_layout.setAlignment(Qt.AlignTop)
         content_layout.setSpacing(8)
 
-        for infused_object in depleted_objects:
-            label = QLabel(f"{infused_object.name} ({infused_object.surge})")
+        for infusion in depleted_infusions:
+            label = QLabel(f"{infusion.name} ({infusion.surge})")
             label.setStyleSheet("font-weight: 700;")
             content_layout.addWidget(label)
 

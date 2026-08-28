@@ -14,16 +14,16 @@ from PySide6.QtWidgets import (
 from engine.character import CharacterType
 from engine.combat_tracker import CombatTracker
 from engine.encounter_loader import EncounterLoader
-from engine.infused_object import InfusedObject
+from engine.infusion import Infusion
 from gui.combat_view import CombatView
 from gui.condition_dialogs import (
     ConditionReminderDialog,
     ConditionSelectionDialog,
 )
-from gui.infused_object_dialogs import (
-    AddInfusedObjectDialog,
+from gui.infusion_dialogs import (
+    AddInfusionDialog,
     InfuseInvestitureDialog,
-    InfusedObjectsReminderDialog,
+    InfusionsReminderDialog,
 )
 
 
@@ -123,7 +123,7 @@ class CombatWindow(QMainWindow):
         self.current_character = self.turn_order[self.turn_index]
         self.tracker.state.active_character = self.current_character
         self.current_character.start_turn()
-        self.process_infused_objects_turn(self.current_character)
+        self.process_infusions_turn(self.current_character)
         self.view.refresh()
         self.show_condition_reminder(self.current_character)
 
@@ -134,71 +134,86 @@ class CombatWindow(QMainWindow):
         character.excluded_from_combat = not character.excluded_from_combat
         self.view.refresh()
 
-    def open_add_infused_object(self):
-        dialog = AddInfusedObjectDialog(self.surges, self)
+    def open_add_infusion(self):
+        dialog = AddInfusionDialog(self.surges, self.tracker.state.combatants, self)
         if dialog.exec() != QDialog.Accepted:
             return
 
-        name = dialog.object_name()
+        name = dialog.infusion_name()
         if not name:
             return
 
-        self.tracker.state.infused_objects.append(
-            InfusedObject(
+        self.tracker.state.infusions.append(
+            Infusion(
                 name=name,
-                surge=dialog.object_surge(),
-                investiture=dialog.object_investiture(),
+                surge=dialog.infusion_surge(),
+                investiture=dialog.infusion_investiture(),
                 created_round=self.tracker.state.round_number,
                 creator_id=self.current_character.id if self.current_character else None,
+                recipient_id=dialog.recipient_id(),
             )
         )
         self.view.refresh()
 
-    def open_infuse_object(self, infused_object):
-        dialog = InfuseInvestitureDialog(infused_object, self)
+    def open_infusion(self, infusion):
+        dialog = InfuseInvestitureDialog(infusion, self)
         if dialog.exec() != QDialog.Accepted:
             return
 
-        infused_object.investiture += dialog.amount()
-        if infused_object.investiture > 0:
-            infused_object.pending_removal = False
+        infusion.investiture += dialog.amount()
+        if infusion.investiture > 0:
+            infusion.pending_removal = False
         self.view.refresh()
 
-    def recall_infused_object(self, infused_object):
-        if infused_object in self.tracker.state.infused_objects:
-            self.tracker.state.infused_objects.remove(infused_object)
+    def recall_infusion(self, infusion):
+        if infusion in self.tracker.state.infusions:
+            self.tracker.state.infusions.remove(infusion)
         self.view.refresh()
 
-    def process_infused_objects_turn(self, character):
+    def process_infusions_turn(self, character):
         state = self.tracker.state
 
-        # Objects that reached 0 last turn have stayed visible until now; clear them.
-        state.infused_objects = [
-            infused_object
-            for infused_object in state.infused_objects
-            if not infused_object.pending_removal
+        # Infusions that reached 0 last turn have stayed visible until now; clear them.
+        state.infusions = [
+            infusion
+            for infusion in state.infusions
+            if not infusion.pending_removal
         ]
 
         newly_depleted = []
-        for infused_object in state.infused_objects:
+        for infusion in state.infusions:
             if (
-                infused_object.creator_id == character.id
-                and state.round_number > infused_object.created_round
-                and infused_object.investiture > 0
+                infusion.creator_id == character.id
+                and state.round_number > infusion.created_round
+                and infusion.investiture > 0
             ):
-                infused_object.investiture -= 1
-                if infused_object.investiture <= 0:
-                    infused_object.pending_removal = True
-                    newly_depleted.append(infused_object)
+                infusion.investiture -= 1
+                if infusion.investiture <= 0:
+                    infusion.pending_removal = True
+                    newly_depleted.append(infusion)
 
         if newly_depleted:
-            InfusedObjectsReminderDialog(newly_depleted, self).exec()
+            InfusionsReminderDialog(newly_depleted, self).exec()
 
     def show_condition_reminder(self, character):
-        if not character.conditions:
+        applied_infusions = [
+            infusion
+            for infusion in self.tracker.state.infusions
+            if (
+                infusion.recipient_id == character.id
+                and infusion.investiture > 0
+                and not infusion.pending_removal
+            )
+        ]
+        if not character.conditions and not applied_infusions:
             return
 
-        dialog = ConditionReminderDialog(character, self.all_conditions, self)
+        dialog = ConditionReminderDialog(
+            character,
+            self.all_conditions,
+            applied_infusions,
+            self,
+        )
         dialog.exec()
 
     def open_condition_editor(self, character):

@@ -75,15 +75,14 @@ class ConditionSelectionDialog(QDialog):
 class ConditionReminderDialog(QDialog):
     """Reminds the user which conditions the active character has."""
 
-    def __init__(self, character, all_conditions, parent=None):
+    def __init__(self, character, all_conditions, applied_infusions, parent=None):
         super().__init__(parent)
         self.setWindowTitle(f"Active Conditions - {character.display_name}")
         self.resize(480, 400)
 
         layout = QVBoxLayout(self)
-        layout.addWidget(
-            QLabel(f"{character.display_name} has the following conditions:")
-        )
+        if character.conditions:
+            layout.addWidget(QLabel(f"{character.display_name} has the following conditions:"))
 
         scroll, content_layout = _make_scrollable_content()
 
@@ -97,6 +96,16 @@ class ConditionReminderDialog(QDialog):
                 desc_label = QLabel(description)
                 desc_label.setWordWrap(True)
                 content_layout.addWidget(desc_label)
+
+        if applied_infusions:
+            content_layout.addWidget(QLabel("Applied Infusions"))
+            for infusion in applied_infusions:
+                infusion_label = QLabel(
+                    f"{infusion.name} ({infusion.surge}) - "
+                    f"Investiture {infusion.investiture}"
+                )
+                infusion_label.setStyleSheet("font-weight: 700;")
+                content_layout.addWidget(infusion_label)
 
         layout.addWidget(scroll)
 

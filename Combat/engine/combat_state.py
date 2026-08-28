@@ -3,7 +3,7 @@ from typing import Optional
 
 from engine.character import Character, CharacterType
 from engine.encounter import Encounter
-from engine.infused_object import InfusedObject
+from engine.infusion import Infusion
 
 
 @dataclass
@@ -21,7 +21,7 @@ class CombatState:
 
     turn_order: list[Character] = field(default_factory=list)
 
-    infused_objects: list[InfusedObject] = field(default_factory=list)
+    infusions: list[Infusion] = field(default_factory=list)
 
     @property
     def combatants(self):

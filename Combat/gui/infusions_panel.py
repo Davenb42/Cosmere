@@ -13,14 +13,14 @@ from PySide6.QtWidgets import (
 from gui.panel_base import CombatPanel
 
 
-__all__ = ["InfusedObjectsPanel"]
+__all__ = ["InfusionsPanel"]
 
 
-class InfusedObjectsPanel(CombatPanel):
-    """Panel listing infused objects, kept separate from combat_view.py."""
+class InfusionsPanel(CombatPanel):
+    """Panel listing infusions, kept separate from combat_view.py."""
 
     def __init__(self, combat_window, parent=None):
-        super().__init__("Infused Objects", parent)
+        super().__init__("Infusions", parent)
         self.combat_window = combat_window
         self.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
 
@@ -38,8 +38,8 @@ class InfusedObjectsPanel(CombatPanel):
 
         self.content_layout.addWidget(self.scroll)
 
-        self.add_button = QPushButton("Add Infused Object")
-        self.add_button.clicked.connect(self.combat_window.open_add_infused_object)
+        self.add_button = QPushButton("Add Infusion")
+        self.add_button.clicked.connect(self.combat_window.open_add_infusion)
         self.content_layout.addWidget(self.add_button)
 
     def _clear_list(self):
@@ -48,11 +48,11 @@ class InfusedObjectsPanel(CombatPanel):
             if item.widget():
                 item.widget().deleteLater()
 
-    def _build_object_row(self, infused_object):
+    def _build_infusion_row(self, infusion):
         row = QFrame()
         row.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
         row.setMinimumHeight(52)
-        depleted = infused_object.investiture <= 0
+        depleted = infusion.investiture <= 0
         row.setStyleSheet(
             "QFrame { background: #14181d; border: 1px solid #333a42; border-radius: 8px; }"
             if depleted
@@ -63,30 +63,30 @@ class InfusedObjectsPanel(CombatPanel):
         h.setContentsMargins(10, 8, 10, 8)
         h.setSpacing(10)
 
-        label = QLabel(f"{infused_object.name} ({infused_object.surge})")
+        label = QLabel(f"{infusion.name} ({infusion.surge})")
         label.setStyleSheet("font-weight: 600;")
         h.addWidget(label)
 
-        investiture_label = QLabel(f"Investiture {infused_object.investiture}")
+        investiture_label = QLabel(f"Investiture {infusion.investiture}")
         investiture_label.setStyleSheet("color: #d5effd; font-weight: 600;")
         h.addWidget(investiture_label)
 
         infuse_button = QPushButton("Infuse")
         infuse_button.clicked.connect(
-            lambda _, target=infused_object: self.combat_window.open_infuse_object(target)
+            lambda _, target=infusion: self.combat_window.open_infusion(target)
         )
         h.addWidget(infuse_button)
 
         recall_button = QPushButton("Recall")
         recall_button.clicked.connect(
-            lambda _, target=infused_object: self.combat_window.recall_infused_object(target)
+            lambda _, target=infusion: self.combat_window.recall_infusion(target)
         )
         h.addWidget(recall_button)
 
         return row
 
-    def refresh(self, infused_objects):
+    def refresh(self, infusions):
         self._clear_list()
-        for infused_object in infused_objects:
-            self.list_layout.addWidget(self._build_object_row(infused_object))
+        for infusion in infusions:
+            self.list_layout.addWidget(self._build_infusion_row(infusion))
         self.list_layout.addStretch()
