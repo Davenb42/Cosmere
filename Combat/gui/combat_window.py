@@ -123,9 +123,9 @@ class CombatWindow(QMainWindow):
         self.current_character = self.turn_order[self.turn_index]
         self.tracker.state.active_character = self.current_character
         self.current_character.start_turn()
-        self.process_infusions_turn(self.current_character)
+        depleted_infusions = self.process_infusions_turn(self.current_character)
         self.view.refresh()
-        self.show_condition_reminder(self.current_character)
+        self.show_condition_reminder(self.current_character, depleted_infusions)
 
     def toggle_active(self, character):
         if character is None:
@@ -143,17 +143,38 @@ class CombatWindow(QMainWindow):
         if not name:
             return
 
+        current_round = self.tracker.state.round_number
+        recipient_id = dialog.recipient_id()
         self.tracker.state.infusions.append(
             Infusion(
                 name=name,
                 surge=dialog.infusion_surge(),
                 investiture=dialog.infusion_investiture(),
-                created_round=self.tracker.state.round_number,
+                created_round=current_round,
                 creator_id=self.current_character.id if self.current_character else None,
-                recipient_id=dialog.recipient_id(),
+                recipient_id=recipient_id,
+                first_charge_round=self._first_charge_round(recipient_id, current_round),
             )
         )
         self.view.refresh()
+
+    def _first_charge_round(self, recipient_id, current_round):
+        """Determine the round in which an attached infusion first spends a charge."""
+        if recipient_id is None:
+            return None
+
+        recipient_index = next(
+            (
+                index
+                for index, combatant in enumerate(self.turn_order)
+                if combatant.id == recipient_id
+            ),
+            None,
+        )
+        # If the recipient's turn already started this round, the first charge waits until next round.
+        if recipient_index is None or recipient_index <= self.turn_index:
+            return current_round + 1
+        return current_round
 
     def open_infusion(self, infusion):
         dialog = InfuseInvestitureDialog(infusion, self)
@@ -180,22 +201,41 @@ class CombatWindow(QMainWindow):
             if not infusion.pending_removal
         ]
 
-        newly_depleted = []
+        # Infusions not attached to a character are still spent on the creator's turn.
+        newly_depleted_unattached = []
         for infusion in state.infusions:
             if (
-                infusion.creator_id == character.id
+                infusion.recipient_id is None
+                and infusion.creator_id == character.id
                 and state.round_number > infusion.created_round
                 and infusion.investiture > 0
             ):
                 infusion.investiture -= 1
                 if infusion.investiture <= 0:
                     infusion.pending_removal = True
-                    newly_depleted.append(infusion)
+                    newly_depleted_unattached.append(infusion)
 
-        if newly_depleted:
-            InfusionsReminderDialog(newly_depleted, self).exec()
+        if newly_depleted_unattached:
+            InfusionsReminderDialog(newly_depleted_unattached, self).exec()
 
-    def show_condition_reminder(self, character):
+        # Infusions attached to a character are spent on that character's own turn instead.
+        newly_depleted_attached = []
+        for infusion in state.infusions:
+            if (
+                infusion.recipient_id == character.id
+                and infusion.first_charge_round is not None
+                and state.round_number >= infusion.first_charge_round
+                and infusion.investiture > 0
+            ):
+                infusion.investiture -= 1
+                if infusion.investiture <= 0:
+                    infusion.pending_removal = True
+                    newly_depleted_attached.append(infusion)
+
+        return newly_depleted_attached
+
+    def show_condition_reminder(self, character, depleted_infusions=None):
+        depleted_infusions = depleted_infusions or []
         applied_infusions = [
             infusion
             for infusion in self.tracker.state.infusions
@@ -203,9 +243,10 @@ class CombatWindow(QMainWindow):
                 infusion.recipient_id == character.id
                 and infusion.investiture > 0
                 and not infusion.pending_removal
+                and infusion not in depleted_infusions
             )
         ]
-        if not character.conditions and not applied_infusions:
+        if not character.conditions and not applied_infusions and not depleted_infusions:
             return
 
         dialog = ConditionReminderDialog(
@@ -213,6 +254,7 @@ class CombatWindow(QMainWindow):
             self.all_conditions,
             applied_infusions,
             self,
+            depleted_infusions=depleted_infusions,
         )
         dialog.exec()
 

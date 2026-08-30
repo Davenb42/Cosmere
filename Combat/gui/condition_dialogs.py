@@ -75,10 +75,19 @@ class ConditionSelectionDialog(QDialog):
 class ConditionReminderDialog(QDialog):
     """Reminds the user which conditions the active character has."""
 
-    def __init__(self, character, all_conditions, applied_infusions, parent=None):
+    def __init__(
+        self,
+        character,
+        all_conditions,
+        applied_infusions,
+        parent=None,
+        depleted_infusions=None,
+    ):
         super().__init__(parent)
         self.setWindowTitle(f"Active Conditions - {character.display_name}")
         self.resize(480, 400)
+
+        depleted_infusions = depleted_infusions or []
 
         layout = QVBoxLayout(self)
         if character.conditions:
@@ -105,6 +114,15 @@ class ConditionReminderDialog(QDialog):
                     f"Investiture {infusion.investiture}"
                 )
                 infusion_label.setStyleSheet("font-weight: 700;")
+                content_layout.addWidget(infusion_label)
+
+        if depleted_infusions:
+            content_layout.addWidget(QLabel("Infusions Running Out"))
+            for infusion in depleted_infusions:
+                infusion_label = QLabel(
+                    f"{infusion.name} ({infusion.surge}) will run out this turn!"
+                )
+                infusion_label.setStyleSheet("font-weight: 700; color: #b00020;")
                 content_layout.addWidget(infusion_label)
 
         layout.addWidget(scroll)

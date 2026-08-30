@@ -18,3 +18,6 @@ class Infusion:
     recipient_id: Optional[int] = None
 
     pending_removal: bool = False
+
+    # Round in which an infusion attached to a character becomes eligible to be spent.
+    first_charge_round: Optional[int] = None
